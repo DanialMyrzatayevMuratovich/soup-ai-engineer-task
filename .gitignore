@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+outputs/models/
+*.safetensors
+*.bin
+*.gguf
