@@ -1,0 +1,211 @@
+2026-11-11T17:40:54.659 INFO SESSION init: WORK=/content/soup-task tz=('UTC', 'UTC') python=3.13.16 pid=727
+2026-11-11T17:40:54.662 INFO nvidia-smi sampler started pid=1095 every 1s -> logs/nvidia_smi.log
+2026-11-11T17:40:54.845 INFO logging ready
+2026-11-11T17:40:54.862 INFO STAGE START soup_cli_discovery
+2026-11-11T17:40:55.035 INFO [soup_version] started pid=1109: soup --version
+2026-11-11T17:40:56.333 INFO [soup_version] finished rc=0
+2026-11-11T17:40:56.338 INFO [help_root] started pid=1115: soup --help
+2026-11-11T17:40:57.633 INFO [help_root] finished rc=0
+2026-11-11T17:40:57.637 INFO [help_train] started pid=1121: soup train --help
+2026-11-11T17:40:58.929 INFO [help_train] finished rc=0
+2026-11-11T17:40:58.933 INFO [help_merge] started pid=1131: soup merge --help
+2026-11-11T17:41:00.226 INFO [help_merge] finished rc=0
+2026-11-11T17:41:00.229 INFO [help_data] started pid=1137: soup data --help
+2026-11-11T17:41:01.522 INFO [help_data] finished rc=0
+2026-11-11T17:41:01.527 INFO [help_ship] started pid=1143: soup ship --help
+2026-11-11T17:41:02.819 INFO [help_ship] finished rc=0
+2026-11-11T17:41:02.823 INFO [help_profile] started pid=1149: soup profile --help
+2026-11-11T17:41:04.116 INFO [help_profile] finished rc=0
+2026-11-11T17:41:04.119 INFO [help_plan] started pid=1159: soup plan --help
+2026-11-11T17:41:05.412 INFO [help_plan] finished rc=0
+2026-11-11T17:41:05.416 INFO [help_quantize] started pid=1165: soup quantize --help
+2026-11-11T17:41:06.711 INFO [help_quantize] finished rc=0
+2026-11-11T17:41:06.717 INFO [help_export] started pid=1174: soup export --help
+2026-11-11T17:41:08.011 INFO [help_export] finished rc=0
+2026-11-11T17:41:08.018 INFO [help_doctor] started pid=1184: soup doctor --help
+2026-11-11T17:41:09.311 INFO [help_doctor] finished rc=0
+2026-11-11T17:41:09.317 INFO [help_diagnose] started pid=1190: soup diagnose --help
+2026-11-11T17:41:10.610 INFO [help_diagnose] finished rc=0
+2026-11-11T17:41:10.613 INFO [help_eval] started pid=1196: soup eval --help
+2026-11-11T17:41:11.906 INFO [help_eval] finished rc=0
+2026-11-11T17:41:11.909 INFO [help_data_validate] started pid=1202: soup data validate --help
+2026-11-11T17:41:13.202 INFO [help_data_validate] finished rc=0
+2026-11-11T17:41:13.205 INFO [help_data_stats] started pid=1212: soup data stats --help
+2026-11-11T17:41:14.497 INFO [help_data_stats] finished rc=0
+2026-11-11T17:41:14.502 INFO [help_data_inspect] started pid=1218: soup data inspect --help
+2026-11-11T17:41:15.796 INFO [help_data_inspect] finished rc=0
+2026-11-11T17:41:15.799 INFO [help_data_doctor] started pid=1224: soup data doctor --help
+2026-11-11T17:41:17.093 INFO [help_data_doctor] finished rc=0
+2026-11-11T17:41:17.096 INFO soup capabilities: {"checked": "2026-11-11T17:40:55.033+00:00", "soup_on_path": true, "version": "0.77.2", "help_root_rc": 0, "help_train_rc": 0, "help_merge_rc": 0, "help_data_rc": 0, "help_ship_rc": 0, "help_profile_rc": 0, "help_plan_rc": 0, "help_quantize_rc": 0, "help_export_rc": 0, "help_doctor_rc": 0, "help_diagnose_rc": 0, "help_eval_rc": 0, "help_data_validate_rc": 0, "help_data_stats_rc": 0, "help_data_inspect_rc": 0, "data_has_doctor": true, "data_subcommands_seen": ["convert", "decontaminate", "dedup", "doctor", "download", "filter", "inspect", "langdetect", "lint", "preprocess", "preview", "sample", "score", "split", "stats", "validate"], "merge_has_adapter_flag": true, "merge_has_save_format": true, "merge_has_low_memory": true, "merge_has_dtype": true, "train_has_dry_run": true, "train_has_yes": true, "profile_has_json": true, "has_plan": true, "ship_has_tuned": true, "ship_has_general_suite": true, "ship_has_device": true, "eval_has_quant_check": true, "doctor_has_config": true}
+2026-11-11T17:41:17.326 INFO STAGE END soup_cli_discovery status=ok 22.2s
+2026-11-11T17:41:17.340 INFO STAGE START data_prep
+2026-11-11T17:41:40.315 INFO loaded 51760 rows from d0rj/alpaca-cleaned-ru@05321f66bb70be21bd1ea2cb8fe3ca18693a688a via datasets.load_dataset
+2026-11-11T17:41:51.146 INFO after filters: 48740 candidates; dropped {'code_block': 1602, 'exact_dup_user': 30, 'output_too_short': 63, 'low_cyrillic': 960, 'exact_dup_output': 365}
+2026-11-11T17:41:57.207 INFO data ready: train=1500 eval=200 audit={'eval_user_in_train': 0, 'eval_answer_in_train': 0, 'train_eval_source_index_overlap': 0}
+2026-11-11T17:41:57.640 INFO STAGE END data_prep status=ok 40.0s
+2026-11-11T17:41:57.655 INFO STAGE START template_mask_check
+2026-11-11T17:42:00.339 INFO STAGE END template_mask_check status=ok 2.4s
+2026-11-11T17:42:00.359 INFO wrote soup.yaml
+2026-11-11T17:42:00.361 INFO wrote soup_min.yaml
+2026-11-11T17:42:00.363 INFO wrote soup_nc.yaml
+2026-11-11T17:42:00.384 INFO STAGE START memory_budget
+2026-11-11T17:42:00.562 INFO [cuda_context_probe] started pid=1472: /usr/bin/python3 -c 
+import json, time, torch
+torch.cuda.init()
+a = torch.randn(1024, 1024, device="cuda", dtype=torch.float16)
+b = a @ a                     # forces cuBLAS handle + workspace
+torch.cuda.synchronize()
+print(json.dumps({"torch_allocated_gib": torch.cuda.memory_allocated() / 2**30,
+                  "torch_reserved_gib": torch.cuda.memory_reserved() / 2**30}), flush=True)
+time.sleep(6)                 # let the 1 s nvidia-smi sampler see it
+
+2026-11-11T17:42:11.339 INFO [cuda_context_probe] finished rc=0
+2026-11-11T17:42:11.341 INFO CUDA context calibration: {'rc': 0, 'nvsmi_max_used_gib': 0.1357421875, 'nvsmi_baseline_gib': 0.0029296875, 'torch_allocated_gib': 0.0118408203125, 'torch_reserved_gib': 0.01953125, 'context_overhead_gib': 0.11328125}
+2026-11-11T17:42:11.345 INFO [memory_budget] started pid=1521: /usr/bin/python3 memory_budget.py --model Qwen/Qwen2.5-1.5B-Instruct --batch-size 2 --grad-accum 8 --seq-len 1024 --data-report data/data_report.json --lora-r 16 --lora-alpha 32 --lora-dropout 0.05 --target-modules q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj --out outputs/memory_budget.json --cuda-context-gib 0.113
+2026-11-11T17:42:12.641 INFO [memory_budget] finished rc=0
+2026-11-11T17:42:12.648 INFO [soup_profile] started pid=1531: soup profile --config soup.yaml
+2026-11-11T17:42:19.229 INFO [soup_profile] finished rc=0
+2026-11-11T17:42:19.233 INFO [soup_profile_json] started pid=1561: soup profile --config soup.yaml --json
+2026-11-11T17:42:25.814 INFO [soup_profile_json] finished rc=0
+2026-11-11T17:42:26.043 INFO STAGE END memory_budget status=ok 25.4s
+2026-11-11T17:42:26.059 INFO STAGE START soup_data_checks
+2026-11-11T17:42:26.200 INFO [soup_data_validate] started pid=1603: soup data validate data/train.jsonl
+2026-11-11T17:42:27.496 INFO [soup_data_validate] finished rc=0
+2026-11-11T17:42:27.500 INFO [soup_data_validate_eval] started pid=1613: soup data validate data/eval.jsonl
+2026-11-11T17:42:28.794 INFO [soup_data_validate_eval] finished rc=0
+2026-11-11T17:42:28.797 INFO [soup_data_stats] started pid=1619: soup data stats data/train.jsonl
+2026-11-11T17:42:30.091 INFO [soup_data_stats] finished rc=0
+2026-11-11T17:42:30.094 INFO [soup_data_inspect] started pid=1625: soup data inspect data/train.jsonl
+2026-11-11T17:42:31.388 INFO [soup_data_inspect] finished rc=0
+2026-11-11T17:42:31.391 INFO [soup_data_doctor] started pid=1631: soup data doctor data/train.jsonl --model Qwen/Qwen2.5-1.5B-Instruct --max-length 1024 --output outputs/soup_data_doctor.json
+2026-11-11T17:42:42.166 INFO [soup_data_doctor] finished rc=0
+2026-11-11T17:42:42.170 INFO [soup_data_doctor_mask] started pid=1682: soup data doctor data/train.jsonl --model Qwen/Qwen2.5-1.5B-Instruct --max-length 1024 --show-mask 2
+2026-11-11T17:42:52.945 INFO [soup_data_doctor_mask] finished rc=0
+2026-11-11T17:42:53.182 INFO STAGE END soup_data_checks status=ok 26.9s
+2026-11-11T17:42:53.198 INFO STAGE START soup_preflight
+2026-11-11T17:42:53.373 INFO [soup_doctor] started pid=1738: soup doctor --config soup.yaml
+2026-11-11T17:43:14.151 INFO [soup_doctor] finished rc=0
+2026-11-11T17:43:14.154 INFO [soup_plan] started pid=1832: soup plan --config soup.yaml
+2026-11-11T17:43:18.122 INFO [soup_plan] finished rc=0
+2026-11-11T17:43:18.126 INFO [soup_dry_run] started pid=1851: soup train --config soup.yaml --dry-run --yes
+2026-11-11T17:43:24.706 INFO [soup_dry_run] finished rc=0
+2026-11-11T17:43:24.707 INFO paths.json: train_config = soup.yaml
+2026-11-11T17:43:24.932 INFO STAGE END soup_preflight status=ok 31.5s
+2026-11-11T17:43:24.947 INFO STAGE START fault_injection
+2026-11-11T17:43:25.161 INFO wrote data/faults/cfg_clean.yaml
+2026-11-11T17:43:25.163 INFO wrote data/faults/cfg_data_too_long_answers.yaml
+2026-11-11T17:43:25.164 INFO wrote data/faults/cfg_data_dup_25pct.yaml
+2026-11-11T17:43:25.165 INFO wrote data/faults/cfg_data_empty_answers.yaml
+2026-11-11T17:43:25.166 INFO wrote data/faults/cfg_quantization_omitted.yaml
+2026-11-11T17:43:25.168 INFO wrote data/faults/cfg_target_auto.yaml
+2026-11-11T17:43:25.169 INFO wrote data/faults/cfg_lr_zero.yaml
+2026-11-11T17:43:25.171 INFO wrote data/faults/cfg_typo_key.yaml
+2026-11-11T17:43:25.172 INFO wrote data/faults/cfg_maxlen_128.yaml
+2026-11-11T17:43:25.175 INFO wrote data/faults/cfg_defaults_lr_r_alpha.yaml
+2026-11-11T17:43:25.177 INFO [fault_clean_200_validate] started pid=1893: soup data validate data/faults/clean_200.jsonl
+2026-11-11T17:43:26.472 INFO [fault_clean_200_validate] finished rc=0
+2026-11-11T17:43:26.474 INFO fault clean_200                  validate       rc=0 keywords=[]
+2026-11-11T17:43:26.477 INFO [fault_dup_25pct_validate] started pid=1899: soup data validate data/faults/dup_25pct.jsonl
+2026-11-11T17:43:27.774 INFO [fault_dup_25pct_validate] finished rc=0
+2026-11-11T17:43:27.775 INFO fault dup_25pct                  validate       rc=0 keywords=['dup']
+2026-11-11T17:43:27.780 INFO [fault_leak_eval_50_validate] started pid=1912: soup data validate data/faults/leak_eval_50.jsonl
+2026-11-11T17:43:29.077 INFO [fault_leak_eval_50_validate] finished rc=0
+2026-11-11T17:43:29.079 INFO fault leak_eval_50               validate       rc=0 keywords=[]
+2026-11-11T17:43:29.083 INFO [fault_too_long_answers_validate] started pid=1918: soup data validate data/faults/too_long_answers.jsonl
+2026-11-11T17:43:30.379 INFO [fault_too_long_answers_validate] finished rc=0
+2026-11-11T17:43:30.380 INFO fault too_long_answers           validate       rc=0 keywords=[]
+2026-11-11T17:43:30.382 INFO [fault_empty_answers_validate] started pid=1924: soup data validate data/faults/empty_answers.jsonl
+2026-11-11T17:43:31.677 INFO [fault_empty_answers_validate] finished rc=0
+2026-11-11T17:43:31.679 INFO fault empty_answers              validate       rc=0 keywords=[]
+2026-11-11T17:43:31.682 INFO [fault_wrong_roles_validate] started pid=1930: soup data validate data/faults/wrong_roles.jsonl
+2026-11-11T17:43:32.977 INFO [fault_wrong_roles_validate] finished rc=0
+2026-11-11T17:43:32.978 INFO fault wrong_roles                validate       rc=0 keywords=[]
+2026-11-11T17:43:32.982 INFO [fault_english_answers_validate] started pid=1940: soup data validate data/faults/english_answers.jsonl
+2026-11-11T17:43:34.276 INFO [fault_english_answers_validate] finished rc=0
+2026-11-11T17:43:34.278 INFO fault english_answers            validate       rc=0 keywords=[]
+2026-11-11T17:43:34.281 INFO [fault_clean_200_stats] started pid=1946: soup data stats data/faults/clean_200.jsonl
+2026-11-11T17:43:35.577 INFO [fault_clean_200_stats] finished rc=0
+2026-11-11T17:43:35.580 INFO fault clean_200                  stats          rc=0 keywords=['length']
+2026-11-11T17:43:35.584 INFO [fault_dup_25pct_stats] started pid=1952: soup data stats data/faults/dup_25pct.jsonl
+2026-11-11T17:43:36.879 INFO [fault_dup_25pct_stats] finished rc=0
+2026-11-11T17:43:36.882 INFO fault dup_25pct                  stats          rc=0 keywords=['length']
+2026-11-11T17:43:36.885 INFO [fault_leak_eval_50_stats] started pid=1962: soup data stats data/faults/leak_eval_50.jsonl
+2026-11-11T17:43:38.180 INFO [fault_leak_eval_50_stats] finished rc=0
+2026-11-11T17:43:38.184 INFO fault leak_eval_50               stats          rc=0 keywords=['length']
+2026-11-11T17:43:38.186 INFO [fault_english_answers_stats] started pid=1968: soup data stats data/faults/english_answers.jsonl
+2026-11-11T17:43:39.481 INFO [fault_english_answers_stats] finished rc=0
+2026-11-11T17:43:39.485 INFO fault english_answers            stats          rc=0 keywords=['length']
+2026-11-11T17:43:39.488 INFO [fault_clean_200_doctor] started pid=1974: soup data doctor data/faults/clean_200.jsonl --model Qwen/Qwen2.5-1.5B-Instruct --max-length 1024
+2026-11-11T17:43:50.264 INFO [fault_clean_200_doctor] finished rc=0
+2026-11-11T17:43:50.266 INFO fault clean_200                  doctor         rc=0 keywords=['dup', 'length', 'minor', 'role', 'trunc', 'unknown']
+2026-11-11T17:43:50.270 INFO [fault_too_long_answers_doctor] started pid=2023: soup data doctor data/faults/too_long_answers.jsonl --model Qwen/Qwen2.5-1.5B-Instruct --max-length 1024
+2026-11-11T17:44:01.046 INFO [fault_too_long_answers_doctor] finished rc=0
+2026-11-11T17:44:01.048 INFO fault too_long_answers           doctor         rc=0 keywords=['dup', 'length', 'minor', 'role', 'trunc', 'unknown']
+2026-11-11T17:44:01.051 INFO [fault_empty_answers_doctor] started pid=2074: soup data doctor data/faults/empty_answers.jsonl --model Qwen/Qwen2.5-1.5B-Instruct --max-length 1024
+2026-11-11T17:44:11.826 INFO [fault_empty_answers_doctor] finished rc=0
+2026-11-11T17:44:11.828 INFO fault empty_answers              doctor         rc=0 keywords=['dup', 'length', 'minor', 'role', 'trunc', 'unknown']
+2026-11-11T17:44:11.831 INFO [fault_wrong_roles_doctor] started pid=2118: soup data doctor data/faults/wrong_roles.jsonl --model Qwen/Qwen2.5-1.5B-Instruct --max-length 1024
+2026-11-11T17:44:22.606 INFO [fault_wrong_roles_doctor] finished rc=2
+2026-11-11T17:44:22.609 INFO fault wrong_roles                doctor         rc=2 keywords=['dup', 'length', 'major', 'minor', 'role', 'trunc', 'unknown']
+2026-11-11T17:44:22.612 INFO [fault_cfg_clean_train_dry_run] started pid=2166: soup train --config data/faults/cfg_clean.yaml --dry-run --yes
+2026-11-11T17:44:29.193 INFO [fault_cfg_clean_train_dry_run] finished rc=0
+2026-11-11T17:44:29.195 INFO fault cfg_clean                  train_dry_run  rc=0 keywords=['warn']
+2026-11-11T17:44:29.199 INFO [fault_cfg_data_too_long_answers_train_dry_run] started pid=2203: soup train --config data/faults/cfg_data_too_long_answers.yaml --dry-run --yes
+2026-11-11T17:44:35.781 INFO [fault_cfg_data_too_long_answers_train_dry_run] finished rc=0
+2026-11-11T17:44:35.784 INFO fault cfg_data_too_long_answers  train_dry_run  rc=0 keywords=['warn']
+2026-11-11T17:44:35.787 INFO [fault_cfg_data_dup_25pct_train_dry_run] started pid=2233: soup train --config data/faults/cfg_data_dup_25pct.yaml --dry-run --yes
+2026-11-11T17:44:42.370 INFO [fault_cfg_data_dup_25pct_train_dry_run] finished rc=0
+2026-11-11T17:44:42.372 INFO fault cfg_data_dup_25pct         train_dry_run  rc=0 keywords=['warn']
+2026-11-11T17:44:42.376 INFO [fault_cfg_data_empty_answers_train_dry_run] started pid=2267: soup train --config data/faults/cfg_data_empty_answers.yaml --dry-run --yes
+2026-11-11T17:44:48.959 INFO [fault_cfg_data_empty_answers_train_dry_run] finished rc=0
+2026-11-11T17:44:48.962 INFO fault cfg_data_empty_answers     train_dry_run  rc=0 keywords=['warn']
+2026-11-11T17:44:48.969 INFO [fault_cfg_quantization_omitted_train_dry_run] started pid=2297: soup train --config data/faults/cfg_quantization_omitted.yaml --dry-run --yes
+2026-11-11T17:44:55.554 INFO [fault_cfg_quantization_omitted_train_dry_run] finished rc=0
+2026-11-11T17:44:55.557 INFO fault cfg_quantization_omitted   train_dry_run  rc=0 keywords=['4bit', 'warn']
+2026-11-11T17:44:55.560 INFO [fault_cfg_target_auto_train_dry_run] started pid=2331: soup train --config data/faults/cfg_target_auto.yaml --dry-run --yes
+2026-11-11T17:45:02.143 INFO [fault_cfg_target_auto_train_dry_run] finished rc=0
+2026-11-11T17:45:02.146 INFO fault cfg_target_auto            train_dry_run  rc=0 keywords=['warn']
+2026-11-11T17:45:02.148 INFO [fault_cfg_lr_zero_train_dry_run] started pid=2361: soup train --config data/faults/cfg_lr_zero.yaml --dry-run --yes
+2026-11-11T17:45:03.444 INFO [fault_cfg_lr_zero_train_dry_run] finished rc=1
+2026-11-11T17:45:03.445 INFO fault cfg_lr_zero                train_dry_run  rc=1 keywords=['error', 'lr']
+2026-11-11T17:45:03.448 INFO [fault_cfg_typo_key_train_dry_run] started pid=2371: soup train --config data/faults/cfg_typo_key.yaml --dry-run --yes
+2026-11-11T17:45:04.746 INFO [fault_cfg_typo_key_train_dry_run] finished rc=1
+2026-11-11T17:45:04.747 INFO fault cfg_typo_key               train_dry_run  rc=1 keywords=['error', 'quantiz', 'refus', 'unknown']
+2026-11-11T17:45:04.751 INFO [fault_cfg_maxlen_128_train_dry_run] started pid=2377: soup train --config data/faults/cfg_maxlen_128.yaml --dry-run --yes
+2026-11-11T17:45:11.333 INFO [fault_cfg_maxlen_128_train_dry_run] finished rc=0
+2026-11-11T17:45:11.335 INFO fault cfg_maxlen_128             train_dry_run  rc=0 keywords=['warn']
+2026-11-11T17:45:11.338 INFO [fault_cfg_defaults_lr_r_alpha_train_dry_run] started pid=2411: soup train --config data/faults/cfg_defaults_lr_r_alpha.yaml --dry-run --yes
+2026-11-11T17:45:17.921 INFO [fault_cfg_defaults_lr_r_alpha_train_dry_run] finished rc=0
+2026-11-11T17:45:17.924 INFO fault cfg_defaults_lr_r_alpha    train_dry_run  rc=0 keywords=['warn']
+2026-11-11T17:45:18.155 INFO STAGE END fault_injection status=ok 113.0s
+2026-11-11T17:45:18.171 INFO [soup_train] started pid=2445: /usr/bin/python3 /content/soup-task/kit_common.py peak --json logs/peak_soup_train.json --soup -- train --config soup.yaml --yes
+2026-11-11T18:08:01.516 INFO [soup_train] finished rc=0
+2026-11-11T18:08:01.533 INFO paths.json: adapter = /content/soup-task/outputs/soup_run
+2026-11-11T18:08:01.534 INFO paths.json: train_root = /content/soup-task/outputs/soup_run
+2026-11-11T18:08:01.535 INFO paths.json: train_backend = soup
+2026-11-11T18:08:01.536 INFO paths.json: train_cmd_name = soup_train
+2026-11-11T18:08:02.012 INFO [soup_merge] started pid=8080: /usr/bin/python3 /content/soup-task/kit_common.py peak --json logs/peak_soup_merge.json --soup -- merge --adapter outputs/soup_run --output outputs/merged --dtype float16
+2026-11-11T18:09:15.287 INFO [soup_merge] finished rc=0
+2026-11-11T18:09:15.290 INFO paths.json: merged = /content/soup-task/outputs/merged
+2026-11-11T18:09:15.316 INFO [soup_quantize_4bit] started pid=8384: /usr/bin/python3 /content/soup-task/kit_common.py peak --json logs/peak_soup_quantize_4bit.json --soup -- merge --adapter outputs/soup_run --output outputs/merged_4bit --dtype float16 --save-format 4bit
+2026-11-11T18:10:58.571 INFO [soup_quantize_4bit] finished rc=0
+2026-11-11T18:10:58.574 INFO paths.json: merged_4bit = /content/soup-task/outputs/merged_4bit
+2026-11-11T18:10:58.603 INFO [soup_nc_train] started pid=8815: /usr/bin/python3 /content/soup-task/kit_common.py peak --json logs/peak_soup_nc_train.json --soup -- train --config soup_nc.yaml --yes
+2026-11-11T18:11:56.861 INFO [soup_nc_train] finished rc=0
+2026-11-11T18:11:56.864 INFO paths.json: nc_adapter = /content/soup-task/outputs/nc_run
+2026-11-11T18:11:56.871 INFO [soup_nc_merge] started pid=9073: /usr/bin/python3 /content/soup-task/kit_common.py peak --json logs/peak_soup_nc_merge.json --soup -- merge --adapter outputs/nc_run --output outputs/nc_merged --dtype float16
+2026-11-11T18:13:25.140 INFO [soup_nc_merge] finished rc=0
+2026-11-11T18:13:25.145 INFO paths.json: nc_merged = /content/soup-task/outputs/nc_merged
+2026-11-11T18:13:25.174 INFO [verify] started pid=9441: /usr/bin/python3 /content/soup-task/kit_common.py peak --json logs/peak_verify.json --script /content/soup-task/verify_trained.py -- --base Qwen/Qwen2.5-1.5B-Instruct --adapter /content/soup-task/outputs/soup_run --merged /content/soup-task/outputs/merged --eval-data data/eval.jsonl --train-data data/train.jsonl --prompts data/probe_prompts.jsonl --out-dir outputs/verify --max-length 1024 --quant4 /content/soup-task/outputs/merged_4bit --control-adapter /content/soup-task/outputs/nc_run --control-merged /content/soup-task/outputs/nc_merged
+2026-11-11T18:19:53.466 INFO [verify] finished rc=0
+2026-11-11T18:19:53.483 INFO [verify_nc2] started pid=11056: /usr/bin/python3 /content/soup-task/kit_common.py peak --json logs/peak_verify_nc2.json --script /content/soup-task/verify_trained.py -- --base Qwen/Qwen2.5-1.5B-Instruct --adapter /content/soup-task/outputs/soup_run --merged Qwen/Qwen2.5-1.5B-Instruct --eval-data data/eval.jsonl --out-dir outputs/verify_nc2 --max-eval 100 --skip-generations --max-length 1024
+2026-11-11T18:21:21.755 INFO [verify_nc2] finished rc=2
+2026-11-11T18:21:21.783 INFO [soup_ship] started pid=11439: /usr/bin/python3 /content/soup-task/kit_common.py peak --json logs/peak_soup_ship.json --soup -- ship --base Qwen/Qwen2.5-1.5B-Instruct --tuned /content/soup-task/outputs/merged --task-eval data/ship_tasks.jsonl --output outputs/ship_verdict.json --emit-evidence outputs/ship_evidence.json --device cuda --general-suite mini_mmlu,mini_instruction
+2026-11-11T18:26:50.054 INFO [soup_ship] finished rc=2
+2026-11-11T18:26:50.076 INFO [soup_ship_offline] started pid=12814: soup ship --evidence outputs/ship_evidence_custom.json --output outputs/ship_verdict_offline.json
+2026-11-11T18:26:51.399 INFO [soup_ship_offline] finished rc=0
+2026-11-11T18:26:51.412 INFO STAGE START silent_checks
+2026-11-11T18:26:52.385 INFO STAGE END silent_checks status=ok 0.8s
+2026-11-11T18:26:52.404 INFO [memory_compare] started pid=12839: /usr/bin/python3 memory_budget.py --compare outputs/measured_memory.json --estimate outputs/memory_budget.json --compare-out outputs/memory_compare
+2026-11-11T18:26:52.684 INFO [memory_compare] finished rc=0
+2026-11-11T18:26:52.877 INFO nvidia-smi sampler stopped

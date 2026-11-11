@@ -1,0 +1,17 @@
+{
+  "name": "soup_data_validate",
+  "cmd": [
+    "soup",
+    "data",
+    "validate",
+    "data/train.jsonl"
+  ],
+  "started": "2026-11-11T17:42:26.199+00:00",
+  "start_epoch": 1794418946.1994414,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 600,
+  "finished": "2026-11-11T17:42:27.020+00:00",
+  "end_epoch": 1794418947.0206738,
+  "rc": 0
+}

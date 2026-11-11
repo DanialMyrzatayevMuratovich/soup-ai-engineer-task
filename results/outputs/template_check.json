@@ -1,0 +1,28 @@
+{
+  "n": 50,
+  "tokenizer": {
+    "eos": "<|im_end|>",
+    "eos_id": 151645,
+    "pad": "<|endoftext|>",
+    "pad_id": 151643,
+    "bos": null,
+    "pad_is_eos": false
+  },
+  "soup_mask_function": "soup_cli.data.loss_mask.build_assistant_only_labels",
+  "counts": {
+    "ours_eos_in_answer": 50,
+    "prefix_tokens_match": 50,
+    "content_exact": 50,
+    "soup_same_input_ids": 50,
+    "soup_eos_trained": 50,
+    "soup_prompt_tokens_trained": 0,
+    "soup_covers_all_our_answer_tokens": 50
+  },
+  "soup_trains_extra_tokens": {
+    "\n": 100,
+    "<|im_start|>": 50,
+    "assistant": 50
+  },
+  "example_render": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nСоставьте список из трех советов по безопасности, которым дети должны следовать по дороге в школу.<|im_end|>\n<|im_start|>assistant\n[[TRAINED>>1. Придерживайтесь тротуаров: всегда ходите по обозначенным тротуарам или пешеходным дорожкам, когда идете в школу. Если тротуара нет, идите лицом к движению, как можно дальше от дороги.\n\n2. Соблюдайте правила дорожного движения: всегда следуйте сигналам светофора, будьте бдительны и переходите дорогу только на зеленый сигнал светофора. Перед переходом посмотрите налево, направо и еще раз налево, чтобы убедиться, что машины не едут.\n\n3. Будьте на виду: носите яркую одежду или светоотражающие средства рано утром или ночью, чтобы быть более заметными для водителей. Если вы идете в группе, идите вместе и избегайте шуток и беготни по улице.<|im_end|><<TRAINED]]\n",
+  "full_render_sha": "3f2665f833e4a268"
+}

@@ -1,0 +1,70 @@
+verify_trained.py summary  (2026-11-11T18:19:44.853+00:00)
+==============================================================================
+views: base, adapter, control, merged, merged_4bit, base_4bit
+
+Held-out answer-token NLL (nats/token), 95% bootstrap CI over examples:
+  base         nll=1.3034 ppl=3.682 ci95=[1.2560, 1.3550] tokens=42756 nonfinite=0
+  adapter      nll=1.2195 ppl=3.385 ci95=[1.1725, 1.2698] tokens=42756 nonfinite=0
+  control      nll=1.3034 ppl=3.682 ci95=[1.2560, 1.3550] tokens=42756 nonfinite=0
+  merged       nll=1.2195 ppl=3.385 ci95=[1.1725, 1.2698] tokens=42756 nonfinite=0
+  merged_4bit  nll=1.2827 ppl=3.606 ci95=[1.2342, 1.3358] tokens=42756 nonfinite=0
+  base_4bit    nll=1.3564 ppl=3.882 ci95=[1.3072, 1.4098] tokens=42756 nonfinite=0
+Paired differences (positive = second model has lower NLL):
+  base-merged                +0.0840  ci95=[+0.0760, +0.0920]
+  base-adapter               +0.0839  ci95=[+0.0760, +0.0920]
+  base-control               -0.0000  ci95=[-0.0000, +0.0000]
+  base_4bit-merged_4bit      +0.0737  ci95=[+0.0661, +0.0815]
+  merged-merged_4bit         -0.0632  ci95=[-0.0695, -0.0574]
+  base-merged_4bit           +0.0207  ci95=[+0.0104, +0.0316]
+  base-base_4bit             -0.0530  ci95=[-0.0589, -0.0475]
+KL(p||q) and top-1 agreement on answer positions:
+  merged||base               kl=0.12477 top1=0.8633 positions=29749
+  adapter||merged            kl=0.00001 top1=0.9985 positions=29749
+  merged||merged_4bit        kl=0.07565 top1=0.8906 positions=29749
+  base||base_4bit            kl=0.07875 top1=0.8864 positions=29749
+  merged_4bit||base_4bit     kl=0.14064 top1=0.8507 positions=29749
+  control||base              kl=0.00000 top1=0.9999 positions=29749
+
+Checks:
+  [PASS] A1          LoRA modules present and mapped onto base weights
+  [PASS] A2          lora_B moved away from its zero init
+  [PASS] B4          Predicted fp16 rounding loss of the update at merge
+  [PASS] A1_control  LoRA modules present and mapped onto base weights
+  [FAIL] A2_control  lora_B moved away from its zero init
+  [WARN] B4_control  Predicted fp16 rounding loss of the update at merge
+  [PASS] A3          Adapter tensors PEFT loaded == tensors in the file
+  [PASS] A3_control  Adapter tensors PEFT loaded == tensors in the file
+  [PASS] B1          Merged weights differ from base (median relative delta)
+  [PASS] B2          Merged == fp16(base + scale*B@A), computed independently
+  [PASS] B3          Non-LoRA parameters untouched by the merge
+  [PASS] Q1          4-bit artifact == quantize(merged fp16)
+  [PASS] Q2          Fine-tune changed 4-bit codes (quantize(merged) != quantize(base))
+  [PASS] C1          Held-out answer NLL: base - merged (nats/token, paired bootstrap)
+  [FAIL] C1_control  Held-out NLL: base - control (negative control, expected FAIL)
+  [PASS] C2          4-bit keeps the gain: NLL(base_4bit) - NLL(merged_4bit), retained fraction
+  [PASS] C2b         Quantization cost on held-out NLL: NLL(merged_4bit) - NLL(merged)
+  [PASS] D1          Merged behaves like base+adapter (KL, top-1)
+  [PASS] D2          Merged changed next-token distributions vs base (KL)
+  [FAIL] D2_control  Control changed distributions vs base (expected FAIL)
+  [PASS] D3          4-bit fidelity to merged fp16 (KL, top-1)
+  [PASS] E2          No inf/NaN logits (fp16 overflow on T4)
+  [WARN] E1_merged   Generations of merged: stop at EOS, Russian, not degenerate
+  [WARN] E1_merged_4bit Generations of merged_4bit: stop at EOS, Russian, not degenerate
+  [PASS] E3          Greedy outputs changed vs base on at least one probe
+  [PASS] T1          Tokenizer + chat template identical across artifacts
+  [PASS] T2          generation_config.json consistent across artifacts
+  [FAIL] B1_control  Merged weights differ from base (median relative delta)
+  [PASS] B2_control  Merged == fp16(base + scale*B@A), computed independently
+  [PASS] B3_control  Non-LoRA parameters untouched by the merge
+
+VERDICT: {"model_trained": "YES", "failed_core_checks": [], "missing_core_checks": [], "negative_control_flagged_untrained": "YES", "control_checks": {"A2_control": "FAIL", "B1_control": "FAIL", "C1_control": "FAIL", "D2_control": "FAIL"}, "4bit_carries_training": "YES", "4bit_checks": {"Q1": "PASS", "Q2": "PASS", "C2": "PASS", "C2b": "PASS", "D3": "PASS", "E1_merged_4bit": "WARN"}}
+
+What this check does NOT detect:
+  - Whether answers are correct, factual or helpful. NLL rewards the likelihood of the reference answers, which are machine-translated model outputs: a gain can come from copying their style/translation artefacts, not from substance.
+  - Regressions outside the held-out distribution (other tasks, other languages, safety, refusals, long context, multi-turn). Held-out rows come from the same dataset as train.
+  - Paraphrased train/eval contamination: the leakage check in data prep is lexical only.
+  - Behaviour under sampling (temperature/top-p) or other decoding settings: everything here is greedy or teacher-forced with repetition_penalty=1.0.
+  - A deployment that uses a different runtime, chat template or system prompt (GGUF/Ollama/vLLM). Train and eval share Qwen's default system prompt, so a template error made consistently in both places cancels out and is invisible here.
+  - Seed-to-seed variance: thresholds are fixed heuristics, not calibrated over several runs.
+  - Small harmful changes on rare inputs; the probe set is ~12 prompts.
+  - The 4-bit checks cover the bitsandbytes NF4 artifact only, not GGUF/AWQ/GPTQ exports.

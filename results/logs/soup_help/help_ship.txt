@@ -1,0 +1,33 @@
+$ soup ship --help
+ Usage: soup ship [OPTIONS] COMMAND [ARGS]...                                                                                                                                                           
+ SHIP / DON'T SHIP verdict after fine-tuning: task win AND no catastrophic forgetting, fused into one decision (v0.71.25).                                                                              
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --progress                      <str>    Opt-in JSONL progress on stderr (jsonl).                                                                                                                    │
+│ --base                          <str>    Base model id/path (the 'before').                                                                                                                          │
+│ --tuned                         <str>    Tuned model id/path (a separate 'after' model).                                                                                                             │
+│ --adapter                       <str>    LoRA adapter path (tuned = base + this adapter).                                                                                                            │
+│ --task-eval                     <str>    JSONL of leg-1 task-win eval tasks.                                                                                                                         │
+│ --task-mode                     <str>    Leg-1 mode: metric | judge_score | pairwise (judge win-rate). [default: metric]                                                                             │
+│ --noise-floor                   <int>    Re-run the BASE model N times (2-10) to measure what this instrument can resolve, print it beside the verdict, and refuse to call any delta smaller than    │
+│                                          the measured floor significant. Costs N extra base passes. The leg-1 task floor is measured in every --task-mode; in judge_score / pairwise each repeat is  │
+│                                          N extra JUDGE passes (N x the judge API calls), and the floor is labelled decode + judge.                                                                   │
+│ --judge-model                   <str>    Judge model URL for --task-mode judge_score or pairwise.                                                                                                    │
+│ --general-suite                 <str>    Comma list of leg-2 benchmarks (default: the bundled offline suite — MCQ/arithmetic + tool-call/JSON/safety; non-bundled names route through lm-eval).      │
+│ --baseline                      <str>    registry://<id> or stamped JSON of base leg-2 scores (skips base run). Unstamped or scorer_revision-mismatched baselines warn once — re-measure so both     │
+│                                          sides share one scorer scale (#404).                                                                                                                        │
+│ --forgetting-threshold          <float>  Max allowed leg-2 drop in absolute points before DON'T SHIP. [default: 0.05]                                                                                │
+│ --evidence                      <str>    JSON of pre-computed scores (offline, no model load).                                                                                                       │
+│ --output                -o      <str>    Write the verdict JSON to this path.                                                                                                                        │
+│ --emit-evidence                 <str>    Write the scores in the --evidence INPUT schema so this run can be replayed offline (output-is-input). With --config it also STAMPS the config's provenance │
+│                                          onto the emitted evidence.                                                                                                                                  │
+│ --config                        <str>    soup.yaml whose eval.ship block supplies defaults (CLI flags win). With --evidence alone it GATES (refuses evidence whose config_sha drifted from this      │
+│                                          config, or whose numerics family does not match); with --emit-evidence it STAMPS this config's provenance.                                                  │
+│ --require-provenance                     Strict offline drift check: requires --evidence, --config, --adapter and task eval. Compare artifact/task/source bytes, suite version and effective verdict │
+│                                          policy.                                                                                                                                                     │
+│ --data-sha256                   <str>    Caller-asserted training-data SHA-256 for emitted/strict evidence; not proof of which bytes trained the model.                                              │
+│ --push                          <str>    Post the verdict as a GitHub PR comment (owner/repo#N). Auth via GITHUB_TOKEN / GH_TOKEN; needs the `gh` CLI.                                               │
+│ --device                        <str>    Device for the live run (cuda / cpu).                                                                                                                       │
+│ --chat-template-kwargs          <str>    Live chat-template variables as a JSON object, e.g. {"enable_thinking":false}.                                                                              │
+│ --help                                   Show this message and exit.                                                                                                                                 │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+exit code 0 after 0.7s

@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "merge",
+    "--adapter",
+    "outputs/soup_run",
+    "--output",
+    "outputs/merged_4bit",
+    "--dtype",
+    "float16",
+    "--save-format",
+    "4bit"
+  ],
+  "soup": true,
+  "script": null,
+  "started": "2026-11-11T18:09:15.537+00:00",
+  "finished": "2026-11-11T18:10:44.768+00:00",
+  "wall_s": 89.2,
+  "pid": 8389,
+  "ru_maxrss_gib": 6.597469329833984,
+  "ru_maxrss_children_gib": 0.4629478454589844,
+  "cuda_initialized": true,
+  "device": "Tesla T4",
+  "torch_max_allocated_gib": 1.0989656448364258,
+  "torch_max_reserved_gib": 1.14453125
+}

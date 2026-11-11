@@ -1,0 +1,5 @@
+2026-11-11T17:45:02.234+00:00 | $ soup train --config data/faults/cfg_lr_zero.yaml --dry-run --yes
+2026-11-11T17:45:02.870+00:00 | Loading config from data/faults/cfg_lr_zero.yaml...
+2026-11-11T17:45:02.874+00:00 | Config validation error:
+2026-11-11T17:45:02.874+00:00 |   training -> lr: Input should be greater than 0
+2026-11-11T17:45:02.939+00:00 | exit code 1 after 0.7s

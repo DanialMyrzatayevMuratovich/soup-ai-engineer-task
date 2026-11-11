@@ -1,0 +1,17 @@
+{
+  "name": "fault_english_answers_stats",
+  "cmd": [
+    "soup",
+    "data",
+    "stats",
+    "data/faults/english_answers.jsonl"
+  ],
+  "started": "2026-11-11T17:43:38.185+00:00",
+  "start_epoch": 1794419018.1851473,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:43:39.178+00:00",
+  "end_epoch": 1794419019.1789138,
+  "rc": 0
+}

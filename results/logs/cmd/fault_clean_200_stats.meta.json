@@ -1,0 +1,17 @@
+{
+  "name": "fault_clean_200_stats",
+  "cmd": [
+    "soup",
+    "data",
+    "stats",
+    "data/faults/clean_200.jsonl"
+  ],
+  "started": "2026-11-11T17:43:34.278+00:00",
+  "start_epoch": 1794419014.2788727,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:43:35.263+00:00",
+  "end_epoch": 1794419015.263255,
+  "rc": 0
+}

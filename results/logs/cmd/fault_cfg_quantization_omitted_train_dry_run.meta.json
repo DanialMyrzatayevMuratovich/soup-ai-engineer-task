@@ -1,0 +1,19 @@
+{
+  "name": "fault_cfg_quantization_omitted_train_dry_run",
+  "cmd": [
+    "soup",
+    "train",
+    "--config",
+    "data/faults/cfg_quantization_omitted.yaml",
+    "--dry-run",
+    "--yes"
+  ],
+  "started": "2026-11-11T17:44:48.964+00:00",
+  "start_epoch": 1794419088.9648864,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:44:53.095+00:00",
+  "end_epoch": 1794419093.0955448,
+  "rc": 0
+}

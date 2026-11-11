@@ -1,0 +1,21 @@
+{
+  "name": "memory_compare",
+  "cmd": [
+    "/usr/bin/python3",
+    "memory_budget.py",
+    "--compare",
+    "outputs/measured_memory.json",
+    "--estimate",
+    "outputs/memory_budget.json",
+    "--compare-out",
+    "outputs/memory_compare"
+  ],
+  "started": "2026-11-11T18:26:52.403+00:00",
+  "start_epoch": 1794421612.4038224,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 120,
+  "finished": "2026-11-11T18:26:52.561+00:00",
+  "end_epoch": 1794421612.5614605,
+  "rc": 0
+}

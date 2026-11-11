@@ -1,0 +1,27 @@
+$ soup diagnose --help
+ Usage: soup diagnose [OPTIONS] {run_id}                                                                                                                                                                
+ Post-training report card: forgetting / refusal / format / mode_collapse / memorization / contamination (v0.56.0).                                                                                     
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    run_id      <str>  Registry run id (or any opaque tag). [required]                                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --base                        <str>  Base model name (informational).                                                                                                                                │
+│ --adapter                     <str>  Adapter name (informational).                                                                                                                                   │
+│ --evidence                    <str>  JSON file with pre-computed probe scores (see README).                                                                                                          │
+│ --output              -o      <str>  Write the report JSON to this path.                                                                                                                             │
+│ --badge                       <str>  Write an SVG badge to this path.                                                                                                                                │
+│ --attach-to-registry          <str>  Attach the --output report to a registry entry id (needs --output). Exits 1 when the attach fails.                                                              │
+│ --base-model                  <str>  Base model id to LOAD for a live diagnose run (e.g. HuggingFaceTB/SmolLM2-135M). When set, the 6 probes run live against the model instead of emitting neutral  │
+│                                      scores.                                                                                                                                                         │
+│ --dataset                     <str>  Training JSONL for live format / memorization / citation probes (must stay under cwd).                                                                          │
+│ --holdout                     <str>  Held-out evaluation JSONL for the live forgetting probe (must stay under cwd; falls back to built-in general prompts if unset).                                 │
+│ --tokenizer                   <str>  Tokenizer id/path for a sub-word memorization probe (live).                                                                                                     │
+│ --device                      <str>  Device for the live run (cuda / cpu).                                                                                                                           │
+│ --citation-style              <str>  Citation style for the live RAFT citation probe: bracket ([doc-id]) / inline ((doc-id)) / footnote ([^id]). Must match the style the model was trained to emit. │
+│                                      (v0.71.17 #254)                                                                                                                                                 │
+│                                      [default: bracket]                                                                                                                                              │
+│ --allow-not-run                      Exit 0 even when a requested probe did not run (verdict NOT_RUN). Without it such a run exits 3.                                                                │
+│ --shuffle-seed                <int>  RAFT document-shuffle seed for the live citation probe (composes the [doc-N] ids the model is scored against). (v0.71.17 #254)                                  │
+│ --help                               Show this message and exit.                                                                                                                                     │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+exit code 0 after 1.0s

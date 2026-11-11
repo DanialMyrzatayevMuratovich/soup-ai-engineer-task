@@ -1,0 +1,16 @@
+{
+  "name": "help_merge",
+  "cmd": [
+    "soup",
+    "merge",
+    "--help"
+  ],
+  "started": "2026-11-11T17:40:58.931+00:00",
+  "start_epoch": 1794418858.9316447,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:40:59.741+00:00",
+  "end_epoch": 1794418859.7415073,
+  "rc": 0
+}

@@ -1,0 +1,5 @@
+2026-11-11T17:42:26.282+00:00 | $ soup data validate data/train.jsonl
+2026-11-11T17:42:26.922+00:00 | Auto-detected format: chatml
+2026-11-11T17:42:26.958+00:00 | Dataset is valid!
+2026-11-11T17:42:26.959+00:00 | 1500/1500 rows valid for chatml format
+2026-11-11T17:42:27.020+00:00 | exit code 0 after 0.7s

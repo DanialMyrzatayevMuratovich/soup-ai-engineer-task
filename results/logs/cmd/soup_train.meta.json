@@ -1,0 +1,24 @@
+{
+  "name": "soup_train",
+  "cmd": [
+    "/usr/bin/python3",
+    "/content/soup-task/kit_common.py",
+    "peak",
+    "--json",
+    "logs/peak_soup_train.json",
+    "--soup",
+    "--",
+    "train",
+    "--config",
+    "soup.yaml",
+    "--yes"
+  ],
+  "started": "2026-11-11T17:45:18.170+00:00",
+  "start_epoch": 1794419118.1705682,
+  "cwd": "/content/soup-task",
+  "peak_json": "logs/peak_soup_train.json",
+  "timeout_s": 10800,
+  "finished": "2026-11-11T18:07:58.224+00:00",
+  "end_epoch": 1794420478.2245607,
+  "rc": 0
+}

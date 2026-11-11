@@ -1,0 +1,20 @@
+2026-11-11T17:44:11.915+00:00 | $ soup data doctor data/faults/wrong_roles.jsonl --model Qwen/Qwen2.5-1.5B-Instruct --max-length 1024
+2026-11-11T17:44:18.676+00:00 | [transformers] return_assistant_tokens_mask==True but chat template does not contain `{% generation %}` keyword.
+2026-11-11T17:44:19.700+00:00 |                                                                                             soup data doctor                                                                                            
+2026-11-11T17:44:19.700+00:00 | ┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+2026-11-11T17:44:19.700+00:00 | ┃ Check              ┃ Verdict ┃ Message                                                                                                                           ┃ Evidence                          ┃
+2026-11-11T17:44:19.700+00:00 | ┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+2026-11-11T17:44:19.700+00:00 | │ chat_template      │ OK      │ tokenizer has a chat_template                                                                                                     │ 2507 chars                        │
+2026-11-11T17:44:19.700+00:00 | │ template_render    │ OK      │ 0/200 rows failed to render through the chat template                                                                             │                                   │
+2026-11-11T17:44:19.700+00:00 | │ generation_markers │ MINOR   │ template lacks {% generation %} markers — assistant-only masking falls back to a heuristic that may include role-prefix tokens in │                                   │
+2026-11-11T17:44:19.700+00:00 | │                    │         │ the loss                                                                                                                          │                                   │
+2026-11-11T17:44:19.700+00:00 | │ eos_in_labels      │ OK      │ 0/180 rows (0.0%) never train an EOS/EOT token — the model will not learn to stop generating                                      │ eos_token_id=[151645]             │
+2026-11-11T17:44:19.700+00:00 | │ bos_duplication    │ OK      │ tokenizer has no bos_token_id                                                                                                     │                                   │
+2026-11-11T17:44:19.700+00:00 | │ system_role        │ OK      │ no rows use a system message                                                                                                      │                                   │
+2026-11-11T17:44:19.700+00:00 | │ unknown_roles      │ MAJOR   │ 20/200 rows (10.0%) contain a message role outside ['assistant', 'function', 'system', 'tool', 'user']                            │ unexpected roles seen: gpt, human │
+2026-11-11T17:44:19.700+00:00 | │ truncation_risk    │ OK      │ p95 length = 690 tokens vs max_length=1024; 0/200 rows (0.0%) would be truncated                                                  │ p50=192, max=948                  │
+2026-11-11T17:44:19.700+00:00 | └────────────────────┴─────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴───────────────────────────────────┘
+2026-11-11T17:44:19.701+00:00 | ╭────────── overall ───────────╮
+2026-11-11T17:44:19.701+00:00 | │ MAJOR — 200/200 rows scanned │
+2026-11-11T17:44:19.701+00:00 | ╰──────────────────────────────╯
+2026-11-11T17:44:20.453+00:00 | exit code 2 after 8.5s

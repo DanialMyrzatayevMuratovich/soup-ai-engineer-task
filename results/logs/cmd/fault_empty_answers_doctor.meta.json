@@ -1,0 +1,21 @@
+{
+  "name": "fault_empty_answers_doctor",
+  "cmd": [
+    "soup",
+    "data",
+    "doctor",
+    "data/faults/empty_answers.jsonl",
+    "--model",
+    "Qwen/Qwen2.5-1.5B-Instruct",
+    "--max-length",
+    "1024"
+  ],
+  "started": "2026-11-11T17:44:01.049+00:00",
+  "start_epoch": 1794419041.049403,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:44:09.472+00:00",
+  "end_epoch": 1794419049.4723294,
+  "rc": 0
+}

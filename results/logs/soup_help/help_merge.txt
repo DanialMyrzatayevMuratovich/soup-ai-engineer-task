@@ -1,0 +1,21 @@
+$ soup merge --help
+ Usage: soup merge [OPTIONS]                                                                                                                                                                            
+ Merge a LoRA adapter with its base model into a full model.                                                                                                                                            
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *  --adapter            -a                       <str>  Path to the LoRA adapter directory [required]                                                                                                │
+│    --base               -b                       <str>  Base model ID. Auto-detected from adapter_config.json if not set.                                                                            │
+│    --output             -o                       <str>  Output directory for the merged model [default: ./merged]                                                                                    │
+│    --dtype                                       <str>  Data type for the merged model: float16, bfloat16, float32 [default: float16]                                                                │
+│    --trust-remote-code                                  Allow loading models that ship custom Python via auto_map. Default deny (v0.36.0). Only enable if you trust the source.                      │
+│    --save-format                                 <str>  Merged-checkpoint save format. fp16 (default) writes a standard fp16 merge. 4bit / 4bit_forced write a single BNB-4bit-quantized merge       │
+│                                                         without the dequant-merge-requant cycle (v0.53.1 #142).                                                                                      │
+│                                                         [default: fp16]                                                                                                                              │
+│    --double-quant           --no-double-quant           BNB double-quantization for the 4bit / 4bit_forced save formats (#321). Default on, matching the training loaders; pass --no-double-quant to │
+│                                                         disable. Ignored for the fp16 save format.                                                                                                   │
+│                                                         [default: double-quant]                                                                                                                      │
+│    --low-memory                                         Merge tensor by tensor straight from the base safetensors files instead of loading the whole model into RAM. Needs the fp16 save format and  │
+│                                                         a plain LoRA adapter.                                                                                                                        │
+│    --hub                                         <str>  Source hub for the base model: hf (default) / modelscope / modelers. Non-HF hubs require the matching SDK (v0.53.10 #152). [default: hf]     │
+│    --help                                               Show this message and exit.                                                                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+exit code 0 after 0.7s

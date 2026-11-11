@@ -1,0 +1,30 @@
+{
+  "decision": "DON'T SHIP",
+  "task_win": {
+    "mode": "metric",
+    "base": 0.25,
+    "tuned": 0.25,
+    "won": false
+  },
+  "benchmark_deltas": [
+    {
+      "name": "mini_instruction",
+      "base": 1.0,
+      "tuned": 0.9583333333333334,
+      "delta": -0.041667,
+      "regressed": false
+    },
+    {
+      "name": "mini_mmlu",
+      "base": 0.85,
+      "tuned": 0.825,
+      "delta": -0.025,
+      "regressed": false
+    }
+  ],
+  "failed_rule": "task_win",
+  "forgetting_threshold": 0.05,
+  "soup_version": "0.77.2",
+  "noise_floor": null,
+  "numerics": "bfloat16"
+}

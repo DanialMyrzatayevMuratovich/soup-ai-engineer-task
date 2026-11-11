@@ -1,0 +1,207 @@
+{
+  "inputs": {
+    "model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "config_json": null,
+    "batch_size": 2,
+    "grad_accum": 8,
+    "seq_len": 1024,
+    "data_report": "data/data_report.json",
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "target_modules": "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj",
+    "weight_bytes": 2.0,
+    "adapter_bytes": 4.0,
+    "optim_state_bytes": 8.0,
+    "grad_ckpt": true,
+    "logits_bytes_fwd": 10.0,
+    "logits_bytes_bwd": 14.0,
+    "cuda_context_gib": 0.113,
+    "frag_frac": 0.1,
+    "gpu_gib": 15.0,
+    "quant_blocksize": 64,
+    "double_quant": true,
+    "kl_positions": 256,
+    "out": "outputs/memory_budget.json",
+    "compare": null,
+    "estimate": null,
+    "compare_out": "outputs/memory_compare"
+  },
+  "config_source": "/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306/config.json",
+  "config": {
+    "model_type": "qwen2",
+    "hidden_size": 1536,
+    "intermediate_size": 8960,
+    "num_hidden_layers": 28,
+    "num_attention_heads": 12,
+    "num_key_value_heads": 2,
+    "head_dim": null,
+    "vocab_size": 151936,
+    "tie_word_embeddings": true,
+    "torch_dtype": "bfloat16"
+  },
+  "params": {
+    "embed": 233373696,
+    "lm_head_untied": 0,
+    "per_layer": 46797824,
+    "per_layer_linear_weights": 46792704,
+    "per_layer_bias": 2048,
+    "per_layer_norms": 3072,
+    "layers_total": 1310339072,
+    "final_norm": 1536,
+    "total": 1543714304,
+    "linear_weight_params_total": 1310195712,
+    "non_linear_params_total": 233518592,
+    "qkv_bias": true,
+    "tied_embeddings": true
+  },
+  "lora": {
+    "per_type": {
+      "q_proj": {
+        "in": 1536,
+        "out": 1536,
+        "per_module": 49152,
+        "total": 1376256
+      },
+      "k_proj": {
+        "in": 1536,
+        "out": 256,
+        "per_module": 28672,
+        "total": 802816
+      },
+      "v_proj": {
+        "in": 1536,
+        "out": 256,
+        "per_module": 28672,
+        "total": 802816
+      },
+      "o_proj": {
+        "in": 1536,
+        "out": 1536,
+        "per_module": 49152,
+        "total": 1376256
+      },
+      "gate_proj": {
+        "in": 1536,
+        "out": 8960,
+        "per_module": 167936,
+        "total": 4702208
+      },
+      "up_proj": {
+        "in": 1536,
+        "out": 8960,
+        "per_module": 167936,
+        "total": 4702208
+      },
+      "down_proj": {
+        "in": 8960,
+        "out": 1536,
+        "per_module": 167936,
+        "total": 4702208
+      }
+    },
+    "total_params": 18464768,
+    "n_modules": 196,
+    "frac_of_base": 0.011961259899033752,
+    "fp32_weights_gib": 0.06878662109375,
+    "weights+grads+adam_gib": 0.275146484375,
+    "scale_alpha_over_r": 2.0
+  },
+  "train": {
+    "config_max_length": {
+      "seq_len": 1024,
+      "batch_size": 2,
+      "weights_gib": 2.875391960144043,
+      "lora_states_gib": 0.275146484375,
+      "ckpt_inputs_gib": 0.1640625,
+      "layer_recompute_gib": 0.329559326171875,
+      "logits_fwd_gib": 2.89794921875,
+      "logits_bwd_gib": 4.05712890625,
+      "stack_without_ckpt_gib": 7.0655517578125,
+      "peak_at_loss_gib": 7.377589225769043,
+      "peak_at_layer_recompute_gib": 3.650019645690918,
+      "peak_component": "logits/loss",
+      "est_torch_allocated_gib": 7.377589225769043,
+      "est_torch_reserved_gib": 8.115348148345948,
+      "est_nvidia_smi_gib": 8.228348148345948,
+      "fits_gpu": true,
+      "logits_formula": "B*T*V = 2*1024*151936; fwd 10.0 B/elem (fp16 out + fp32 upcast + log_softmax), bwd 14.0 B/elem (+grad logp + grad logits)"
+    },
+    "data_max_row": {
+      "seq_len": 994,
+      "batch_size": 2,
+      "weights_gib": 2.875391960144043,
+      "lora_states_gib": 0.275146484375,
+      "ckpt_inputs_gib": 0.1592559814453125,
+      "layer_recompute_gib": 0.31990426778793335,
+      "logits_fwd_gib": 2.8130483627319336,
+      "logits_bwd_gib": 3.938267707824707,
+      "stack_without_ckpt_gib": 6.858553171157837,
+      "peak_at_loss_gib": 7.253749847412109,
+      "peak_at_layer_recompute_gib": 3.6353864073753357,
+      "peak_component": "logits/loss",
+      "est_torch_allocated_gib": 7.253749847412109,
+      "est_torch_reserved_gib": 7.979124832153321,
+      "est_nvidia_smi_gib": 8.09212483215332,
+      "fits_gpu": true,
+      "logits_formula": "B*T*V = 2*994*151936; fwd 10.0 B/elem (fp16 out + fp32 upcast + log_softmax), bwd 14.0 B/elem (+grad logp + grad logits)"
+    },
+    "data_median_row": {
+      "seq_len": 230,
+      "batch_size": 2,
+      "weights_gib": 2.875391960144043,
+      "lora_states_gib": 0.275146484375,
+      "ckpt_inputs_gib": 0.0368499755859375,
+      "layer_recompute_gib": 0.07402211427688599,
+      "logits_fwd_gib": 0.6509065628051758,
+      "logits_bwd_gib": 0.9112691879272461,
+      "stack_without_ckpt_gib": 1.586989164352417,
+      "peak_at_loss_gib": 4.099973678588867,
+      "peak_at_layer_recompute_gib": 3.262726604938507,
+      "peak_component": "logits/loss",
+      "est_torch_allocated_gib": 4.099973678588867,
+      "est_torch_reserved_gib": 4.509971046447754,
+      "est_nvidia_smi_gib": 4.622971046447755,
+      "fits_gpu": true,
+      "logits_formula": "B*T*V = 2*230*151936; fwd 10.0 B/elem (fp16 out + fp32 upcast + log_softmax), bwd 14.0 B/elem (+grad logp + grad logits)"
+    }
+  },
+  "merge": {
+    "soup_merge_device": "cpu (device_map='cpu' in Soup v0.75 and v0.77.2 source; confirm in run log)",
+    "vram_cpu_merge_gib": 0.0,
+    "ram_low_gib": 2.995448112487793,
+    "ram_high_gib": 5.870840072631836,
+    "ram_formula": "fp16 base + fp32 adapter + one fp32 delta (largest module); high = + one extra copy while serialising",
+    "vram_if_gpu_merge_gib": 3.108448112487793,
+    "disk_merged_fp16_gib": 2.875391960144043
+  },
+  "quantize_4bit": {
+    "linear_params_quantized": 1310195712,
+    "nf4_weights_gib": 0.610107421875,
+    "absmax_gib": 0.019363760948181152,
+    "fp16_unquantized_gib": 0.43496227264404297,
+    "final_model_gib": 1.0644334554672241,
+    "est_peak_alloc_gib": 1.4991258382797241,
+    "est_nvidia_smi_gib": 1.7620384221076966,
+    "formula": "linear*0.5 B + absmax (double-quant: 1 B per block of 64 + fp32 per 256 blocks) + fp16 embeddings/norms/biases (+ untied lm_head); peak = final + largest fp16 tensor in flight",
+    "soup_4bit_path": "Soup `merge --save-format 4bit`: CPU merge -> fp16 staged on disk -> reload with BitsAndBytesConfig on GPU -> save",
+    "gguf_path": "llama.cpp convert + quantize run on CPU: VRAM ~0, RAM ~ fp16 weights + output"
+  },
+  "inference": {
+    "fp16_weights_gib": 2.875391960144043,
+    "kv_cache_per_1k_tokens_gib": 0.02734375,
+    "teacher_forced_logits_gib": 1.448974609375,
+    "fp16_generate_peak_gib": 3.01630171585083,
+    "4bit_generate_peak_gib": 1.2053432111740112
+  },
+  "verify": {
+    "models_gib": 8.017224073410034,
+    "kl_storage_gib": 0.869384765625,
+    "transient_gib": 1.448974609375,
+    "est_peak_alloc_gib": 10.335583448410034,
+    "note": "verify_trained.py keeps base(+2 adapters), merged, merged_4bit, base_4bit resident at once"
+  },
+  "cuda_context_gib": 0.113,
+  "frag_frac": 0.1,
+  "gpu_gib": 15.0
+}

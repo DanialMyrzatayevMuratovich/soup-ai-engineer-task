@@ -1,0 +1,17 @@
+{
+  "task": {
+    "mode": "metric",
+    "base": 0.2716031032791081,
+    "tuned": 0.2772927389190789
+  },
+  "benchmarks": {
+    "mini_instruction": {
+      "base": 1.0,
+      "tuned": 0.9583333333333334
+    },
+    "mini_mmlu": {
+      "base": 0.85,
+      "tuned": 0.825
+    }
+  }
+}

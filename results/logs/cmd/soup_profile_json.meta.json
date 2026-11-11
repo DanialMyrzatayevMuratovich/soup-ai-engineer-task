@@ -1,0 +1,18 @@
+{
+  "name": "soup_profile_json",
+  "cmd": [
+    "soup",
+    "profile",
+    "--config",
+    "soup.yaml",
+    "--json"
+  ],
+  "started": "2026-11-11T17:42:19.230+00:00",
+  "start_epoch": 1794418939.230527,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:42:23.214+00:00",
+  "end_epoch": 1794418943.214526,
+  "rc": 0
+}

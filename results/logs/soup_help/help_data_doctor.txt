@@ -1,0 +1,28 @@
+$ soup data doctor --help
+ Usage: soup data doctor [OPTIONS] {path}                                                                                                                                                               
+ Chat-template compatibility report + loss-mask X-ray.                                                                                                                                                  
+ Catches the top *silent* fine-tune failures before a single training                                                                                                                                   
+ step: missing/incompatible chat_template, missing EOS in the trained                                                                                                                                   
+ span (the #1 "model never stops generating" bug), duplicated BOS,                                                                                                                                      
+ unsupported system role, unknown message roles, and truncation risk.                                                                                                                                   
+ Pass --show-mask N to render N sample rows with per-token                                                                                                                                              
+ trained/masked colouring through the real answer-only / per-message /                                                                                                                                  
+ RAFT span-mask collator path.                                                                                                                                                                          
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    path      <str>  Path to dataset file (jsonl/json/csv/parquet). [required]                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *  --model                               -m                                  <str>  Tokenizer id or local path to check chat-template compatibility against. [required]                              │
+│    --format                              -f                                  <str>  Dataset format (auto-detects by default). [default: auto]                                                        │
+│    --max-length                                                              <int>  Training max_length — used for the truncation-risk check. [default: 2048]                                        │
+│    --sample                                                                  <int>  Number of rows to sample for the checks. [default: 200]                                                          │
+│    --show-mask                                                               <int>  Render N sample rows with per-token trained/masked colouring (the real collator path).                           │
+│    --train-on-responses-only                 --no-train-on-responses-only           Mask non-assistant tokens (mirrors data.train_on_responses_only). [default: train-on-responses-only]             │
+│    --train-on-messages-with-train-field                                             Per-message train:bool field masking (mirrors the same soup.yaml flag).                                          │
+│    --mask-history                            --no-mask-history                      Train only the LAST assistant turn (mirrors data.mask_history). [default: no-mask-history]                       │
+│    --train-on-eot                                                                   Extend the trained span through the trailing EOS/EOT token.                                                      │
+│    --trust-remote-code                                                              Allow loading a tokenizer that ships custom code.                                                                │
+│    --output                              -o                                  <str>  Write the report JSON to this path.                                                                              │
+│    --help                                                                           Show this message and exit.                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+exit code 0 after 0.7s

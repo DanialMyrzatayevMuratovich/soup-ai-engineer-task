@@ -1,0 +1,46 @@
+{
+  "train": {
+    "source": "soup_train",
+    "seconds": 1360.1,
+    "torch_max_allocated_gib": 6.7186360359191895,
+    "torch_max_reserved_gib": 14.384765625,
+    "cuda_initialized": true,
+    "ru_maxrss_gib": 4.260379791259766,
+    "nvsmi_max_used_gib": 14.5244140625,
+    "nvsmi_baseline_gib": 0.0029296875,
+    "nvsmi_samples": 1343
+  },
+  "merge": {
+    "source": "soup_merge",
+    "seconds": 70.2,
+    "torch_max_allocated_gib": 0.06878662109375,
+    "torch_max_reserved_gib": 0.0703125,
+    "cuda_initialized": true,
+    "ru_maxrss_gib": 6.598232269287109,
+    "nvsmi_max_used_gib": 0.1728515625,
+    "nvsmi_baseline_gib": 0.0029296875,
+    "nvsmi_samples": 70
+  },
+  "quantize_4bit": {
+    "source": "soup_quantize_4bit",
+    "seconds": 90.9,
+    "torch_max_allocated_gib": 1.0989656448364258,
+    "torch_max_reserved_gib": 1.14453125,
+    "cuda_initialized": true,
+    "ru_maxrss_gib": 6.597469329833984,
+    "nvsmi_max_used_gib": 1.2626953125,
+    "nvsmi_baseline_gib": 0.0029296875,
+    "nvsmi_samples": 90
+  },
+  "verify": {
+    "source": "verify",
+    "seconds": 381.4,
+    "torch_max_allocated_gib": 6.968690395355225,
+    "torch_max_reserved_gib": 7.318359375,
+    "cuda_initialized": true,
+    "ru_maxrss_gib": 4.489826202392578,
+    "nvsmi_max_used_gib": 12.0107421875,
+    "nvsmi_baseline_gib": 0.0029296875,
+    "nvsmi_samples": 377
+  }
+}

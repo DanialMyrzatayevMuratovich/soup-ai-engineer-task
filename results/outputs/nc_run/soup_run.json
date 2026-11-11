@@ -1,0 +1,1 @@
+{"base_model": "Qwen/Qwen2.5-1.5B-Instruct", "base_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306", "base_revision_source": "hub_commit", "run_id": "run_20261111_181102_d600d4a8", "schema_version": 1, "training_data_sha256": "97948375061ae0103ac468c353557c59eca9308d871db09928c5bc06654b1e8b"}

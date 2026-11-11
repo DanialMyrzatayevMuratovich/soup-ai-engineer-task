@@ -1,0 +1,6 @@
+2026-11-11T17:43:26.565+00:00 | $ soup data validate data/faults/dup_25pct.jsonl
+2026-11-11T17:43:27.575+00:00 | Auto-detected format: chatml
+2026-11-11T17:43:27.586+00:00 | Issues found:
+2026-11-11T17:43:27.587+00:00 |   ! 50 duplicate rows found
+2026-11-11T17:43:27.588+00:00 | 250/250 rows valid for chatml format
+2026-11-11T17:43:27.677+00:00 | exit code 0 after 1.1s

@@ -1,0 +1,17 @@
+{
+  "name": "fault_dup_25pct_stats",
+  "cmd": [
+    "soup",
+    "data",
+    "stats",
+    "data/faults/dup_25pct.jsonl"
+  ],
+  "started": "2026-11-11T17:43:35.581+00:00",
+  "start_epoch": 1794419015.5818663,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:43:36.571+00:00",
+  "end_epoch": 1794419016.5717576,
+  "rc": 0
+}

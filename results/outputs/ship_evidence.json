@@ -1,0 +1,48 @@
+{
+  "task": {
+    "mode": "metric",
+    "base": 0.25,
+    "tuned": 0.25
+  },
+  "benchmarks": {
+    "mini_instruction": {
+      "base": 1.0,
+      "tuned": 0.9583333333333334
+    },
+    "mini_mmlu": {
+      "base": 0.85,
+      "tuned": 0.825
+    }
+  },
+  "numerics": "bfloat16",
+  "provenance": {
+    "soup_version": "0.77.2",
+    "scorer_revision": 7,
+    "binding": {
+      "schema_version": 1,
+      "adapter_merkle_root": null,
+      "task_eval_sha256": "13a1955094288e5fca2adbd044740acd9da8532095906fcc7c1f56adf0b0fe38",
+      "source_data_at_verdict_sha256": null,
+      "training_data": null,
+      "suites": {
+        "names": [
+          "mini_instruction",
+          "mini_mmlu"
+        ],
+        "soup_version": "0.77.2",
+        "scorer_revision": 7
+      },
+      "policy": {
+        "task_mode": "metric",
+        "forgetting_threshold": 0.05,
+        "general_suite": [
+          "mini_instruction",
+          "mini_mmlu"
+        ],
+        "judge_model_sha256": null,
+        "noise_floor_runs": null
+      },
+      "policy_sha256": "c6ccad131b00f88882204c9db0558e864e562a3f5e52369397fd444d2278b1f4"
+    }
+  }
+}

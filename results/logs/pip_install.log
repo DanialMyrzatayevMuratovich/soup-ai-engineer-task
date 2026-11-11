@@ -1,0 +1,11 @@
+
+$ pip install -q soup-cli[train]
+
+
+
+$ pip uninstall -y torchao
+Found existing installation: torchao 0.10.0
+Uninstalling torchao-0.10.0:
+  Successfully uninstalled torchao-0.10.0
+
+

@@ -1,0 +1,5 @@
+2026-11-11T17:43:25.261+00:00 | $ soup data validate data/faults/clean_200.jsonl
+2026-11-11T17:43:25.895+00:00 | Auto-detected format: chatml
+2026-11-11T17:43:25.900+00:00 | Dataset is valid!
+2026-11-11T17:43:25.900+00:00 | 200/200 rows valid for chatml format
+2026-11-11T17:43:25.962+00:00 | exit code 0 after 0.7s

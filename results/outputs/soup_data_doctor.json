@@ -1,0 +1,55 @@
+{
+  "overall": "MINOR",
+  "rows_scanned": 200,
+  "total_rows": 1500,
+  "checks": [
+    {
+      "name": "chat_template",
+      "verdict": "OK",
+      "message": "tokenizer has a chat_template",
+      "evidence": "2507 chars"
+    },
+    {
+      "name": "template_render",
+      "verdict": "OK",
+      "message": "0/200 rows failed to render through the chat template",
+      "evidence": ""
+    },
+    {
+      "name": "generation_markers",
+      "verdict": "MINOR",
+      "message": "template lacks {% generation %} markers \u2014 assistant-only masking falls back to a heuristic that may include role-prefix tokens in the loss",
+      "evidence": ""
+    },
+    {
+      "name": "eos_in_labels",
+      "verdict": "OK",
+      "message": "0/200 rows (0.0%) never train an EOS/EOT token \u2014 the model will not learn to stop generating",
+      "evidence": "eos_token_id=[151645]"
+    },
+    {
+      "name": "bos_duplication",
+      "verdict": "OK",
+      "message": "tokenizer has no bos_token_id",
+      "evidence": ""
+    },
+    {
+      "name": "system_role",
+      "verdict": "OK",
+      "message": "no rows use a system message",
+      "evidence": ""
+    },
+    {
+      "name": "unknown_roles",
+      "verdict": "OK",
+      "message": "0/200 rows (0.0%) contain a message role outside ['assistant', 'function', 'system', 'tool', 'user']",
+      "evidence": ""
+    },
+    {
+      "name": "truncation_risk",
+      "verdict": "OK",
+      "message": "p95 length = 691 tokens vs max_length=1024; 0/200 rows (0.0%) would be truncated",
+      "evidence": "p50=248, max=938"
+    }
+  ]
+}

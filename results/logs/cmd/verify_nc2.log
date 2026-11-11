@@ -1,0 +1,62 @@
+2026-11-11T18:19:53.579+00:00 | $ /usr/bin/python3 /content/soup-task/kit_common.py peak --json logs/peak_verify_nc2.json --script /content/soup-task/verify_trained.py -- --base Qwen/Qwen2.5-1.5B-Instruct --adapter /content/soup-task/outputs/soup_run --merged Qwen/Qwen2.5-1.5B-Instruct --eval-data data/eval.jsonl --out-dir outputs/verify_nc2 --max-eval 100 --skip-generations --max-length 1024
+2026-11-11T18:19:53.777+00:00 | 2026-11-11T18:19:53.776+00:00 [verify] START argv=['--base', 'Qwen/Qwen2.5-1.5B-Instruct', '--adapter', '/content/soup-task/outputs/soup_run', '--merged', 'Qwen/Qwen2.5-1.5B-Instruct', '--eval-data', 'data/eval.jsonl', '--out-dir', 'outputs/verify_nc2', '--max-eval', '100', '--skip-generations', '--max-length', '1024']
+2026-11-11T18:20:36.281+00:00 | 2026-11-11T18:20:36.281+00:00 [verify] CHECK A1         PASS  LoRA modules present and mapped onto base weights: value={'n': 196, 'expected': 196, 'unmapped': 0} threshold=n == expected, unmapped == 0
+2026-11-11T18:20:36.281+00:00 | 2026-11-11T18:20:36.281+00:00 [verify] CHECK A2         PASS  lora_B moved away from its zero init: value={'frac_modules': 1.0, 'B_fro': {'min': 0.10316880792379379, 'median': 0.29907986521720886, 'max': 0.8570602536201477, 'n': 196}, 'n_exact_zero': 0} threshold=>= 0.9 of modules with ||B||_F > 0.001
+2026-11-11T18:20:36.281+00:00 | 2026-11-11T18:20:36.281+00:00 [verify] CHECK B4         PASS  Predicted fp16 rounding loss of the update at merge: value={'median': 0.025239163090733416, 'frac_elements_unchanged_median': 0.0281982421875} threshold=median <= 0.3 (WARN only)
+2026-11-11T18:20:36.814+00:00 | 2026-11-11T18:20:36.814+00:00 [verify] eval: encoded 100/100 rows, skipped={'template_error': 0, 'too_long': 0, 'no_answer_tokens': 0}, prompt-prefix token mismatch=0
+2026-11-11T18:20:36.814+00:00 | 2026-11-11T18:20:36.814+00:00 [verify] loading base (fp16) + adapter(s) as PeftModel
+2026-11-11T18:20:40.151+00:00 | 2026-11-11T18:20:40.151+00:00 [verify] CHECK A3         PASS  Adapter tensors PEFT loaded == tensors in the file: value={'max_abs_diff': 0.0, 'file_modules_not_in_model': 0, 'model_modules_not_in_file': 0, 'examples': []} threshold=0 missing, max diff <= 1e-06
+2026-11-11T18:20:40.151+00:00 | 2026-11-11T18:20:40.151+00:00 [verify] loading merged checkpoint
+2026-11-11T18:20:44.917+00:00 | 2026-11-11T18:20:44.917+00:00 [verify] CHECK B1         FAIL  Merged weights differ from base (median relative delta): value={'median_rel_delta': 0.0, 'per_type': {'down_proj': {'median_rel_delta': 0.0, 'max_rel_delta': 0.0, 'n': 28}, 'gate_proj': {'median_rel_delta': 0.0, 'max_rel_delta': 0.0, 'n': 28}, 'k_proj': {'median_rel_delta': 0.0, 'max_rel_delta': 0.0, 'n': 28}, 'o_proj': {'median_rel_delta': 0.0, 'max_rel_delta': 0.0, 'n': 28}, 'q_proj': {'median_rel_delta': 0.0, 'max_rel_delta': 0.0, 'n': 28}, 'up_proj': {'median_rel_delta': 0.0, 'max_rel_delta': 0.0, 'n': 28}, 'v_proj': {'median_rel_delta': 0.0, 'max_rel_delta': 0.0, 'n': 28}}, 'frac_elements_equal_to_base_median': 1.0} threshold=>= 0.0001
+2026-11-11T18:20:44.917+00:00 | 2026-11-11T18:20:44.917+00:00 [verify] CHECK B2         FAIL  Merged == fp16(base + scale*B@A), computed independently: value={'max_err_vs_reference': 1.0, 'n_modules': 196, 'n_meaningful': 196, 'broken_modules': [], 'min_exact_match_frac': 0.0172398891299963} threshold=max <= 0.05 (relative to the size of the update)
+2026-11-11T18:20:44.917+00:00 | 2026-11-11T18:20:44.917+00:00 [verify] CHECK B3         PASS  Non-LoRA parameters untouched by the merge: value={'max_abs_diff': 0.0, 'n_compared': 142, 'offenders': []} threshold=max abs diff <= 0.0
+2026-11-11T18:20:44.921+00:00 | 2026-11-11T18:20:44.921+00:00 [verify] eval pass over 100 examples, views=['base', 'adapter', 'merged'], pairs=[('merged', 'base'), ('adapter', 'merged')]
+2026-11-11T18:20:53.193+00:00 | 2026-11-11T18:20:53.193+00:00 [verify] eval: 25/100 examples
+2026-11-11T18:21:00.630+00:00 | 2026-11-11T18:21:00.630+00:00 [verify] eval: 50/100 examples
+2026-11-11T18:21:08.464+00:00 | 2026-11-11T18:21:08.464+00:00 [verify] eval: 75/100 examples
+2026-11-11T18:21:16.281+00:00 | 2026-11-11T18:21:16.281+00:00 [verify] eval: 100/100 examples
+2026-11-11T18:21:16.296+00:00 | 2026-11-11T18:21:16.295+00:00 [verify] CHECK C1         FAIL  Held-out answer NLL: base - merged (nats/token, paired bootstrap): value={'point': 0.0, 'ci95': [0.0, 0.0], 'B': 2000} threshold=point >= 0.02 and CI95 low > 0
+2026-11-11T18:21:16.296+00:00 | 2026-11-11T18:21:16.296+00:00 [verify] CHECK D1         FAIL  Merged behaves like base+adapter (KL, top-1): value={'kl_mean': 0.12035652351398718, 'top1_agreement': 0.8660002701607457, 'n_positions': 14806} threshold=KL <= 0.001, top1 >= 0.99
+2026-11-11T18:21:16.296+00:00 | 2026-11-11T18:21:16.296+00:00 [verify] CHECK D2         FAIL  Merged changed next-token distributions vs base (KL): value={'kl_mean': 0.0, 'top1_agreement': 1.0, 'n_positions': 14806, 'quant_noise_floor_kl_base_vs_base4': None, 'ratio_to_quant_floor': None} threshold=KL >= 0.01
+2026-11-11T18:21:16.296+00:00 | 2026-11-11T18:21:16.296+00:00 [verify] CHECK E2         PASS  No inf/NaN logits (fp16 overflow on T4): value={'nonfinite_logits': {'base': 0, 'adapter': 0, 'merged': 0}, 'hidden_state_max_abs': {'base': 6652.0, 'merged': 6652.0}, 'fp16_max': 65504.0} threshold=0 non-finite
+2026-11-11T18:21:18.129+00:00 | 2026-11-11T18:21:18.128+00:00 [verify] CHECK T1         PASS  Tokenizer + chat template identical across artifacts: value={'differences': {'adapter': [], 'merged': []}, 'load_errors': {}} threshold=no differences
+2026-11-11T18:21:18.129+00:00 | 2026-11-11T18:21:18.129+00:00 [verify] CHECK T2         PASS  generation_config.json consistent across artifacts: value={'base': {'do_sample': True, 'temperature': 0.7, 'top_p': 0.8, 'top_k': 20, 'repetition_penalty': 1.1, 'eos_token_id': [151645, 151643], 'pad_token_id': 151643, 'bos_token_id': 151643}, 'merged': {'do_sample': True, 'temperature': 0.7, 'top_p': 0.8, 'top_k': 20, 'repetition_penalty': 1.1, 'eos_token_id': [151645, 151643], 'pad_token_id': 151643, 'bos_token_id': 151643}} threshold=identical
+2026-11-11T18:21:18.131+00:00 | verify_trained.py summary  (2026-11-11T18:21:18.129+00:00)
+2026-11-11T18:21:18.131+00:00 | ==============================================================================
+2026-11-11T18:21:18.131+00:00 | views: base, adapter, merged
+2026-11-11T18:21:18.131+00:00 | Held-out answer-token NLL (nats/token), 95% bootstrap CI over examples:
+2026-11-11T18:21:18.131+00:00 |   base         nll=1.2835 ppl=3.609 ci95=[1.2203, 1.3462] tokens=22298 nonfinite=0
+2026-11-11T18:21:18.131+00:00 |   adapter      nll=1.2004 ppl=3.321 ci95=[1.1324, 1.2655] tokens=22298 nonfinite=0
+2026-11-11T18:21:18.131+00:00 |   merged       nll=1.2835 ppl=3.609 ci95=[1.2203, 1.3462] tokens=22298 nonfinite=0
+2026-11-11T18:21:18.131+00:00 | Paired differences (positive = second model has lower NLL):
+2026-11-11T18:21:18.131+00:00 |   base-merged                +0.0000  ci95=[+0.0000, +0.0000]
+2026-11-11T18:21:18.131+00:00 |   base-adapter               +0.0832  ci95=[+0.0731, +0.0944]
+2026-11-11T18:21:18.131+00:00 | KL(p||q) and top-1 agreement on answer positions:
+2026-11-11T18:21:18.131+00:00 |   merged||base               kl=0.00000 top1=1.0000 positions=14806
+2026-11-11T18:21:18.131+00:00 |   adapter||merged            kl=0.12036 top1=0.8660 positions=14806
+2026-11-11T18:21:18.131+00:00 | Checks:
+2026-11-11T18:21:18.131+00:00 |   [PASS] A1          LoRA modules present and mapped onto base weights
+2026-11-11T18:21:18.131+00:00 |   [PASS] A2          lora_B moved away from its zero init
+2026-11-11T18:21:18.132+00:00 |   [PASS] B4          Predicted fp16 rounding loss of the update at merge
+2026-11-11T18:21:18.132+00:00 |   [PASS] A3          Adapter tensors PEFT loaded == tensors in the file
+2026-11-11T18:21:18.132+00:00 |   [FAIL] B1          Merged weights differ from base (median relative delta)
+2026-11-11T18:21:18.132+00:00 |   [FAIL] B2          Merged == fp16(base + scale*B@A), computed independently
+2026-11-11T18:21:18.132+00:00 |   [PASS] B3          Non-LoRA parameters untouched by the merge
+2026-11-11T18:21:18.132+00:00 |   [FAIL] C1          Held-out answer NLL: base - merged (nats/token, paired bootstrap)
+2026-11-11T18:21:18.132+00:00 |   [FAIL] D1          Merged behaves like base+adapter (KL, top-1)
+2026-11-11T18:21:18.132+00:00 |   [FAIL] D2          Merged changed next-token distributions vs base (KL)
+2026-11-11T18:21:18.132+00:00 |   [PASS] E2          No inf/NaN logits (fp16 overflow on T4)
+2026-11-11T18:21:18.132+00:00 |   [PASS] T1          Tokenizer + chat template identical across artifacts
+2026-11-11T18:21:18.132+00:00 |   [PASS] T2          generation_config.json consistent across artifacts
+2026-11-11T18:21:18.132+00:00 | VERDICT: {"model_trained": "NO", "failed_core_checks": ["B1", "B2", "C1", "D1", "D2"], "missing_core_checks": []}
+2026-11-11T18:21:18.132+00:00 | What this check does NOT detect:
+2026-11-11T18:21:18.132+00:00 |   - Whether answers are correct, factual or helpful. NLL rewards the likelihood of the reference answers, which are machine-translated model outputs: a gain can come from copying their style/translation artefacts, not from substance.
+2026-11-11T18:21:18.132+00:00 |   - Regressions outside the held-out distribution (other tasks, other languages, safety, refusals, long context, multi-turn). Held-out rows come from the same dataset as train.
+2026-11-11T18:21:18.132+00:00 |   - Paraphrased train/eval contamination: the leakage check in data prep is lexical only.
+2026-11-11T18:21:18.132+00:00 |   - Behaviour under sampling (temperature/top-p) or other decoding settings: everything here is greedy or teacher-forced with repetition_penalty=1.0.
+2026-11-11T18:21:18.132+00:00 |   - A deployment that uses a different runtime, chat template or system prompt (GGUF/Ollama/vLLM). Train and eval share Qwen's default system prompt, so a template error made consistently in both places cancels out and is invisible here.
+2026-11-11T18:21:18.132+00:00 |   - Seed-to-seed variance: thresholds are fixed heuristics, not calibrated over several runs.
+2026-11-11T18:21:18.132+00:00 |   - Small harmful changes on rare inputs; the probe set is ~12 prompts.
+2026-11-11T18:21:18.132+00:00 |   - The 4-bit checks cover the bitsandbytes NF4 artifact only, not GGUF/AWQ/GPTQ exports.
+2026-11-11T18:21:18.132+00:00 | 2026-11-11T18:21:18.131+00:00 [verify] DONE in 84.4 s; results in outputs/verify_nc2
+2026-11-11T18:21:19.589+00:00 | exit code 2 after 86.0s

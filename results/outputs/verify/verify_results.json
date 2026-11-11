@@ -1,0 +1,1774 @@
+{
+  "started": "2026-11-11T18:13:35.943+00:00",
+  "args": {
+    "base": "Qwen/Qwen2.5-1.5B-Instruct",
+    "adapter": "/content/soup-task/outputs/soup_run",
+    "merged": "/content/soup-task/outputs/merged",
+    "quant4": "/content/soup-task/outputs/merged_4bit",
+    "control_adapter": "/content/soup-task/outputs/nc_run",
+    "control_merged": "/content/soup-task/outputs/nc_merged",
+    "eval_data": "data/eval.jsonl",
+    "train_data": "data/train.jsonl",
+    "prompts": "data/probe_prompts.jsonl",
+    "out_dir": "outputs/verify",
+    "max_eval": 200,
+    "max_train": 200,
+    "max_length": 1024,
+    "kl_max_positions": 256,
+    "hidden_scan_examples": 16,
+    "bootstrap": 2000,
+    "seed": 1234,
+    "max_new_tokens": 200,
+    "gen_batch_size": 6,
+    "skip_generations": false,
+    "skip_base4bit": false,
+    "device": "cuda",
+    "dtype": "auto"
+  },
+  "thresholds": {
+    "A1_expected_modules": "num_hidden_layers x len(target_modules)",
+    "A2_min_lora_B_fro": 0.001,
+    "A2_min_frac_modules_nonzero": 0.9,
+    "A3_max_abs_diff_file_vs_loaded": 1e-06,
+    "B1_min_median_rel_delta": 0.0001,
+    "B2_max_err_vs_reference": 0.05,
+    "B3_max_abs_nontarget_diff": 0.0,
+    "B4_warn_fp16_rounding_loss": 0.3,
+    "C1_min_nll_gain": 0.02,
+    "C2_min_retained_gain_frac": 0.5,
+    "C2_warn_quant_nll_increase": 0.1,
+    "D1_max_kl_adapter_vs_merged": 0.001,
+    "D1_min_top1_adapter_vs_merged": 0.99,
+    "D2_min_kl_merged_vs_base": 0.01,
+    "D3_warn_max_kl_merged_vs_4bit": 0.1,
+    "D3_warn_min_top1_merged_vs_4bit": 0.85,
+    "E1_min_eos_rate": 0.9,
+    "E1_min_cyrillic_ratio": 0.6,
+    "E1_max_rep4": 0.3,
+    "E2_max_nonfinite_logits": 0,
+    "Q1_max_mismatch_vs_requant_merged": 1e-06,
+    "Q2_min_frac_4bit_weights_changed": 0.0001
+  },
+  "not_detected": [
+    "Whether answers are correct, factual or helpful. NLL rewards the likelihood of the reference answers, which are machine-translated model outputs: a gain can come from copying their style/translation artefacts, not from substance.",
+    "Regressions outside the held-out distribution (other tasks, other languages, safety, refusals, long context, multi-turn). Held-out rows come from the same dataset as train.",
+    "Paraphrased train/eval contamination: the leakage check in data prep is lexical only.",
+    "Behaviour under sampling (temperature/top-p) or other decoding settings: everything here is greedy or teacher-forced with repetition_penalty=1.0.",
+    "A deployment that uses a different runtime, chat template or system prompt (GGUF/Ollama/vLLM). Train and eval share Qwen's default system prompt, so a template error made consistently in both places cancels out and is invisible here.",
+    "Seed-to-seed variance: thresholds are fixed heuristics, not calibrated over several runs.",
+    "Small harmful changes on rare inputs; the probe set is ~12 prompts.",
+    "The 4-bit checks cover the bitsandbytes NF4 artifact only, not GGUF/AWQ/GPTQ exports."
+  ],
+  "versions": {
+    "python": "3.13.16",
+    "torch": "2.14.1+cu130",
+    "transformers": "5.22.1",
+    "peft": "0.21.2",
+    "cuda": "13.0",
+    "device": "Tesla T4",
+    "bitsandbytes": "0.50.2"
+  },
+  "memory": {
+    "load_base_peft": {
+      "max_allocated_gib": 3.0817527770996094,
+      "max_reserved_gib": 3.130859375,
+      "allocated_gib": 3.0129661560058594
+    },
+    "load_merged": {
+      "max_allocated_gib": 5.888359069824219,
+      "max_reserved_gib": 5.943359375,
+      "allocated_gib": 5.888359069824219
+    },
+    "weights_main": {
+      "max_allocated_gib": 8.760795593261719,
+      "max_reserved_gib": 9.05859375,
+      "allocated_gib": 5.896293640136719
+    },
+    "load_4bit": {
+      "max_allocated_gib": 6.968671798706055,
+      "max_reserved_gib": 9.060546875,
+      "allocated_gib": 6.968671798706055
+    },
+    "load_base4bit": {
+      "max_allocated_gib": 8.06641674041748,
+      "max_reserved_gib": 9.091796875,
+      "allocated_gib": 8.042759895324707
+    },
+    "quant_codes": {
+      "max_allocated_gib": 8.273883819580078,
+      "max_reserved_gib": 9.091796875,
+      "allocated_gib": 8.042759895324707
+    },
+    "eval_pass": {
+      "max_allocated_gib": 9.884573459625244,
+      "max_reserved_gib": 11.34375,
+      "allocated_gib": 8.042759895324707
+    },
+    "train_pass": {
+      "max_allocated_gib": 9.0692458152771,
+      "max_reserved_gib": 11.8515625,
+      "allocated_gib": 8.042759895324707
+    },
+    "generations": {
+      "max_allocated_gib": 8.113266468048096,
+      "max_reserved_gib": 11.87890625,
+      "allocated_gib": 8.04277753829956
+    },
+    "weights_control": {
+      "max_allocated_gib": 12.708585262298584,
+      "max_reserved_gib": 12.9765625,
+      "allocated_gib": 6.968690395355225
+    }
+  },
+  "timing_s": {
+    "static_adapter": 64.6,
+    "eval_pass": 131.4,
+    "train_pass": 38.2,
+    "generations": 86.6,
+    "total": 379.3
+  },
+  "checks": [
+    {
+      "id": "A1",
+      "name": "LoRA modules present and mapped onto base weights",
+      "status": "PASS",
+      "value": {
+        "n": 196,
+        "expected": 196,
+        "unmapped": 0
+      },
+      "threshold": "n == expected, unmapped == 0",
+      "meaning": "Catches target_modules that matched nothing/too little, or an adapter for a different base."
+    },
+    {
+      "id": "A2",
+      "name": "lora_B moved away from its zero init",
+      "status": "PASS",
+      "value": {
+        "frac_modules": 1.0,
+        "B_fro": {
+          "min": 0.10316880792379379,
+          "median": 0.29907986521720886,
+          "max": 0.8570602536201477,
+          "n": 196
+        },
+        "n_exact_zero": 0
+      },
+      "threshold": ">= 0.9 of modules with ||B||_F > 0.001",
+      "meaning": "B=0 at init, so an adapter that never received useful updates has B ~ 0 and does nothing."
+    },
+    {
+      "id": "B4",
+      "name": "Predicted fp16 rounding loss of the update at merge",
+      "status": "PASS",
+      "value": {
+        "median": 0.025239163090733416,
+        "frac_elements_unchanged_median": 0.0281982421875
+      },
+      "threshold": "median <= 0.3 (WARN only)",
+      "meaning": "Share of the LoRA update norm lost when base+delta is stored in fp16."
+    },
+    {
+      "id": "A1_control",
+      "name": "LoRA modules present and mapped onto base weights",
+      "status": "PASS",
+      "value": {
+        "n": 196,
+        "expected": 196,
+        "unmapped": 0
+      },
+      "threshold": "n == expected, unmapped == 0",
+      "meaning": "Catches target_modules that matched nothing/too little, or an adapter for a different base."
+    },
+    {
+      "id": "A2_control",
+      "name": "lora_B moved away from its zero init",
+      "status": "FAIL",
+      "value": {
+        "frac_modules": 0.0,
+        "B_fro": {
+          "min": 8.772655490929537e-08,
+          "median": 2.5716214224758005e-07,
+          "max": 6.310819458121841e-07,
+          "n": 196
+        },
+        "n_exact_zero": 0
+      },
+      "threshold": ">= 0.9 of modules with ||B||_F > 0.001",
+      "meaning": "B=0 at init, so an adapter that never received useful updates has B ~ 0 and does nothing."
+    },
+    {
+      "id": "B4_control",
+      "name": "Predicted fp16 rounding loss of the update at merge",
+      "status": "WARN",
+      "value": {
+        "median": 1.0,
+        "frac_elements_unchanged_median": 1.0
+      },
+      "threshold": "median <= 0.3 (WARN only)",
+      "meaning": "Share of the LoRA update norm lost when base+delta is stored in fp16."
+    },
+    {
+      "id": "A3",
+      "name": "Adapter tensors PEFT loaded == tensors in the file",
+      "status": "PASS",
+      "value": {
+        "max_abs_diff": 0.0,
+        "file_modules_not_in_model": 0,
+        "model_modules_not_in_file": 0,
+        "examples": []
+      },
+      "threshold": "0 missing, max diff <= 1e-06",
+      "meaning": "Catches an adapter that was saved but is silently not applied (key/name mismatch)."
+    },
+    {
+      "id": "A3_control",
+      "name": "Adapter tensors PEFT loaded == tensors in the file",
+      "status": "PASS",
+      "value": {
+        "max_abs_diff": 0.0,
+        "file_modules_not_in_model": 0,
+        "model_modules_not_in_file": 0,
+        "examples": []
+      },
+      "threshold": "0 missing, max diff <= 1e-06",
+      "meaning": "Catches an adapter that was saved but is silently not applied (key/name mismatch)."
+    },
+    {
+      "id": "B1",
+      "name": "Merged weights differ from base (median relative delta)",
+      "status": "PASS",
+      "value": {
+        "median_rel_delta": 0.00821162525672935,
+        "per_type": {
+          "down_proj": {
+            "median_rel_delta": 0.004333685133944776,
+            "max_rel_delta": 0.005115222002878221,
+            "n": 28
+          },
+          "gate_proj": {
+            "median_rel_delta": 0.008848481911546347,
+            "max_rel_delta": 0.012723875579853806,
+            "n": 28
+          },
+          "k_proj": {
+            "median_rel_delta": 0.007421785062434029,
+            "max_rel_delta": 0.011954366477283403,
+            "n": 28
+          },
+          "o_proj": {
+            "median_rel_delta": 0.008995460494317622,
+            "max_rel_delta": 0.009909157301324233,
+            "n": 28
+          },
+          "q_proj": {
+            "median_rel_delta": 0.00766014099679999,
+            "max_rel_delta": 0.009172292052600305,
+            "n": 28
+          },
+          "up_proj": {
+            "median_rel_delta": 0.008698634804957707,
+            "max_rel_delta": 0.009901735093363095,
+            "n": 28
+          },
+          "v_proj": {
+            "median_rel_delta": 0.008290289746985157,
+            "max_rel_delta": 0.01130907528463042,
+            "n": 28
+          }
+        },
+        "frac_elements_equal_to_base_median": 0.028198243118822575
+      },
+      "threshold": ">= 0.0001",
+      "meaning": "Catches 'merge produced the base model' (adapter not applied, or update rounded away)."
+    },
+    {
+      "id": "B2",
+      "name": "Merged == fp16(base + scale*B@A), computed independently",
+      "status": "PASS",
+      "value": {
+        "max_err_vs_reference": 0.0,
+        "n_modules": 196,
+        "n_meaningful": 196,
+        "broken_modules": [],
+        "min_exact_match_frac": 1.0
+      },
+      "threshold": "max <= 0.05 (relative to the size of the update)",
+      "meaning": "Catches wrong scale (alpha/r), transposed/misassigned modules, merging the wrong adapter."
+    },
+    {
+      "id": "B3",
+      "name": "Non-LoRA parameters untouched by the merge",
+      "status": "PASS",
+      "value": {
+        "max_abs_diff": 0.0,
+        "n_compared": 142,
+        "offenders": []
+      },
+      "threshold": "max abs diff <= 0.0",
+      "meaning": "Catches dtype round-trips (bf16<->fp16), modules_to_save surprises, resized embeddings."
+    },
+    {
+      "id": "Q1",
+      "name": "4-bit artifact == quantize(merged fp16)",
+      "status": "PASS",
+      "value": {
+        "median": 0.0,
+        "max": 0.0
+      },
+      "threshold": "max <= 1e-06",
+      "meaning": "Proves the 4-bit file was made from THIS merged model (not from the base or another merge). WARN, not FAIL: a different but legitimate quantization path can differ slightly."
+    },
+    {
+      "id": "Q2",
+      "name": "Fine-tune changed 4-bit codes (quantize(merged) != quantize(base))",
+      "status": "PASS",
+      "value": {
+        "mean_frac_weights_changed": 0.6200011123199852
+      },
+      "threshold": ">= 0.0001",
+      "meaning": "If ~0, NF4 rounding erased the update: the 4-bit artifact IS the 4-bit base."
+    },
+    {
+      "id": "C1",
+      "name": "Held-out answer NLL: base - merged (nats/token, paired bootstrap)",
+      "status": "PASS",
+      "value": {
+        "point": 0.08395158760657379,
+        "ci95": [
+          0.07603450159630983,
+          0.09203022787970658
+        ],
+        "B": 2000
+      },
+      "threshold": "point >= 0.02 and CI95 low > 0",
+      "meaning": "The merged model assigns higher likelihood to unseen reference answers than the base."
+    },
+    {
+      "id": "C1_control",
+      "name": "Held-out NLL: base - control (negative control, expected FAIL)",
+      "status": "FAIL",
+      "value": {
+        "point": -2.7918773233215806e-06,
+        "ci95": [
+          -1.1693901722848047e-05,
+          6.8885025895953635e-06
+        ],
+        "B": 2000
+      },
+      "threshold": "point >= 0.02 and CI95 low > 0",
+      "meaning": "A negative control must not pass; if it does, the check cannot tell trained from untrained."
+    },
+    {
+      "id": "C2",
+      "name": "4-bit keeps the gain: NLL(base_4bit) - NLL(merged_4bit), retained fraction",
+      "status": "PASS",
+      "value": {
+        "diff": {
+          "point": 0.0736957375461699,
+          "ci95": [
+            0.06605678173724142,
+            0.08154643871104529
+          ],
+          "B": 2000
+        },
+        "retained_frac_of_fp16_gain": 0.8778361392226869
+      },
+      "threshold": "CI95 low > 0 and retained >= 0.5",
+      "meaning": "Compares like with like (both 4-bit), so quantization noise does not masquerade as training."
+    },
+    {
+      "id": "C2b",
+      "name": "Quantization cost on held-out NLL: NLL(merged_4bit) - NLL(merged)",
+      "status": "PASS",
+      "value": {
+        "increase": 0.0632196417935203,
+        "ci95_of_merged_minus_4bit": [
+          -0.06947352731500149,
+          -0.057379821132412204
+        ]
+      },
+      "threshold": "<= 0.1 (WARN only)",
+      "meaning": "How much 4-bit costs on Russian held-out text."
+    },
+    {
+      "id": "D1",
+      "name": "Merged behaves like base+adapter (KL, top-1)",
+      "status": "PASS",
+      "value": {
+        "kl_mean": 1.3709689171292202e-05,
+        "top1_agreement": 0.9984873441124071,
+        "n_positions": 29749
+      },
+      "threshold": "KL <= 0.001, top1 >= 0.99",
+      "meaning": "Functional proof that the merge preserved the adapter's effect."
+    },
+    {
+      "id": "D2",
+      "name": "Merged changed next-token distributions vs base (KL)",
+      "status": "PASS",
+      "value": {
+        "kl_mean": 0.12477428773105947,
+        "top1_agreement": 0.8632895223368853,
+        "n_positions": 29749,
+        "quant_noise_floor_kl_base_vs_base4": 0.0787541937464814,
+        "ratio_to_quant_floor": 1.584351026850988
+      },
+      "threshold": "KL >= 0.01",
+      "meaning": "An untrained adapter gives KL ~ 0. Ratio to the 4-bit noise floor shows if training is bigger than quant noise."
+    },
+    {
+      "id": "D2_control",
+      "name": "Control changed distributions vs base (expected FAIL)",
+      "status": "FAIL",
+      "value": {
+        "kl_mean": 6.441314671833152e-07,
+        "top1_agreement": 0.9999327708494403,
+        "n_positions": 29749
+      },
+      "threshold": "KL >= 0.01",
+      "meaning": "Negative control must fail."
+    },
+    {
+      "id": "D3",
+      "name": "4-bit fidelity to merged fp16 (KL, top-1)",
+      "status": "PASS",
+      "value": {
+        "kl_mean": 0.07565059963184355,
+        "top1_agreement": 0.8905509428888366,
+        "n_positions": 29749
+      },
+      "threshold": "KL <= 0.1, top1 >= 0.85 (WARN only)",
+      "meaning": "How far 4-bit drifts from the model that was evaluated in fp16."
+    },
+    {
+      "id": "E2",
+      "name": "No inf/NaN logits (fp16 overflow on T4)",
+      "status": "PASS",
+      "value": {
+        "nonfinite_logits": {
+          "base": 0,
+          "adapter": 0,
+          "control": 0,
+          "merged": 0,
+          "merged_4bit": 0,
+          "base_4bit": 0
+        },
+        "hidden_state_max_abs": {
+          "base": 6652.0,
+          "merged": 6064.0
+        },
+        "fp16_max": 65504.0
+      },
+      "threshold": "0 non-finite",
+      "meaning": "fp16 has max 65504; Qwen checkpoints are bf16. Overflow gives NaN/garbage silently."
+    },
+    {
+      "id": "E1_merged",
+      "name": "Generations of merged: stop at EOS, Russian, not degenerate",
+      "status": "WARN",
+      "value": {
+        "eos_rate": 0.6666666666666666,
+        "median_new_tokens": 147.0,
+        "frac_cyrillic_ok": 1.0,
+        "max_rep4": 0.447,
+        "n": 12
+      },
+      "threshold": "eos_rate >= 0.9, >=90% prompts cyrillic >= 0.6, rep4 <= 0.3 (WARN only: read generations.md yourself)",
+      "meaning": "Teacher-forced metrics can look fine while free generation never stops or switches language."
+    },
+    {
+      "id": "E1_merged_4bit",
+      "name": "Generations of merged_4bit: stop at EOS, Russian, not degenerate",
+      "status": "WARN",
+      "value": {
+        "eos_rate": 0.5833333333333334,
+        "median_new_tokens": 165.5,
+        "frac_cyrillic_ok": 1.0,
+        "max_rep4": 0.635,
+        "n": 12
+      },
+      "threshold": "eos_rate >= 0.9, >=90% prompts cyrillic >= 0.6, rep4 <= 0.3 (WARN only: read generations.md yourself)",
+      "meaning": "Teacher-forced metrics can look fine while free generation never stops or switches language."
+    },
+    {
+      "id": "E3",
+      "name": "Greedy outputs changed vs base on at least one probe",
+      "status": "PASS",
+      "value": {
+        "identical": 0,
+        "n": 12
+      },
+      "threshold": "identical < n",
+      "meaning": "All-identical outputs suggest nothing changed."
+    },
+    {
+      "id": "T1",
+      "name": "Tokenizer + chat template identical across artifacts",
+      "status": "PASS",
+      "value": {
+        "differences": {
+          "adapter": [],
+          "merged": [],
+          "merged_4bit": []
+        },
+        "load_errors": {}
+      },
+      "threshold": "no differences",
+      "meaning": "A shipped artifact with another template/EOS/pad silently changes inference."
+    },
+    {
+      "id": "T2",
+      "name": "generation_config.json consistent across artifacts",
+      "status": "PASS",
+      "value": {
+        "base": {
+          "do_sample": true,
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "repetition_penalty": 1.1,
+          "eos_token_id": [
+            151645,
+            151643
+          ],
+          "pad_token_id": 151643,
+          "bos_token_id": 151643
+        },
+        "merged": {
+          "do_sample": true,
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "repetition_penalty": 1.1,
+          "eos_token_id": [
+            151645,
+            151643
+          ],
+          "pad_token_id": 151643,
+          "bos_token_id": 151643
+        },
+        "merged_4bit": {
+          "do_sample": true,
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "repetition_penalty": 1.1,
+          "eos_token_id": [
+            151645,
+            151643
+          ],
+          "pad_token_id": 151643,
+          "bos_token_id": 151643
+        }
+      },
+      "threshold": "identical",
+      "meaning": "Users get the artifact's defaults (Qwen ships sampling + repetition_penalty), not our greedy eval."
+    },
+    {
+      "id": "B1_control",
+      "name": "Merged weights differ from base (median relative delta)",
+      "status": "FAIL",
+      "value": {
+        "median_rel_delta": 0.0,
+        "per_type": {
+          "down_proj": {
+            "median_rel_delta": 0.0,
+            "max_rel_delta": 0.0,
+            "n": 28
+          },
+          "gate_proj": {
+            "median_rel_delta": 0.0,
+            "max_rel_delta": 0.0,
+            "n": 28
+          },
+          "k_proj": {
+            "median_rel_delta": 0.0,
+            "max_rel_delta": 0.0,
+            "n": 28
+          },
+          "o_proj": {
+            "median_rel_delta": 0.0,
+            "max_rel_delta": 0.0,
+            "n": 28
+          },
+          "q_proj": {
+            "median_rel_delta": 0.0,
+            "max_rel_delta": 0.0,
+            "n": 28
+          },
+          "up_proj": {
+            "median_rel_delta": 0.0,
+            "max_rel_delta": 0.0,
+            "n": 28
+          },
+          "v_proj": {
+            "median_rel_delta": 0.0,
+            "max_rel_delta": 0.0,
+            "n": 28
+          }
+        },
+        "frac_elements_equal_to_base_median": 1.0
+      },
+      "threshold": ">= 0.0001",
+      "meaning": "Catches 'merge produced the base model' (adapter not applied, or update rounded away)."
+    },
+    {
+      "id": "B2_control",
+      "name": "Merged == fp16(base + scale*B@A), computed independently",
+      "status": "PASS",
+      "value": {
+        "max_err_vs_reference": 0.0,
+        "n_modules": 196,
+        "n_meaningful": 0,
+        "broken_modules": [],
+        "min_exact_match_frac": 1.0
+      },
+      "threshold": "max <= 0.05 (relative to the size of the update)",
+      "meaning": "Catches wrong scale (alpha/r), transposed/misassigned modules, merging the wrong adapter."
+    },
+    {
+      "id": "B3_control",
+      "name": "Non-LoRA parameters untouched by the merge",
+      "status": "PASS",
+      "value": {
+        "max_abs_diff": 0.0,
+        "n_compared": 142,
+        "offenders": []
+      },
+      "threshold": "max abs diff <= 0.0",
+      "meaning": "Catches dtype round-trips (bf16<->fp16), modules_to_save surprises, resized embeddings."
+    }
+  ],
+  "base_config": {
+    "model_type": "qwen2",
+    "hidden_size": 1536,
+    "intermediate_size": 8960,
+    "num_hidden_layers": 28,
+    "num_attention_heads": 12,
+    "num_key_value_heads": 2,
+    "vocab_size": 151936,
+    "tie_word_embeddings": true,
+    "torch_dtype": "bfloat16",
+    "dtype": null
+  },
+  "adapter_main": {
+    "label": "main",
+    "adapter_dir": "/content/soup-task/outputs/soup_run",
+    "adapter_config": {
+      "base_model_name_or_path": "Qwen/Qwen2.5-1.5B-Instruct",
+      "r": 16,
+      "lora_alpha": 32,
+      "lora_dropout": 0.05,
+      "target_modules": [
+        "o_proj",
+        "up_proj",
+        "gate_proj",
+        "q_proj",
+        "down_proj",
+        "v_proj",
+        "k_proj"
+      ],
+      "use_rslora": false,
+      "use_dora": false,
+      "modules_to_save": null,
+      "bias": "none",
+      "task_type": "CAUSAL_LM",
+      "rank_pattern": {},
+      "alpha_pattern": {}
+    },
+    "scale": 2.0,
+    "n_lora_modules": 196,
+    "expected_modules": 196,
+    "unmapped_modules": [],
+    "n_unmapped": 0,
+    "n_B_exact_zero": 0,
+    "frac_modules_B_above_thr": 1.0,
+    "B_fro": {
+      "min": 0.10316880792379379,
+      "median": 0.29907986521720886,
+      "max": 0.8570602536201477,
+      "n": 196
+    },
+    "rel_dW": {
+      "min": 0.004059462572393172,
+      "median": 0.008207520666608084,
+      "max": 0.012718859458886032,
+      "n": 196
+    },
+    "fp16_rounding_loss": {
+      "min": 0.016283835149435863,
+      "median": 0.025239163090733416,
+      "max": 0.05100785159357363,
+      "n": 196
+    },
+    "fp16_frac_elements_unchanged": {
+      "min": 0.0171661376953125,
+      "median": 0.0281982421875,
+      "max": 0.06974327564239502,
+      "n": 196
+    },
+    "per_type": {
+      "down_proj": {
+        "B_fro": {
+          "min": 0.26923489570617676,
+          "median": 0.3205016553401947,
+          "max": 0.33883658051490784,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 0.004059462572393172,
+          "median": 0.004327912022399761,
+          "max": 0.0051103409360582054,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 0.04051791579924117,
+          "median": 0.04786863463983129,
+          "max": 0.05100785159357363,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 0.04966074600815773,
+          "median": 0.055558886379003525,
+          "max": 0.06974327564239502,
+          "n": 28
+        }
+      },
+      "gate_proj": {
+        "B_fro": {
+          "min": 0.7109701037406921,
+          "median": 0.7507028579711914,
+          "max": 0.8570602536201477,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 0.007402937247180791,
+          "median": 0.00884468982846274,
+          "max": 0.012718859458886032,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 0.016283835149435863,
+          "median": 0.023422264167563364,
+          "max": 0.028014646550550987,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 0.02182232029736042,
+          "median": 0.02687832061201334,
+          "max": 0.03320799395442009,
+          "n": 28
+        }
+      },
+      "k_proj": {
+        "B_fro": {
+          "min": 0.10316880792379379,
+          "median": 0.11616271361708641,
+          "max": 0.1262800544500351,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 0.004329607826572496,
+          "median": 0.007418976585488783,
+          "max": 0.011952527759349034,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 0.017391773799313684,
+          "median": 0.02804432581312947,
+          "max": 0.04789966349813288,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 0.0171661376953125,
+          "median": 0.03021113108843565,
+          "max": 0.0560557059943676,
+          "n": 28
+        }
+      },
+      "o_proj": {
+        "B_fro": {
+          "min": 0.27826547622680664,
+          "median": 0.29700349271297455,
+          "max": 0.321662038564682,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 0.006900517665563271,
+          "median": 0.00899247476952866,
+          "max": 0.009906094552934251,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 0.02092764888135646,
+          "median": 0.023044007778810466,
+          "max": 0.029949993607493265,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 0.022645315155386925,
+          "median": 0.024906158447265625,
+          "max": 0.0343034528195858,
+          "n": 28
+        }
+      },
+      "q_proj": {
+        "B_fro": {
+          "min": 0.2701975703239441,
+          "median": 0.2870238125324249,
+          "max": 0.31364795565605164,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 0.004790148569586402,
+          "median": 0.007656962392417294,
+          "max": 0.009169485487709914,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 0.02255200424542926,
+          "median": 0.027067900717553474,
+          "max": 0.04318008966885762,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 0.0224295724183321,
+          "median": 0.028463998809456825,
+          "max": 0.0435112863779068,
+          "n": 28
+        }
+      },
+      "up_proj": {
+        "B_fro": {
+          "min": 0.6479436755180359,
+          "median": 0.7155822813510895,
+          "max": 0.8294853568077087,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 0.007408068514676513,
+          "median": 0.0086945442534331,
+          "max": 0.009896384009377103,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 0.02095850534599385,
+          "median": 0.023825583522377562,
+          "max": 0.02795993565482122,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 0.02511087991297245,
+          "median": 0.02734273299574852,
+          "max": 0.0336492620408535,
+          "n": 28
+        }
+      },
+      "v_proj": {
+        "B_fro": {
+          "min": 0.10595586895942688,
+          "median": 0.11726626008749008,
+          "max": 0.15287350118160248,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 0.004633699368963318,
+          "median": 0.00828768985063261,
+          "max": 0.011307876112909076,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 0.01829777544296944,
+          "median": 0.025033991036021858,
+          "max": 0.04463706271623158,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 0.02031707763671875,
+          "median": 0.0283444719389081,
+          "max": 0.04951222613453865,
+          "n": 28
+        }
+      }
+    },
+    "file_info": {
+      "n_tensors": 392,
+      "non_lora_tensors": [],
+      "n_non_lora": 0
+    },
+    "seconds": 32.7
+  },
+  "adapter_control": {
+    "label": "control",
+    "adapter_dir": "/content/soup-task/outputs/nc_run",
+    "adapter_config": {
+      "base_model_name_or_path": "Qwen/Qwen2.5-1.5B-Instruct",
+      "r": 16,
+      "lora_alpha": 32,
+      "lora_dropout": 0.05,
+      "target_modules": [
+        "down_proj",
+        "k_proj",
+        "gate_proj",
+        "o_proj",
+        "q_proj",
+        "v_proj",
+        "up_proj"
+      ],
+      "use_rslora": false,
+      "use_dora": false,
+      "modules_to_save": null,
+      "bias": "none",
+      "task_type": "CAUSAL_LM",
+      "rank_pattern": {},
+      "alpha_pattern": {}
+    },
+    "scale": 2.0,
+    "n_lora_modules": 196,
+    "expected_modules": 196,
+    "unmapped_modules": [],
+    "n_unmapped": 0,
+    "n_B_exact_zero": 0,
+    "frac_modules_B_above_thr": 0.0,
+    "B_fro": {
+      "min": 8.772655490929537e-08,
+      "median": 2.5716214224758005e-07,
+      "max": 6.310819458121841e-07,
+      "n": 196
+    },
+    "rel_dW": {
+      "min": 2.3490159757185414e-09,
+      "median": 6.454451284877877e-09,
+      "max": 1.0704871634909225e-08,
+      "n": 196
+    },
+    "fp16_rounding_loss": {
+      "min": 1.0,
+      "median": 1.0,
+      "max": 1.0,
+      "n": 196
+    },
+    "fp16_frac_elements_unchanged": {
+      "min": 1.0,
+      "median": 1.0,
+      "max": 1.0,
+      "n": 196
+    },
+    "per_type": {
+      "down_proj": {
+        "B_fro": {
+          "min": 2.2433893320794596e-07,
+          "median": 2.6411166231810057e-07,
+          "max": 2.73833421715608e-07,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 2.3490159757185414e-09,
+          "median": 3.0512709094072842e-09,
+          "max": 3.2025313796692382e-09,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        }
+      },
+      "gate_proj": {
+        "B_fro": {
+          "min": 4.797151405000477e-07,
+          "median": 5.79891377583408e-07,
+          "max": 6.162078989291331e-07,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 5.205190634775558e-09,
+          "median": 6.086853235711875e-09,
+          "max": 7.067525831029563e-09,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        }
+      },
+      "k_proj": {
+        "B_fro": {
+          "min": 8.772655490929537e-08,
+          "median": 1.0497684499455318e-07,
+          "max": 1.1333109739553038e-07,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 3.6479980365879492e-09,
+          "median": 6.599148273127473e-09,
+          "max": 9.52722886822754e-09,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        }
+      },
+      "o_proj": {
+        "B_fro": {
+          "min": 2.4785217078715505e-07,
+          "median": 2.5909615430919075e-07,
+          "max": 2.693560361421987e-07,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 5.684407712917172e-09,
+          "median": 7.434449042999247e-09,
+          "max": 8.505232903936977e-09,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        }
+      },
+      "q_proj": {
+        "B_fro": {
+          "min": 2.1879179712414043e-07,
+          "median": 2.5157774530271126e-07,
+          "max": 2.6341896841586276e-07,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 4.023935010028131e-09,
+          "median": 6.404619827444617e-09,
+          "max": 7.196948359318388e-09,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        }
+      },
+      "up_proj": {
+        "B_fro": {
+          "min": 4.933718287247757e-07,
+          "median": 5.986240125821496e-07,
+          "max": 6.310819458121841e-07,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 5.178980124985263e-09,
+          "median": 6.782319299671213e-09,
+          "max": 7.42983233163227e-09,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        }
+      },
+      "v_proj": {
+        "B_fro": {
+          "min": 1.0084568913271141e-07,
+          "median": 1.0734741451301488e-07,
+          "max": 1.121158348382778e-07,
+          "n": 28
+        },
+        "rel_dW": {
+          "min": 3.919751487287451e-09,
+          "median": 7.196438411874963e-09,
+          "max": 1.0704871634909225e-08,
+          "n": 28
+        },
+        "fp16_rounding_loss": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        },
+        "fp16_frac_elements_unchanged": {
+          "min": 1.0,
+          "median": 1.0,
+          "max": 1.0,
+          "n": 28
+        }
+      }
+    },
+    "file_info": {
+      "n_tensors": 392,
+      "non_lora_tensors": [],
+      "n_non_lora": 0
+    },
+    "seconds": 30.8
+  },
+  "eos_ids": [
+    151643,
+    151645
+  ],
+  "eval_encoding": {
+    "n_rows": 200,
+    "n_used": 200,
+    "skipped": {
+      "template_error": 0,
+      "too_long": 0,
+      "no_answer_tokens": 0
+    },
+    "prompt_prefix_token_mismatch": 0
+  },
+  "train_encoding": {
+    "n_rows": 200,
+    "n_used": 200,
+    "skipped": {
+      "template_error": 0,
+      "too_long": 0,
+      "no_answer_tokens": 0
+    },
+    "prompt_prefix_token_mismatch": 0
+  },
+  "weights": {
+    "per_type": {
+      "down_proj": {
+        "median_rel_delta": 0.004333685133944776,
+        "max_rel_delta": 0.005115222002878221,
+        "n": 28
+      },
+      "gate_proj": {
+        "median_rel_delta": 0.008848481911546347,
+        "max_rel_delta": 0.012723875579853806,
+        "n": 28
+      },
+      "k_proj": {
+        "median_rel_delta": 0.007421785062434029,
+        "max_rel_delta": 0.011954366477283403,
+        "n": 28
+      },
+      "o_proj": {
+        "median_rel_delta": 0.008995460494317622,
+        "max_rel_delta": 0.009909157301324233,
+        "n": 28
+      },
+      "q_proj": {
+        "median_rel_delta": 0.00766014099679999,
+        "max_rel_delta": 0.009172292052600305,
+        "n": 28
+      },
+      "up_proj": {
+        "median_rel_delta": 0.008698634804957707,
+        "max_rel_delta": 0.009901735093363095,
+        "n": 28
+      },
+      "v_proj": {
+        "median_rel_delta": 0.008290289746985157,
+        "max_rel_delta": 0.01130907528463042,
+        "n": 28
+      }
+    },
+    "seconds": 1.5,
+    "n_nontarget_compared": 142
+  },
+  "quant4_codes": {
+    "n_modules": 196,
+    "mismatch_vs_requant_merged": {
+      "median": 0.0,
+      "max": 0.0
+    },
+    "frac_changed_merged_vs_base": {
+      "median": 0.6480298638343811,
+      "mean": 0.6200011123199852
+    },
+    "artifact_vs_requant_base": {
+      "median": 0.6480298638343811
+    },
+    "details": [
+      {
+        "module": "model.layers.0.self_attn.q_proj",
+        "mismatch_vs_requant_merged": 0.0,
+        "frac_changed_merged_vs_base": 0.5382304787635803,
+        "artifact_vs_requant_base": 0.5382304787635803
+      },
+      {
+        "module": "model.layers.0.self_attn.k_proj",
+        "mismatch_vs_requant_merged": 0.0,
+        "frac_changed_merged_vs_base": 0.4606577754020691,
+        "artifact_vs_requant_base": 0.4606577754020691
+      },
+      {
+        "module": "model.layers.0.self_attn.v_proj",
+        "mismatch_vs_requant_merged": 0.0,
+        "frac_changed_merged_vs_base": 0.7525457143783569,
+        "artifact_vs_requant_base": 0.7525457143783569
+      }
+    ],
+    "seconds": 0.8
+  },
+  "views": [
+    "base",
+    "adapter",
+    "control",
+    "merged",
+    "merged_4bit",
+    "base_4bit"
+  ],
+  "heldout": {
+    "base": {
+      "nll_per_token": 1.303413457445684,
+      "ppl": 3.681843056750231,
+      "n_tokens": 42756,
+      "n_examples": 200,
+      "ci95": [
+        1.2560073880027665,
+        1.354986021297779
+      ],
+      "nonfinite_logits": 0,
+      "max_abs_logit": 42.9375
+    },
+    "adapter": {
+      "nll_per_token": 1.219465794819467,
+      "ppl": 3.3853787636101913,
+      "n_tokens": 42756,
+      "n_examples": 200,
+      "ci95": [
+        1.1725063989956523,
+        1.2698175341833076
+      ],
+      "nonfinite_logits": 0,
+      "max_abs_logit": 41.78125
+    },
+    "control": {
+      "nll_per_token": 1.3034162493230073,
+      "ppl": 3.6818533360187184,
+      "n_tokens": 42756,
+      "n_examples": 200,
+      "ci95": [
+        1.2560132029372542,
+        1.354997370470925
+      ],
+      "nonfinite_logits": 0,
+      "max_abs_logit": 42.9375
+    },
+    "merged": {
+      "nll_per_token": 1.2194618698391102,
+      "ppl": 3.385365476091121,
+      "n_tokens": 42756,
+      "n_examples": 200,
+      "ci95": [
+        1.17251141787456,
+        1.2698257713762586
+      ],
+      "nonfinite_logits": 0,
+      "max_abs_logit": 41.78125
+    },
+    "merged_4bit": {
+      "nll_per_token": 1.2826815116326304,
+      "ppl": 3.6062970992248937,
+      "n_tokens": 42756,
+      "n_examples": 200,
+      "ci95": [
+        1.2342258734190386,
+        1.335847252090558
+      ],
+      "nonfinite_logits": 0,
+      "max_abs_logit": 42.625
+    },
+    "base_4bit": {
+      "nll_per_token": 1.3563772491788004,
+      "ppl": 3.882103900915372,
+      "n_tokens": 42756,
+      "n_examples": 200,
+      "ci95": [
+        1.3072240965521378,
+        1.409842276957374
+      ],
+      "nonfinite_logits": 0,
+      "max_abs_logit": 44.15625
+    }
+  },
+  "kl": {
+    "merged||base": {
+      "kl_mean": 0.12477428773105947,
+      "top1_agreement": 0.8632895223368853,
+      "n_positions": 29749
+    },
+    "adapter||merged": {
+      "kl_mean": 1.3709689171292202e-05,
+      "top1_agreement": 0.9984873441124071,
+      "n_positions": 29749
+    },
+    "merged||merged_4bit": {
+      "kl_mean": 0.07565059963184355,
+      "top1_agreement": 0.8905509428888366,
+      "n_positions": 29749
+    },
+    "base||base_4bit": {
+      "kl_mean": 0.0787541937464814,
+      "top1_agreement": 0.8863827355541363,
+      "n_positions": 29749
+    },
+    "merged_4bit||base_4bit": {
+      "kl_mean": 0.1406434901065436,
+      "top1_agreement": 0.850650442031665,
+      "n_positions": 29749
+    },
+    "control||base": {
+      "kl_mean": 6.441314671833152e-07,
+      "top1_agreement": 0.9999327708494403,
+      "n_positions": 29749
+    }
+  },
+  "hidden_state_scan": {
+    "base": {
+      "max_abs_per_layer": [
+        0.30078125,
+        15.5625,
+        2924.0,
+        6344.0,
+        6464.0,
+        6532.0,
+        6624.0,
+        6628.0,
+        6632.0,
+        6632.0,
+        6636.0,
+        6640.0,
+        6644.0,
+        6644.0,
+        6644.0,
+        6644.0,
+        6644.0,
+        6644.0,
+        6644.0,
+        6648.0,
+        6652.0,
+        6652.0,
+        6652.0,
+        6648.0,
+        6648.0,
+        6632.0,
+        6632.0,
+        233.0,
+        126.625
+      ],
+      "global_max_abs": 6652.0
+    },
+    "merged": {
+      "max_abs_per_layer": [
+        0.30078125,
+        15.3671875,
+        2402.0,
+        5760.0,
+        5876.0,
+        5944.0,
+        6036.0,
+        6040.0,
+        6044.0,
+        6044.0,
+        6048.0,
+        6052.0,
+        6056.0,
+        6056.0,
+        6056.0,
+        6056.0,
+        6056.0,
+        6056.0,
+        6056.0,
+        6060.0,
+        6064.0,
+        6064.0,
+        6064.0,
+        6060.0,
+        6060.0,
+        6044.0,
+        6044.0,
+        238.75,
+        126.0
+      ],
+      "global_max_abs": 6064.0
+    }
+  },
+  "heldout_diffs": {
+    "base-merged": {
+      "point": 0.08395158760657379,
+      "ci95": [
+        0.07603450159630983,
+        0.09203022787970658
+      ],
+      "B": 2000
+    },
+    "base-adapter": {
+      "point": 0.08394766262621706,
+      "ci95": [
+        0.07604765955583798,
+        0.09201604266204369
+      ],
+      "B": 2000
+    },
+    "base-control": {
+      "point": -2.7918773233215806e-06,
+      "ci95": [
+        -1.1693901722848047e-05,
+        6.8885025895953635e-06
+      ],
+      "B": 2000
+    },
+    "base_4bit-merged_4bit": {
+      "point": 0.0736957375461699,
+      "ci95": [
+        0.06605678173724142,
+        0.08154643871104529
+      ],
+      "B": 2000
+    },
+    "merged-merged_4bit": {
+      "point": -0.0632196417935203,
+      "ci95": [
+        -0.06947352731500149,
+        -0.057379821132412204
+      ],
+      "B": 2000
+    },
+    "base-merged_4bit": {
+      "point": 0.020731945813053484,
+      "ci95": [
+        0.010392027370805705,
+        0.031596281139971344
+      ],
+      "B": 2000
+    },
+    "base-base_4bit": {
+      "point": -0.05296379173311642,
+      "ci95": [
+        -0.05889312442475144,
+        -0.04745420035192538
+      ],
+      "B": 2000
+    }
+  },
+  "heldout_frac_examples_improved": 0.94,
+  "train_subset": {
+    "base": {
+      "nll_per_token": 1.2916539430598442,
+      "ppl": 3.6387999493991185,
+      "n_tokens": 45055,
+      "n_examples": 200,
+      "ci95": [
+        1.2483380080186288,
+        1.3372325565426897
+      ],
+      "nonfinite_logits": 0,
+      "max_abs_logit": 41.59375
+    },
+    "merged": {
+      "nll_per_token": 1.042949667626223,
+      "ppl": 2.8375745841532782,
+      "n_tokens": 45055,
+      "n_examples": 200,
+      "ci95": [
+        1.0015844584563585,
+        1.085799882674821
+      ],
+      "nonfinite_logits": 0,
+      "max_abs_logit": 40.78125
+    }
+  },
+  "generalisation_gap": {
+    "eval_minus_train_nll": {
+      "base": 0.011759514385839775,
+      "merged": 0.1765122022128871
+    },
+    "merged_minus_base_gap": 0.16475268782704733,
+    "note": "base gap = distribution difference of the two subsets; extra gap of merged ~ memorisation"
+  },
+  "generation_config_used": {
+    "max_length": null,
+    "max_new_tokens": 200,
+    "min_length": null,
+    "min_new_tokens": null,
+    "early_stopping": null,
+    "max_time": null,
+    "stop_strings": null,
+    "do_sample": false,
+    "num_beams": null,
+    "use_mtp": null,
+    "use_cache": null,
+    "cache_implementation": null,
+    "cache_config": null,
+    "max_cache_len": null,
+    "temperature": null,
+    "top_k": null,
+    "top_p": null,
+    "min_p": null,
+    "top_h": null,
+    "typical_p": null,
+    "epsilon_cutoff": null,
+    "eta_cutoff": null,
+    "repetition_penalty": 1.0,
+    "encoder_repetition_penalty": null,
+    "length_penalty": null,
+    "no_repeat_ngram_size": null,
+    "bad_words_ids": null,
+    "renormalize_logits": null,
+    "forced_bos_token_id": null,
+    "forced_eos_token_id": null,
+    "remove_invalid_values": null,
+    "exponential_decay_length_penalty": null,
+    "suppress_tokens": null,
+    "begin_suppress_tokens": null,
+    "sequence_bias": null,
+    "token_healing": null,
+    "guidance_scale": null,
+    "watermarking_config": null,
+    "num_return_sequences": null,
+    "output_attentions": null,
+    "output_hidden_states": null,
+    "output_scores": null,
+    "output_logits": null,
+    "return_dict_in_generate": null,
+    "pad_token_id": 151643,
+    "bos_token_id": null,
+    "eos_token_id": [
+      151643,
+      151645
+    ],
+    "encoder_no_repeat_ngram_size": null,
+    "decoder_start_token_id": null,
+    "is_assistant": null,
+    "num_assistant_tokens": null,
+    "num_assistant_tokens_schedule": null,
+    "assistant_confidence_threshold": null,
+    "prompt_lookup_num_tokens": null,
+    "max_matching_ngram_size": null,
+    "assistant_early_exit": null,
+    "assistant_lookbehind": null,
+    "target_lookbehind": null,
+    "assistant_ensemble_weight": null,
+    "speculation_type": null,
+    "compile_config": null,
+    "disable_compile": null,
+    "continuous_batching_config": null,
+    "low_memory": null,
+    "penalty_alpha": null,
+    "dola_layers": null,
+    "diversity_penalty": null,
+    "num_beam_groups": null,
+    "constraints": null,
+    "force_words_ids": null,
+    "prefill_chunk_size": null,
+    "_from_model_config": null,
+    "transformers_version": "5.22.1"
+  },
+  "generations": {
+    "base": {
+      "eos_rate": 0.5,
+      "median_new_tokens": 198.5,
+      "frac_cyrillic_ok": 1.0,
+      "max_rep4": 0.533,
+      "n": 12
+    },
+    "control": {
+      "eos_rate": 0.5,
+      "median_new_tokens": 198.5,
+      "frac_cyrillic_ok": 1.0,
+      "max_rep4": 0.533,
+      "n": 12
+    },
+    "merged": {
+      "eos_rate": 0.6666666666666666,
+      "median_new_tokens": 147.0,
+      "frac_cyrillic_ok": 1.0,
+      "max_rep4": 0.447,
+      "n": 12
+    },
+    "merged_4bit": {
+      "eos_rate": 0.5833333333333334,
+      "median_new_tokens": 165.5,
+      "frac_cyrillic_ok": 1.0,
+      "max_rep4": 0.635,
+      "n": 12
+    },
+    "merged_identical_to_base": 0,
+    "merged4_identical_to_merged": 0
+  },
+  "tokenizer_fingerprints": {
+    "base": {
+      "chat_template_sha": "cd8e9439f0570856",
+      "eos": "<|im_end|>",
+      "pad": "<|endoftext|>",
+      "bos": null,
+      "len": 151665,
+      "probe_ids_sha": "6504089ff91de775"
+    },
+    "adapter": {
+      "chat_template_sha": "cd8e9439f0570856",
+      "eos": "<|im_end|>",
+      "pad": "<|endoftext|>",
+      "bos": null,
+      "len": 151665,
+      "probe_ids_sha": "6504089ff91de775"
+    },
+    "merged": {
+      "chat_template_sha": "cd8e9439f0570856",
+      "eos": "<|im_end|>",
+      "pad": "<|endoftext|>",
+      "bos": null,
+      "len": 151665,
+      "probe_ids_sha": "6504089ff91de775"
+    },
+    "merged_4bit": {
+      "chat_template_sha": "cd8e9439f0570856",
+      "eos": "<|im_end|>",
+      "pad": "<|endoftext|>",
+      "bos": null,
+      "len": 151665,
+      "probe_ids_sha": "6504089ff91de775"
+    }
+  },
+  "generation_config_shipped": {
+    "base": {
+      "do_sample": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repetition_penalty": 1.1,
+      "eos_token_id": [
+        151645,
+        151643
+      ],
+      "pad_token_id": 151643,
+      "bos_token_id": 151643
+    },
+    "merged": {
+      "do_sample": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repetition_penalty": 1.1,
+      "eos_token_id": [
+        151645,
+        151643
+      ],
+      "pad_token_id": 151643,
+      "bos_token_id": 151643
+    },
+    "merged_4bit": {
+      "do_sample": true,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "repetition_penalty": 1.1,
+      "eos_token_id": [
+        151645,
+        151643
+      ],
+      "pad_token_id": 151643,
+      "bos_token_id": 151643
+    }
+  },
+  "weights_control": {
+    "per_type": {
+      "down_proj": {
+        "median_rel_delta": 0.0,
+        "max_rel_delta": 0.0,
+        "n": 28
+      },
+      "gate_proj": {
+        "median_rel_delta": 0.0,
+        "max_rel_delta": 0.0,
+        "n": 28
+      },
+      "k_proj": {
+        "median_rel_delta": 0.0,
+        "max_rel_delta": 0.0,
+        "n": 28
+      },
+      "o_proj": {
+        "median_rel_delta": 0.0,
+        "max_rel_delta": 0.0,
+        "n": 28
+      },
+      "q_proj": {
+        "median_rel_delta": 0.0,
+        "max_rel_delta": 0.0,
+        "n": 28
+      },
+      "up_proj": {
+        "median_rel_delta": 0.0,
+        "max_rel_delta": 0.0,
+        "n": 28
+      },
+      "v_proj": {
+        "median_rel_delta": 0.0,
+        "max_rel_delta": 0.0,
+        "n": 28
+      }
+    },
+    "seconds": 1.3,
+    "n_nontarget_compared": 142
+  },
+  "verdict": {
+    "model_trained": "YES",
+    "failed_core_checks": [],
+    "missing_core_checks": [],
+    "negative_control_flagged_untrained": "YES",
+    "control_checks": {
+      "A2_control": "FAIL",
+      "B1_control": "FAIL",
+      "C1_control": "FAIL",
+      "D2_control": "FAIL"
+    },
+    "4bit_carries_training": "YES",
+    "4bit_checks": {
+      "Q1": "PASS",
+      "Q2": "PASS",
+      "C2": "PASS",
+      "C2b": "PASS",
+      "D3": "PASS",
+      "E1_merged_4bit": "WARN"
+    }
+  },
+  "finished": "2026-11-11T18:19:44.853+00:00"
+}

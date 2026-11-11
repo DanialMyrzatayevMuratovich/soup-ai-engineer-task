@@ -1,0 +1,19 @@
+{
+  "name": "fault_cfg_typo_key_train_dry_run",
+  "cmd": [
+    "soup",
+    "train",
+    "--config",
+    "data/faults/cfg_typo_key.yaml",
+    "--dry-run",
+    "--yes"
+  ],
+  "started": "2026-11-11T17:45:03.446+00:00",
+  "start_epoch": 1794419103.4468217,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:45:04.227+00:00",
+  "end_epoch": 1794419104.2271943,
+  "rc": 1
+}

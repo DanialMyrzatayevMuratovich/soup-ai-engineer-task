@@ -1,0 +1,16 @@
+{
+  "name": "help_quantize",
+  "cmd": [
+    "soup",
+    "quantize",
+    "--help"
+  ],
+  "started": "2026-11-11T17:41:05.413+00:00",
+  "start_epoch": 1794418865.4139829,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:41:06.226+00:00",
+  "end_epoch": 1794418866.2268631,
+  "rc": 0
+}

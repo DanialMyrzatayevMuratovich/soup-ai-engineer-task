@@ -1,0 +1,13 @@
+{
+  "source": "outputs/soup_run/checkpoint-188/trainer_state.json",
+  "global_step": 188,
+  "max_steps": 188,
+  "n_logged": 37,
+  "first_loss": 1.3668246269226074,
+  "last_loss": 0.9926782608032226,
+  "min_loss": 0.9926782608032226,
+  "max_grad_norm": 0.7732017040252686,
+  "nonfinite_entries": 0,
+  "train_runtime": null,
+  "skipped_steps_fp16": null
+}

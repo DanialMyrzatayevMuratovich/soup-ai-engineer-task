@@ -1,0 +1,15 @@
+{
+  "name": "soup_version",
+  "cmd": [
+    "soup",
+    "--version"
+  ],
+  "started": "2026-11-11T17:40:55.033+00:00",
+  "start_epoch": 1794418855.0334902,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:40:56.221+00:00",
+  "end_epoch": 1794418856.2211728,
+  "rc": 0
+}

@@ -1,0 +1,23 @@
+{
+  "name": "soup_data_doctor_mask",
+  "cmd": [
+    "soup",
+    "data",
+    "doctor",
+    "data/train.jsonl",
+    "--model",
+    "Qwen/Qwen2.5-1.5B-Instruct",
+    "--max-length",
+    "1024",
+    "--show-mask",
+    "2"
+  ],
+  "started": "2026-11-11T17:42:42.168+00:00",
+  "start_epoch": 1794418962.168135,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 900,
+  "finished": "2026-11-11T17:42:51.100+00:00",
+  "end_epoch": 1794418971.1006331,
+  "rc": 0
+}

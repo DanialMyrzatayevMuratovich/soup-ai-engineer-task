@@ -1,0 +1,8 @@
+{
+  "rc": 0,
+  "nvsmi_max_used_gib": 0.1357421875,
+  "nvsmi_baseline_gib": 0.0029296875,
+  "torch_allocated_gib": 0.0118408203125,
+  "torch_reserved_gib": 0.01953125,
+  "context_overhead_gib": 0.11328125
+}

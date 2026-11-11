@@ -1,0 +1,19 @@
+{
+  "name": "soup_ship_offline",
+  "cmd": [
+    "soup",
+    "ship",
+    "--evidence",
+    "outputs/ship_evidence_custom.json",
+    "--output",
+    "outputs/ship_verdict_offline.json"
+  ],
+  "started": "2026-11-11T18:26:50.075+00:00",
+  "start_epoch": 1794421610.0754542,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T18:26:51.242+00:00",
+  "end_epoch": 1794421611.242023,
+  "rc": 0
+}

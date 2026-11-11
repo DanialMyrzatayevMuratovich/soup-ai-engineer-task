@@ -1,0 +1,11 @@
+2026-11-11T17:42:00.705+00:00 | $ /usr/bin/python3 -c 
+import json, time, torch
+torch.cuda.init()
+a = torch.randn(1024, 1024, device="cuda", dtype=torch.float16)
+b = a @ a                     # forces cuBLAS handle + workspace
+torch.cuda.synchronize()
+print(json.dumps({"torch_allocated_gib": torch.cuda.memory_allocated() / 2**30,
+                  "torch_reserved_gib": torch.cuda.memory_reserved() / 2**30}), flush=True)
+time.sleep(6)                 # let the 1 s nvidia-smi sampler see it
+2026-11-11T17:42:02.888+00:00 | {"torch_allocated_gib": 0.0118408203125, "torch_reserved_gib": 0.01953125}
+2026-11-11T17:42:09.341+00:00 | exit code 0 after 8.6s

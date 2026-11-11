@@ -1,0 +1,17 @@
+{
+  "name": "fault_clean_200_validate",
+  "cmd": [
+    "soup",
+    "data",
+    "validate",
+    "data/faults/clean_200.jsonl"
+  ],
+  "started": "2026-11-11T17:43:25.176+00:00",
+  "start_epoch": 1794419005.1768355,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:43:25.962+00:00",
+  "end_epoch": 1794419005.9627955,
+  "rc": 0
+}

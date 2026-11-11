@@ -1,0 +1,11 @@
+2026-11-11T17:41:08.149+00:00 | $ soup doctor --help
+2026-11-11T17:41:09.082+00:00 |  Usage: soup doctor [OPTIONS]                                                                                                                                                                           
+2026-11-11T17:41:09.084+00:00 |  Check system dependencies, GPU, and compatibility.                                                                                                                                                     
+2026-11-11T17:41:09.090+00:00 | ╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+2026-11-11T17:41:09.090+00:00 | │ --nccl                   Measure NCCL bandwidth and check against reference table.                                                                                                                   │
+2026-11-11T17:41:09.090+00:00 | │ --disk                   Detect the disk media type (NVMe / SSD / HDD). Layer streaming's disk overflow tier needs NVMe. Off by default: the probe costs ~9 s on Windows, and on Linux it WRITES a   │
+2026-11-11T17:41:09.090+00:00 | │                          ~64 MiB scratch file (.soup-diskprobe-*, git-ignored) into the current directory to measure sequential read throughput.                                                     │
+2026-11-11T17:41:09.090+00:00 | │ --config  -c      <str>  Also check a soup.yaml: report which of the settings it actually sets are not read on its task and backend (#755).                                                          │
+2026-11-11T17:41:09.090+00:00 | │ --help                   Show this message and exit.                                                                                                                                                 │
+2026-11-11T17:41:09.090+00:00 | ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+2026-11-11T17:41:09.173+00:00 | exit code 0 after 1.0s

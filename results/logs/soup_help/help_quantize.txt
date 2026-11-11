@@ -1,0 +1,15 @@
+$ soup quantize --help
+ Usage: soup quantize [OPTIONS] {model_path}                                                                                                                                                            
+ Quantize a model - ergonomic alias for `soup export --format <to>`.                                                                                                                                    
+ Example:                                                                                                                                                                                               
+ soup quantize ./out --to gguf --bits 4                                                                                                                                                                 
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ *    model_path      <str>  Source checkpoint (safetensors directory or single .safetensors). [required]                                                                                             │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --to              <str>  Target format: gguf | onnx | tensorrt. [default: gguf]                                                                                                                      │
+│ --bits            <int>  Quantization bits (1-16; respected by gguf). [default: 4]                                                                                                                   │
+│ --output  -o      <str>  Destination directory (default: <model_path>-<to>).                                                                                                                         │
+│ --help                   Show this message and exit.                                                                                                                                                 │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+exit code 0 after 0.7s

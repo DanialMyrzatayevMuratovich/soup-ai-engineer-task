@@ -1,0 +1,17 @@
+{
+  "name": "soup_data_stats",
+  "cmd": [
+    "soup",
+    "data",
+    "stats",
+    "data/train.jsonl"
+  ],
+  "started": "2026-11-11T17:42:28.795+00:00",
+  "start_epoch": 1794418948.795455,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 600,
+  "finished": "2026-11-11T17:42:29.780+00:00",
+  "end_epoch": 1794418949.7802534,
+  "rc": 0
+}

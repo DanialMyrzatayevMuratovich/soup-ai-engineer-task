@@ -1,0 +1,16 @@
+{
+  "name": "help_profile",
+  "cmd": [
+    "soup",
+    "profile",
+    "--help"
+  ],
+  "started": "2026-11-11T17:41:02.822+00:00",
+  "start_epoch": 1794418862.8226173,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:41:03.628+00:00",
+  "end_epoch": 1794418863.6285663,
+  "rc": 0
+}

@@ -1,0 +1,13 @@
+{
+  "source": "outputs/nc_run/checkpoint-4/trainer_state.json",
+  "global_step": 4,
+  "max_steps": 4,
+  "n_logged": 0,
+  "first_loss": null,
+  "last_loss": null,
+  "min_loss": null,
+  "max_grad_norm": null,
+  "nonfinite_entries": 0,
+  "train_runtime": null,
+  "skipped_steps_fp16": null
+}

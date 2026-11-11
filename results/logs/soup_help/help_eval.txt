@@ -1,0 +1,31 @@
+$ soup eval --help
+ Usage: soup eval [OPTIONS] COMMAND [ARGS]...                                                                                                                                                           
+ Evaluate models: benchmarks, custom evals, LLM judge, leaderboard.                                                                                                                                     
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ benchmark      Evaluate on standard benchmarks (wraps lm-evaluation-harness).                                                                                                                        │
+│ aider          Run Aider's Polyglot coding benchmark in its official Docker image.                                                                                                                   │
+│ custom         Run custom evaluation tasks from a JSONL file.                                                                                                                                        │
+│ judge          Evaluate model outputs using LLM-as-a-judge.                                                                                                                                          │
+│ auto           Run automatic evaluation using config from soup.yaml.                                                                                                                                 │
+│ compare        Compare eval results between two training runs.                                                                                                                                       │
+│ leaderboard    Show local leaderboard across all evaluated models.                                                                                                                                   │
+│ human          Run human A/B evaluation between two models.                                                                                                                                          │
+│ gate           Run an eval-gate suite standalone (post-hoc verdict).                                                                                                                                 │
+│ quant-check    Compare accuracy before vs after quantization on the same eval suite.                                                                                                                 │
+│ design         Draft an evaluation suite from training data + a one-line goal.                                                                                                                       │
+│ discover       Discover a held-out canary set for regression detection.                                                                                                                              │
+│ lock           Freeze an EvalDesign as a checksummed eval_suite artifact.                                                                                                                            │
+│ coverage       Heuristic coverage / gap analysis for a locked or drafted suite.                                                                                                                      │
+│ against        Run-vs-run regression check (paired-bootstrap CI).                                                                                                                                    │
+│ gate-install   Install a pre-push regression gate for the selected baseline.                                                                                                                         │
+│ unlearning     Score an unlearn run on TOFU / MUSE / WMDP.                                                                                                                                           │
+│ behavior       Score a run on a bundled behaviour battery (pre/post diff).                                                                                                                           │
+│ capability     Run a bundled capability profile (MMLU-Pro / GPQA / AIME / ...).                                                                                                                      │
+│ checklist      Run CheckList MFT / INV / DIR behavioural tests.                                                                                                                                      │
+│ irt-subset     Pick a minimum-cost eval subset that preserves ranking power.                                                                                                                         │
+│ citation       Score citation precision / recall / F1 over a JSONL (#202).                                                                                                                           │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+exit code 0 after 0.7s

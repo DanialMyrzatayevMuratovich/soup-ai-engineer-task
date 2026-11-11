@@ -1,0 +1,11 @@
+{
+  "train_config": "soup.yaml",
+  "adapter": "/content/soup-task/outputs/soup_run",
+  "train_root": "/content/soup-task/outputs/soup_run",
+  "train_backend": "soup",
+  "train_cmd_name": "soup_train",
+  "merged": "/content/soup-task/outputs/merged",
+  "merged_4bit": "/content/soup-task/outputs/merged_4bit",
+  "nc_adapter": "/content/soup-task/outputs/nc_run",
+  "nc_merged": "/content/soup-task/outputs/nc_merged"
+}

@@ -1,0 +1,41 @@
+verify_trained.py summary  (2026-11-11T18:21:18.129+00:00)
+==============================================================================
+views: base, adapter, merged
+
+Held-out answer-token NLL (nats/token), 95% bootstrap CI over examples:
+  base         nll=1.2835 ppl=3.609 ci95=[1.2203, 1.3462] tokens=22298 nonfinite=0
+  adapter      nll=1.2004 ppl=3.321 ci95=[1.1324, 1.2655] tokens=22298 nonfinite=0
+  merged       nll=1.2835 ppl=3.609 ci95=[1.2203, 1.3462] tokens=22298 nonfinite=0
+Paired differences (positive = second model has lower NLL):
+  base-merged                +0.0000  ci95=[+0.0000, +0.0000]
+  base-adapter               +0.0832  ci95=[+0.0731, +0.0944]
+KL(p||q) and top-1 agreement on answer positions:
+  merged||base               kl=0.00000 top1=1.0000 positions=14806
+  adapter||merged            kl=0.12036 top1=0.8660 positions=14806
+
+Checks:
+  [PASS] A1          LoRA modules present and mapped onto base weights
+  [PASS] A2          lora_B moved away from its zero init
+  [PASS] B4          Predicted fp16 rounding loss of the update at merge
+  [PASS] A3          Adapter tensors PEFT loaded == tensors in the file
+  [FAIL] B1          Merged weights differ from base (median relative delta)
+  [FAIL] B2          Merged == fp16(base + scale*B@A), computed independently
+  [PASS] B3          Non-LoRA parameters untouched by the merge
+  [FAIL] C1          Held-out answer NLL: base - merged (nats/token, paired bootstrap)
+  [FAIL] D1          Merged behaves like base+adapter (KL, top-1)
+  [FAIL] D2          Merged changed next-token distributions vs base (KL)
+  [PASS] E2          No inf/NaN logits (fp16 overflow on T4)
+  [PASS] T1          Tokenizer + chat template identical across artifacts
+  [PASS] T2          generation_config.json consistent across artifacts
+
+VERDICT: {"model_trained": "NO", "failed_core_checks": ["B1", "B2", "C1", "D1", "D2"], "missing_core_checks": []}
+
+What this check does NOT detect:
+  - Whether answers are correct, factual or helpful. NLL rewards the likelihood of the reference answers, which are machine-translated model outputs: a gain can come from copying their style/translation artefacts, not from substance.
+  - Regressions outside the held-out distribution (other tasks, other languages, safety, refusals, long context, multi-turn). Held-out rows come from the same dataset as train.
+  - Paraphrased train/eval contamination: the leakage check in data prep is lexical only.
+  - Behaviour under sampling (temperature/top-p) or other decoding settings: everything here is greedy or teacher-forced with repetition_penalty=1.0.
+  - A deployment that uses a different runtime, chat template or system prompt (GGUF/Ollama/vLLM). Train and eval share Qwen's default system prompt, so a template error made consistently in both places cancels out and is invisible here.
+  - Seed-to-seed variance: thresholds are fixed heuristics, not calibrated over several runs.
+  - Small harmful changes on rare inputs; the probe set is ~12 prompts.
+  - The 4-bit checks cover the bitsandbytes NF4 artifact only, not GGUF/AWQ/GPTQ exports.

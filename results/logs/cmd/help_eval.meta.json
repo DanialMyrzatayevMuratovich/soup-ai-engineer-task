@@ -1,0 +1,16 @@
+{
+  "name": "help_eval",
+  "cmd": [
+    "soup",
+    "eval",
+    "--help"
+  ],
+  "started": "2026-11-11T17:41:10.611+00:00",
+  "start_epoch": 1794418870.6114354,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:41:11.440+00:00",
+  "end_epoch": 1794418871.4401562,
+  "rc": 0
+}

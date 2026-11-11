@@ -1,0 +1,10 @@
+2026-11-11T17:41:04.201+00:00 | $ soup plan --help
+2026-11-11T17:41:04.856+00:00 |  Usage: soup plan [OPTIONS]                                                                                                                                                                             
+2026-11-11T17:41:04.857+00:00 |  Render a pre-flight training plan (cost / ETA / SHA / VRAM) and write soup.tfstate for `soup apply` to consult (v0.64.0).                                                                              
+2026-11-11T17:41:04.862+00:00 | ╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+2026-11-11T17:41:04.862+00:00 | │ --config             -c      <str>  Path to soup.yaml. [default: soup.yaml]                                                                                                                          │
+2026-11-11T17:41:04.862+00:00 | │ --state                      <str>  Path to write the state file (default: ./soup.tfstate). [default: soup.tfstate]                                                                                  │
+2026-11-11T17:41:04.862+00:00 | │ --minillm-on-policy                 Use on-policy MiniLLM; requires training.minillm_enabled=true on task=distill.                                                                                   │
+2026-11-11T17:41:04.862+00:00 | │ --help                              Show this message and exit.                                                                                                                                      │
+2026-11-11T17:41:04.862+00:00 | ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+2026-11-11T17:41:04.930+00:00 | exit code 0 after 0.7s

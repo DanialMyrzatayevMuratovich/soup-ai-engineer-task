@@ -1,0 +1,29 @@
+{
+  "name": "soup_quantize_4bit",
+  "cmd": [
+    "/usr/bin/python3",
+    "/content/soup-task/kit_common.py",
+    "peak",
+    "--json",
+    "logs/peak_soup_quantize_4bit.json",
+    "--soup",
+    "--",
+    "merge",
+    "--adapter",
+    "outputs/soup_run",
+    "--output",
+    "outputs/merged_4bit",
+    "--dtype",
+    "float16",
+    "--save-format",
+    "4bit"
+  ],
+  "started": "2026-11-11T18:09:15.315+00:00",
+  "start_epoch": 1794420555.3157878,
+  "cwd": "/content/soup-task",
+  "peak_json": "logs/peak_soup_quantize_4bit.json",
+  "timeout_s": 3600,
+  "finished": "2026-11-11T18:10:46.250+00:00",
+  "end_epoch": 1794420646.250267,
+  "rc": 0
+}

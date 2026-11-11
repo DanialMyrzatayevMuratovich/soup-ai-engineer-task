@@ -1,0 +1,17 @@
+{
+  "name": "fault_dup_25pct_validate",
+  "cmd": [
+    "soup",
+    "data",
+    "validate",
+    "data/faults/dup_25pct.jsonl"
+  ],
+  "started": "2026-11-11T17:43:26.476+00:00",
+  "start_epoch": 1794419006.4768088,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:43:27.678+00:00",
+  "end_epoch": 1794419007.6782093,
+  "rc": 0
+}

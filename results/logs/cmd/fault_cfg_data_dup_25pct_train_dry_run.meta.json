@@ -1,0 +1,19 @@
+{
+  "name": "fault_cfg_data_dup_25pct_train_dry_run",
+  "cmd": [
+    "soup",
+    "train",
+    "--config",
+    "data/faults/cfg_data_dup_25pct.yaml",
+    "--dry-run",
+    "--yes"
+  ],
+  "started": "2026-11-11T17:44:35.785+00:00",
+  "start_epoch": 1794419075.7853239,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:44:39.909+00:00",
+  "end_epoch": 1794419079.909805,
+  "rc": 0
+}

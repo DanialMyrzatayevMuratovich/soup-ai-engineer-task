@@ -1,0 +1,16 @@
+{
+  "name": "help_data",
+  "cmd": [
+    "soup",
+    "data",
+    "--help"
+  ],
+  "started": "2026-11-11T17:41:00.228+00:00",
+  "start_epoch": 1794418860.2285368,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:41:01.047+00:00",
+  "end_epoch": 1794418861.0472794,
+  "rc": 0
+}

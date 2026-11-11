@@ -1,0 +1,19 @@
+{
+  "name": "fault_cfg_clean_train_dry_run",
+  "cmd": [
+    "soup",
+    "train",
+    "--config",
+    "data/faults/cfg_clean.yaml",
+    "--dry-run",
+    "--yes"
+  ],
+  "started": "2026-11-11T17:44:22.610+00:00",
+  "start_epoch": 1794419062.6100585,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:44:26.640+00:00",
+  "end_epoch": 1794419066.6408803,
+  "rc": 0
+}

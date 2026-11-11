@@ -1,0 +1,52 @@
+$ soup data --help
+ Usage: soup data [OPTIONS] COMMAND [ARGS]...                                                                                                                                                           
+ Dataset tools: inspect, convert, merge, dedup, validate, stats.                                                                                                                                        
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ inspect         Inspect a dataset: show stats and sample rows.                                                                                                                                       │
+│ validate        Validate a dataset, returning exit 3 for input errors and 2 for unusable data.                                                                                                       │
+│ convert         Convert a dataset between formats (alpaca, sharegpt, chatml).                                                                                                                        │
+│ merge           Merge multiple datasets into a single file.                                                                                                                                          │
+│ dedup           Remove near-duplicate rows: MinHash (default) or embeddings (--semantic).                                                                                                            │
+│ filter          Filter dataset by quality: perplexity and/or coherence scoring.                                                                                                                      │
+│ stats           Extended dataset statistics: length distribution, token counts, languages.                                                                                                           │
+│ sample          Sample a subset of a dataset using various strategies.                                                                                                                               │
+│ split           Split dataset into train/val/test files.                                                                                                                                             │
+│ search          Search HuggingFace Hub for datasets.                                                                                                                                                 │
+│ preview         Preview a remote HuggingFace dataset: metadata, splits, features.                                                                                                                    │
+│ download        Download a HuggingFace dataset and save as JSONL.                                                                                                                                    │
+│ augment         Augment a dataset via LLM (rephrase / translate / style).                                                                                                                            │
+│ register        Register a local dataset by name for use in soup.yaml.                                                                                                                               │
+│ unregister      Remove a dataset from the local registry.                                                                                                                                            │
+│ from-traces     Harvest preference pairs from production traces.                                                                                                                                     │
+│ review          Preview preference pairs for manual review.                                                                                                                                          │
+│ registry        List all registered datasets.                                                                                                                                                        │
+│ push            Upload a local JSONL dataset to a model hub as a dataset repo.                                                                                                                       │
+│ preprocess      AOT-tokenize a dataset and cache to disk for reuse across runs.                                                                                                                      │
+│ ingest          Ingest a document into JSONL with one row per page / heading.                                                                                                                        │
+│ demo            List or copy a bundled demo dataset (v0.43.0).                                                                                                                                       │
+│ recipe          Validate a Data Recipe DAG and optionally execute every node.                                                                                                                        │
+│ gen-magpie      Generate synthetic data from a chat-template prefix.                                                                                                                                 │
+│ best-of-n       Best-of-N rejection sampling: sample N per prompt, a judge picks the winner.                                                                                                         │
+│ evolve          Evol-Instruct: deepen (depth) or diversify (breadth) seed instructions.                                                                                                              │
+│ persona-mix     Sample a prompt × persona × style matrix.                                                                                                                                            │
+│ brain-rot       Score a dataset for brain-rot per arXiv 2510.13928.                                                                                                                                  │
+│ generate        Generate synthetic training data using an LLM.                                                                                                                                       │
+│ forge           Run the multi-stage synthetic data pipeline with provenance.                                                                                                                         │
+│ score           Composite data-quality scorecard (PII + keyword triage + lang + edu + dec).                                                                                                          │
+│ decontaminate   Drop rows that overlap public benchmarks (n-gram heuristic).                                                                                                                         │
+│ toxicity        Run an abuse-keyword heuristic (not a toxicity classifier).                                                                                                                          │
+│ langdetect      Tag each row with a 2-letter language code (heuristic).                                                                                                                              │
+│ pii             Flag rows containing email / phone / SSN / credit-card patterns.                                                                                                                     │
+│ educational     Tag each row with an educational-value score [0, 1].                                                                                                                                 │
+│ mix             BETA: optimise per-dataset mixture weights against a proxy run.                                                                                                                      │
+│ active-sample   Surface the most uncertain prod traces for human review.                                                                                                                             │
+│ doctor          Chat-template compatibility report + loss-mask X-ray.                                                                                                                                │
+│ lint            Preference-data linter (dpo/orpo/simpo/ipo/bco/kto).                                                                                                                                 │
+│ topics          Cluster a dataset into topics and show a coverage table.                                                                                                                             │
+│ clean           Clean and repair a fine-tuning dataset: control characters, whitespace, format sanity.                                                                                               │
+│ canary          Dataset canaries (memorization probe).                                                                                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+exit code 0 after 0.7s

@@ -1,0 +1,16 @@
+{
+  "name": "cuda_context_probe",
+  "cmd": [
+    "/usr/bin/python3",
+    "-c",
+    "\nimport json, time, torch\ntorch.cuda.init()\na = torch.randn(1024, 1024, device=\"cuda\", dtype=torch.float16)\nb = a @ a                     # forces cuBLAS handle + workspace\ntorch.cuda.synchronize()\nprint(json.dumps({\"torch_allocated_gib\": torch.cuda.memory_allocated() / 2**30,\n                  \"torch_reserved_gib\": torch.cuda.memory_reserved() / 2**30}), flush=True)\ntime.sleep(6)                 # let the 1 s nvidia-smi sampler see it\n"
+  ],
+  "started": "2026-11-11T17:42:00.560+00:00",
+  "start_epoch": 1794418920.5605922,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 120,
+  "finished": "2026-11-11T17:42:09.341+00:00",
+  "end_epoch": 1794418929.3414805,
+  "rc": 0
+}

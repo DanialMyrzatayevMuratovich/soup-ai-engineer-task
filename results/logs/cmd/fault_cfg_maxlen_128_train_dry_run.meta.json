@@ -1,0 +1,19 @@
+{
+  "name": "fault_cfg_maxlen_128_train_dry_run",
+  "cmd": [
+    "soup",
+    "train",
+    "--config",
+    "data/faults/cfg_maxlen_128.yaml",
+    "--dry-run",
+    "--yes"
+  ],
+  "started": "2026-11-11T17:45:04.748+00:00",
+  "start_epoch": 1794419104.7489007,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:45:08.899+00:00",
+  "end_epoch": 1794419108.8991368,
+  "rc": 0
+}

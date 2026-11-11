@@ -1,0 +1,79 @@
+[
+  {
+    "stage": "train (data_max_row, T=994)",
+    "est_alloc_gib": 7.253749847412109,
+    "est_nvsmi_gib": 8.09212483215332,
+    "meas_alloc_gib": 6.7186360359191895,
+    "meas_reserved_gib": 14.384765625,
+    "meas_nvsmi_gib": 14.5244140625,
+    "meas_nvsmi_minus_baseline_gib": 14.521484375,
+    "rss_gib": 4.260379791259766,
+    "source": "soup_train",
+    "gap_alloc_gib": -0.5351138114929199,
+    "gap_alloc_pct": -7.377064590721036,
+    "allocator_cache_gib": 7.6661295890808105,
+    "outside_torch_gib": 0.13671875,
+    "hints": [
+      "reserved >> allocated: caching allocator kept freed blocks (fragmentation from variable-length batches)"
+    ]
+  },
+  {
+    "stage": "merge",
+    "est_alloc_gib": 0.0,
+    "est_nvsmi_gib": 0.113,
+    "meas_alloc_gib": 0.06878662109375,
+    "meas_reserved_gib": 0.0703125,
+    "meas_nvsmi_gib": 0.1728515625,
+    "meas_nvsmi_minus_baseline_gib": 0.169921875,
+    "rss_gib": 6.598232269287109,
+    "source": "soup_merge",
+    "gap_alloc_gib": 0.06878662109375,
+    "gap_alloc_pct": null,
+    "allocator_cache_gib": 0.00152587890625,
+    "outside_torch_gib": 0.099609375,
+    "est_ram_gib": [
+      2.995448112487793,
+      5.870840072631836
+    ],
+    "hints": [
+      "peak RSS 6.60 GiB is above the estimated RAM range 3.00-5.87 GiB (merge cost is host RAM when Soup merges on CPU)"
+    ]
+  },
+  {
+    "stage": "quantize_4bit",
+    "est_alloc_gib": 1.4991258382797241,
+    "est_nvsmi_gib": 1.7620384221076966,
+    "meas_alloc_gib": 1.0989656448364258,
+    "meas_reserved_gib": 1.14453125,
+    "meas_nvsmi_gib": 1.2626953125,
+    "meas_nvsmi_minus_baseline_gib": 1.259765625,
+    "rss_gib": 6.597469329833984,
+    "source": "soup_quantize_4bit",
+    "gap_alloc_gib": -0.40016019344329834,
+    "gap_alloc_pct": -26.692902171740958,
+    "allocator_cache_gib": 0.04556560516357422,
+    "outside_torch_gib": 0.115234375,
+    "hints": [
+      "measured << estimate: longest padded batch shorter than assumed, loss/logits implemented more frugally (chunked/fused CE, logits_to_keep), or CUDA not used in this process"
+    ]
+  },
+  {
+    "stage": "verify",
+    "est_alloc_gib": 10.335583448410034,
+    "est_nvsmi_gib": 10.448583448410034,
+    "meas_alloc_gib": 6.968690395355225,
+    "meas_reserved_gib": 7.318359375,
+    "meas_nvsmi_gib": 12.0107421875,
+    "meas_nvsmi_minus_baseline_gib": 12.0078125,
+    "rss_gib": 4.489826202392578,
+    "source": "verify",
+    "gap_alloc_gib": -3.3668930530548096,
+    "gap_alloc_pct": -32.57574252929817,
+    "allocator_cache_gib": 0.3496689796447754,
+    "outside_torch_gib": 4.689453125,
+    "hints": [
+      "measured << estimate: longest padded batch shorter than assumed, loss/logits implemented more frugally (chunked/fused CE, logits_to_keep), or CUDA not used in this process",
+      "nvidia-smi above torch reserved: CUDA context, cuBLAS/cuDNN workspaces, other processes on the GPU"
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "train",
+    "--config",
+    "soup_nc.yaml",
+    "--yes"
+  ],
+  "soup": true,
+  "script": null,
+  "started": "2026-11-11T18:10:58.790+00:00",
+  "finished": "2026-11-11T18:11:54.762+00:00",
+  "wall_s": 56.0,
+  "pid": 8816,
+  "ru_maxrss_gib": 4.079795837402344,
+  "ru_maxrss_children_gib": 4.079795837402344,
+  "cuda_initialized": true,
+  "device": "Tesla T4",
+  "torch_max_allocated_gib": 5.629924297332764,
+  "torch_max_reserved_gib": 8.712890625
+}

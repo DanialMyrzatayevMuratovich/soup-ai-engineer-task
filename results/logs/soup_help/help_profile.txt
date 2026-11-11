@@ -1,0 +1,17 @@
+$ soup profile --help
+ Usage: soup profile [OPTIONS]                                                                                                                                                                          
+ Estimate memory, speed, and GPU requirements BEFORE training.                                                                                                                                          
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --config                  -c      <str>                         Path to soup.yaml config file (default soup.yaml)                                                                                    │
+│ --gpu                     -g      <str>                         Target GPU for recommendations (e.g., rtx3090, rtx4090, a100, h100). Auto-detects if not set.                                        │
+│ --json                                                          Output as JSON for scripting                                                                                                         │
+│ --model                   -m      <str>                         A Hugging Face model id or a local model directory, priced without a soup.yaml from its config.json (works offline once cached).     │
+│ --seq                             <int range> [64<=x<=1048576]  With --model: sequence length (default 2048)                                                                                         │
+│ --batch                           <int range> [1<=x<=1024]      With --model: batch size (default 4)                                                                                                 │
+│ --method                          <str>                         With --model: lora, qlora (default) or full                                                                                          │
+│ --lora-r                          <int range> [1<=x<=4096]      With --model: LoRA rank (default 64)                                                                                                 │
+│ --optimizer                       <str>                         With --model: optimizer (default adamw_torch)                                                                                        │
+│ --gradient-checkpointing          <str>                         With --model: off (default), full, medium, selective or auto                                                                         │
+│ --help                                                          Show this message and exit.                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+exit code 0 after 0.7s

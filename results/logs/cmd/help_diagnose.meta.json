@@ -1,0 +1,16 @@
+{
+  "name": "help_diagnose",
+  "cmd": [
+    "soup",
+    "diagnose",
+    "--help"
+  ],
+  "started": "2026-11-11T17:41:09.314+00:00",
+  "start_epoch": 1794418869.314411,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:41:10.482+00:00",
+  "end_epoch": 1794418870.4826372,
+  "rc": 0
+}

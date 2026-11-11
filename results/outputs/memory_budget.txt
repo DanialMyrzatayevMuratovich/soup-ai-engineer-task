@@ -1,0 +1,31 @@
+Model config from: /root/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306/config.json
+Params total 1,543,714,304 (embed 233,373,696, layers 1,310,339,072, tied=True, qkv_bias=True)
+LoRA r=16 alpha=32 scale=2: 18,464,768 params in 196 modules (1.20% of base)
+   q_proj     in=1536  out=1536  r*(in+out)=  49,152  x layers =   1,376,256
+   k_proj     in=1536  out=256   r*(in+out)=  28,672  x layers =     802,816
+   v_proj     in=1536  out=256   r*(in+out)=  28,672  x layers =     802,816
+   o_proj     in=1536  out=1536  r*(in+out)=  49,152  x layers =   1,376,256
+   gate_proj  in=1536  out=8960  r*(in+out)= 167,936  x layers =   4,702,208
+   up_proj    in=1536  out=8960  r*(in+out)= 167,936  x layers =   4,702,208
+   down_proj  in=8960  out=1536  r*(in+out)= 167,936  x layers =   4,702,208
+
+TRAINING  (config_max_length: T=1024, data_max_row: T=994, data_median_row: T=230, B=2)
+component (GiB)                      config_max_length        data_max_row     data_median_row
+base weights fp16                                 2.88                2.88                2.88
+LoRA w+grad+Adam (fp32)                           0.28                0.28                0.28
+checkpointed layer inputs                         0.16                0.16                0.04
+one layer recompute                               0.33                0.32                0.07
+logits fwd (10 B/elem)                            2.90                2.81                0.65
+logits bwd (14 B/elem)                            4.06                3.94                0.91
+(stack if NO grad ckpt)                           7.07                6.86                1.59
+= est. torch max_allocated                        7.38                7.25                4.10
+  + allocator cache                               8.12                7.98                4.51
+  + CUDA context = nvidia-smi                     8.23                8.09                4.62
+peak set by                                logits/loss         logits/loss         logits/loss
+fits 15.0 GiB card                                True                True                True
+
+MERGE     cpu (device_map='cpu' in Soup v0.75 and v0.77.2 source; confirm in run log)
+   VRAM (cpu merge) 0.00   RAM 3.00-5.87   VRAM if merged on GPU 3.11   disk 2.88
+4-BIT     final model 1.06 (nf4 0.61 + absmax 0.019 + fp16 rest 0.43);  peak alloc 1.50;  nvidia-smi 1.76
+INFERENCE fp16 generate 3.02, 4-bit generate 1.21, KV/1k tokens 0.027
+VERIFY    models 8.02 + KL store 0.87 + transient 1.45 = 10.34 GiB alloc

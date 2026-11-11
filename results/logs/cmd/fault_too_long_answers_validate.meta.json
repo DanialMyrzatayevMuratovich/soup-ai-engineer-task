@@ -1,0 +1,17 @@
+{
+  "name": "fault_too_long_answers_validate",
+  "cmd": [
+    "soup",
+    "data",
+    "validate",
+    "data/faults/too_long_answers.jsonl"
+  ],
+  "started": "2026-11-11T17:43:29.079+00:00",
+  "start_epoch": 1794419009.0798674,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:43:30.122+00:00",
+  "end_epoch": 1794419010.122783,
+  "rc": 0
+}

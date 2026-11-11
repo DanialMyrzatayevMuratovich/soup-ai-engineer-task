@@ -1,0 +1,16 @@
+{
+  "name": "help_plan",
+  "cmd": [
+    "soup",
+    "plan",
+    "--help"
+  ],
+  "started": "2026-11-11T17:41:04.118+00:00",
+  "start_epoch": 1794418864.1180668,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:41:04.930+00:00",
+  "end_epoch": 1794418864.9304743,
+  "rc": 0
+}

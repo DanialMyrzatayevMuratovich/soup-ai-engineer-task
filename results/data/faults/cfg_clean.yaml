@@ -1,0 +1,31 @@
+# fault-injection config cfg_clean
+base: Qwen/Qwen2.5-1.5B-Instruct
+task: sft
+backend: transformers
+data:
+  train: data/faults/clean_200.jsonl
+  format: chatml
+  max_length: 1024
+  val_split: 0.0
+  train_on_responses_only: true
+training:
+  epochs: 2
+  lr: 2.000e-04
+  batch_size: 2
+  gradient_accumulation_steps: 8
+  quantization: none
+  gradient_checkpointing: true
+  seed: 42
+  warmup_ratio: 0.03
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  scheduler: cosine
+  optimizer: adamw_torch
+  logging_steps: 5
+  save_steps: 50
+  lora:
+    r: 16
+    alpha: 32
+    dropout: 0.05
+    target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+output: outputs/fault_dryrun_out

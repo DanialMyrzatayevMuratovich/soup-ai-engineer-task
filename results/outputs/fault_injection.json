@@ -1,0 +1,355 @@
+[
+  {
+    "case": "clean_200",
+    "check": "validate",
+    "rc": 0,
+    "keywords": [],
+    "flagged_lines": [
+      "200/200 rows valid for chatml format"
+    ],
+    "log": "logs/cmd/fault_clean_200_validate.log"
+  },
+  {
+    "case": "dup_25pct",
+    "check": "validate",
+    "rc": 0,
+    "keywords": [
+      "dup"
+    ],
+    "flagged_lines": [
+      "! 50 duplicate rows found",
+      "250/250 rows valid for chatml format"
+    ],
+    "log": "logs/cmd/fault_dup_25pct_validate.log"
+  },
+  {
+    "case": "leak_eval_50",
+    "check": "validate",
+    "rc": 0,
+    "keywords": [],
+    "flagged_lines": [
+      "200/200 rows valid for chatml format"
+    ],
+    "log": "logs/cmd/fault_leak_eval_50_validate.log"
+  },
+  {
+    "case": "too_long_answers",
+    "check": "validate",
+    "rc": 0,
+    "keywords": [],
+    "flagged_lines": [
+      "200/200 rows valid for chatml format"
+    ],
+    "log": "logs/cmd/fault_too_long_answers_validate.log"
+  },
+  {
+    "case": "empty_answers",
+    "check": "validate",
+    "rc": 0,
+    "keywords": [],
+    "flagged_lines": [
+      "200/200 rows valid for chatml format"
+    ],
+    "log": "logs/cmd/fault_empty_answers_validate.log"
+  },
+  {
+    "case": "wrong_roles",
+    "check": "validate",
+    "rc": 0,
+    "keywords": [],
+    "flagged_lines": [
+      "200/200 rows valid for chatml format"
+    ],
+    "log": "logs/cmd/fault_wrong_roles_validate.log"
+  },
+  {
+    "case": "english_answers",
+    "check": "validate",
+    "rc": 0,
+    "keywords": [],
+    "flagged_lines": [
+      "200/200 rows valid for chatml format"
+    ],
+    "log": "logs/cmd/fault_english_answers_validate.log"
+  },
+  {
+    "case": "clean_200",
+    "check": "stats",
+    "rc": 0,
+    "keywords": [
+      "length"
+    ],
+    "flagged_lines": [],
+    "log": "logs/cmd/fault_clean_200_stats.log"
+  },
+  {
+    "case": "dup_25pct",
+    "check": "stats",
+    "rc": 0,
+    "keywords": [
+      "length"
+    ],
+    "flagged_lines": [],
+    "log": "logs/cmd/fault_dup_25pct_stats.log"
+  },
+  {
+    "case": "leak_eval_50",
+    "check": "stats",
+    "rc": 0,
+    "keywords": [
+      "length"
+    ],
+    "flagged_lines": [],
+    "log": "logs/cmd/fault_leak_eval_50_stats.log"
+  },
+  {
+    "case": "english_answers",
+    "check": "stats",
+    "rc": 0,
+    "keywords": [
+      "length"
+    ],
+    "flagged_lines": [],
+    "log": "logs/cmd/fault_english_answers_stats.log"
+  },
+  {
+    "case": "clean_200",
+    "check": "doctor",
+    "rc": 0,
+    "keywords": [
+      "dup",
+      "length",
+      "minor",
+      "role",
+      "trunc",
+      "unknown"
+    ],
+    "flagged_lines": [
+      "truncation_risk  │ OK  │ p95 length = 691 tokens vs max_length=1024; 0/200 rows (0.0%) would be truncated  │ p50=222, max=948",
+      "╭────────── overall ───────────╮",
+      "bos_duplication  │ OK  │ tokenizer has no bos_token_id",
+      "unknown_roles  │ OK  │ 0/200 rows (0.0%) contain a message role outside ['assistant', 'function', 'system', 'tool', 'user']",
+      "MINOR — 200/200 rows scanned",
+      "generation_markers │ MINOR  │ template lacks {% generation %} markers — assistant-only masking falls back to a heuristic that may include role-prefix tokens in the loss"
+    ],
+    "log": "logs/cmd/fault_clean_200_doctor.log"
+  },
+  {
+    "case": "too_long_answers",
+    "check": "doctor",
+    "rc": 0,
+    "keywords": [
+      "dup",
+      "length",
+      "minor",
+      "role",
+      "trunc",
+      "unknown"
+    ],
+    "flagged_lines": [
+      "truncation_risk  │ MINOR  │ p95 length = 7540 tokens vs max_length=1024; 30/200 rows (15.0%) would be truncated  │ p50=320, max=13394",
+      "╭────────── overall ───────────╮",
+      "bos_duplication  │ OK  │ tokenizer has no bos_token_id",
+      "unknown_roles  │ OK  │ 0/200 rows (0.0%) contain a message role outside ['assistant', 'function', 'system', 'tool', 'user']",
+      "MINOR — 200/200 rows scanned",
+      "generation_markers │ MINOR  │ template lacks {% generation %} markers — assistant-only masking falls back to a heuristic that may include role-prefix tokens in the loss"
+    ],
+    "log": "logs/cmd/fault_too_long_answers_doctor.log"
+  },
+  {
+    "case": "empty_answers",
+    "check": "doctor",
+    "rc": 0,
+    "keywords": [
+      "dup",
+      "length",
+      "minor",
+      "role",
+      "trunc",
+      "unknown"
+    ],
+    "flagged_lines": [
+      "truncation_risk  │ OK  │ p95 length = 690 tokens vs max_length=1024; 0/200 rows (0.0%) would be truncated  │ p50=192, max=948",
+      "╭────────── overall ───────────╮",
+      "bos_duplication  │ OK  │ tokenizer has no bos_token_id",
+      "unknown_roles  │ OK  │ 0/200 rows (0.0%) contain a message role outside ['assistant', 'function', 'system', 'tool', 'user']",
+      "MINOR — 200/200 rows scanned",
+      "generation_markers │ MINOR  │ template lacks {% generation %} markers — assistant-only masking falls back to a heuristic that may include role-prefix tokens in the loss"
+    ],
+    "log": "logs/cmd/fault_empty_answers_doctor.log"
+  },
+  {
+    "case": "wrong_roles",
+    "check": "doctor",
+    "rc": 2,
+    "keywords": [
+      "dup",
+      "length",
+      "major",
+      "minor",
+      "role",
+      "trunc",
+      "unknown"
+    ],
+    "flagged_lines": [
+      "unknown_roles  │ MAJOR  │ 20/200 rows (10.0%) contain a message role outside ['assistant', 'function', 'system', 'tool', 'user']  │ unexpected roles seen: gpt, human",
+      "MAJOR — 200/200 rows scanned",
+      "truncation_risk  │ OK  │ p95 length = 690 tokens vs max_length=1024; 0/200 rows (0.0%) would be truncated  │ p50=192, max=948",
+      "╭────────── overall ───────────╮",
+      "bos_duplication  │ OK  │ tokenizer has no bos_token_id",
+      "generation_markers │ MINOR  │ template lacks {% generation %} markers — assistant-only masking falls back to a heuristic that may include role-prefix tokens in"
+    ],
+    "log": "logs/cmd/fault_wrong_roles_doctor.log"
+  },
+  {
+    "case": "cfg_clean",
+    "check": "train_dry_run",
+    "rc": 0,
+    "keywords": [
+      "warn"
+    ],
+    "flagged_lines": [
+      "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+      "LoRA:  r=16, alpha=32",
+      "Quant:  none",
+      "Data OK: 200 train samples"
+    ],
+    "log": "logs/cmd/fault_cfg_clean_train_dry_run.log"
+  },
+  {
+    "case": "cfg_data_too_long_answers",
+    "check": "train_dry_run",
+    "rc": 0,
+    "keywords": [
+      "warn"
+    ],
+    "flagged_lines": [
+      "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+      "LoRA:  r=16, alpha=32",
+      "Quant:  none",
+      "Data OK: 200 train samples"
+    ],
+    "log": "logs/cmd/fault_cfg_data_too_long_answers_train_dry_run.log"
+  },
+  {
+    "case": "cfg_data_dup_25pct",
+    "check": "train_dry_run",
+    "rc": 0,
+    "keywords": [
+      "warn"
+    ],
+    "flagged_lines": [
+      "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+      "LoRA:  r=16, alpha=32",
+      "Quant:  none",
+      "Data OK: 250 train samples"
+    ],
+    "log": "logs/cmd/fault_cfg_data_dup_25pct_train_dry_run.log"
+  },
+  {
+    "case": "cfg_data_empty_answers",
+    "check": "train_dry_run",
+    "rc": 0,
+    "keywords": [
+      "warn"
+    ],
+    "flagged_lines": [
+      "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+      "LoRA:  r=16, alpha=32",
+      "Quant:  none",
+      "Data OK: 200 train samples"
+    ],
+    "log": "logs/cmd/fault_cfg_data_empty_answers_train_dry_run.log"
+  },
+  {
+    "case": "cfg_quantization_omitted",
+    "check": "train_dry_run",
+    "rc": 0,
+    "keywords": [
+      "4bit",
+      "warn"
+    ],
+    "flagged_lines": [
+      "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+      "LoRA:  r=16, alpha=32",
+      "Quant:  4bit",
+      "Data OK: 200 train samples"
+    ],
+    "log": "logs/cmd/fault_cfg_quantization_omitted_train_dry_run.log"
+  },
+  {
+    "case": "cfg_target_auto",
+    "check": "train_dry_run",
+    "rc": 0,
+    "keywords": [
+      "warn"
+    ],
+    "flagged_lines": [
+      "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+      "LoRA:  r=16, alpha=32",
+      "Quant:  none",
+      "Data OK: 200 train samples"
+    ],
+    "log": "logs/cmd/fault_cfg_target_auto_train_dry_run.log"
+  },
+  {
+    "case": "cfg_lr_zero",
+    "check": "train_dry_run",
+    "rc": 1,
+    "keywords": [
+      "error",
+      "lr"
+    ],
+    "flagged_lines": [
+      "Config validation error:",
+      "training -> lr: Input should be greater than 0"
+    ],
+    "log": "logs/cmd/fault_cfg_lr_zero_train_dry_run.log"
+  },
+  {
+    "case": "cfg_typo_key",
+    "check": "train_dry_run",
+    "rc": 1,
+    "keywords": [
+      "error",
+      "quantiz",
+      "refus",
+      "unknown"
+    ],
+    "flagged_lines": [
+      "Config validation error:",
+      "unknown config key 'training.quantizaton' - did you mean 'quantization' or 'quantization_aware'? Refused."
+    ],
+    "log": "logs/cmd/fault_cfg_typo_key_train_dry_run.log"
+  },
+  {
+    "case": "cfg_maxlen_128",
+    "check": "train_dry_run",
+    "rc": 0,
+    "keywords": [
+      "warn"
+    ],
+    "flagged_lines": [
+      "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+      "LoRA:  r=16, alpha=32",
+      "Quant:  none",
+      "Data OK: 200 train samples"
+    ],
+    "log": "logs/cmd/fault_cfg_maxlen_128_train_dry_run.log"
+  },
+  {
+    "case": "cfg_defaults_lr_r_alpha",
+    "check": "train_dry_run",
+    "rc": 0,
+    "keywords": [
+      "warn"
+    ],
+    "flagged_lines": [
+      "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+      "LoRA:  r=64, alpha=16",
+      "Quant:  none",
+      "Data OK: 200 train samples"
+    ],
+    "log": "logs/cmd/fault_cfg_defaults_lr_r_alpha_train_dry_run.log"
+  }
+]

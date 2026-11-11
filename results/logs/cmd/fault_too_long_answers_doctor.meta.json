@@ -1,0 +1,21 @@
+{
+  "name": "fault_too_long_answers_doctor",
+  "cmd": [
+    "soup",
+    "data",
+    "doctor",
+    "data/faults/too_long_answers.jsonl",
+    "--model",
+    "Qwen/Qwen2.5-1.5B-Instruct",
+    "--max-length",
+    "1024"
+  ],
+  "started": "2026-11-11T17:43:50.267+00:00",
+  "start_epoch": 1794419030.2675426,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:44:00.573+00:00",
+  "end_epoch": 1794419040.5738928,
+  "rc": 0
+}

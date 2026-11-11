@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "ship",
+    "--base",
+    "Qwen/Qwen2.5-1.5B-Instruct",
+    "--tuned",
+    "/content/soup-task/outputs/merged",
+    "--task-eval",
+    "data/ship_tasks.jsonl",
+    "--output",
+    "outputs/ship_verdict.json",
+    "--emit-evidence",
+    "outputs/ship_evidence.json",
+    "--device",
+    "cuda",
+    "--general-suite",
+    "mini_mmlu,mini_instruction"
+  ],
+  "soup": true,
+  "script": null,
+  "started": "2026-11-11T18:21:22.018+00:00",
+  "finished": "2026-11-11T18:26:38.838+00:00",
+  "wall_s": 316.8,
+  "pid": 11440,
+  "ru_maxrss_gib": 4.844730377197266,
+  "ru_maxrss_children_gib": 0.46295166015625,
+  "cuda_initialized": true,
+  "device": "Tesla T4",
+  "torch_max_allocated_gib": 5.9290385246276855,
+  "torch_max_reserved_gib": 6.326171875
+}

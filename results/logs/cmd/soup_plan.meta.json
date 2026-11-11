@@ -1,0 +1,17 @@
+{
+  "name": "soup_plan",
+  "cmd": [
+    "soup",
+    "plan",
+    "--config",
+    "soup.yaml"
+  ],
+  "started": "2026-11-11T17:43:14.152+00:00",
+  "start_epoch": 1794418994.152743,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 600,
+  "finished": "2026-11-11T17:43:16.790+00:00",
+  "end_epoch": 1794418996.7904172,
+  "rc": 0
+}

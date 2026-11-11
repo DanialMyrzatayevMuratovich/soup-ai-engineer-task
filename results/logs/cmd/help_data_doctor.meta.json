@@ -1,0 +1,17 @@
+{
+  "name": "help_data_doctor",
+  "cmd": [
+    "soup",
+    "data",
+    "doctor",
+    "--help"
+  ],
+  "started": "2026-11-11T17:41:15.798+00:00",
+  "start_epoch": 1794418875.7981787,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:41:16.631+00:00",
+  "end_epoch": 1794418876.6310542,
+  "rc": 0
+}

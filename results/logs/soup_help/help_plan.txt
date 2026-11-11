@@ -1,0 +1,10 @@
+$ soup plan --help
+ Usage: soup plan [OPTIONS]                                                                                                                                                                             
+ Render a pre-flight training plan (cost / ETA / SHA / VRAM) and write soup.tfstate for `soup apply` to consult (v0.64.0).                                                                              
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --config             -c      <str>  Path to soup.yaml. [default: soup.yaml]                                                                                                                          │
+│ --state                      <str>  Path to write the state file (default: ./soup.tfstate). [default: soup.tfstate]                                                                                  │
+│ --minillm-on-policy                 Use on-policy MiniLLM; requires training.minillm_enabled=true on task=distill.                                                                                   │
+│ --help                              Show this message and exit.                                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+exit code 0 after 0.7s

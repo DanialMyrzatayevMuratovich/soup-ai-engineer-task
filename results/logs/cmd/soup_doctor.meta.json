@@ -1,0 +1,17 @@
+{
+  "name": "soup_doctor",
+  "cmd": [
+    "soup",
+    "doctor",
+    "--config",
+    "soup.yaml"
+  ],
+  "started": "2026-11-11T17:42:53.372+00:00",
+  "start_epoch": 1794418973.3721883,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 600,
+  "finished": "2026-11-11T17:43:09.357+00:00",
+  "end_epoch": 1794418989.3577178,
+  "rc": 0
+}

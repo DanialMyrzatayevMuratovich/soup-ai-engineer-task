@@ -1,0 +1,17 @@
+{
+  "name": "fault_wrong_roles_validate",
+  "cmd": [
+    "soup",
+    "data",
+    "validate",
+    "data/faults/wrong_roles.jsonl"
+  ],
+  "started": "2026-11-11T17:43:31.680+00:00",
+  "start_epoch": 1794419011.6804173,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:43:32.471+00:00",
+  "end_epoch": 1794419012.471569,
+  "rc": 0
+}

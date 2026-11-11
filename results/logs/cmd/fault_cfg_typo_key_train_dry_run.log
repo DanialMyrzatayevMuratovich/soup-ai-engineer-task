@@ -1,0 +1,5 @@
+2026-11-11T17:45:03.532+00:00 | $ soup train --config data/faults/cfg_typo_key.yaml --dry-run --yes
+2026-11-11T17:45:04.153+00:00 | Loading config from data/faults/cfg_typo_key.yaml...
+2026-11-11T17:45:04.157+00:00 | Config validation error:
+2026-11-11T17:45:04.158+00:00 |   unknown config key 'training.quantizaton' - did you mean 'quantization' or 'quantization_aware'? Refused.
+2026-11-11T17:45:04.226+00:00 | exit code 1 after 0.7s

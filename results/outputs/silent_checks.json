@@ -1,0 +1,671 @@
+{
+  "created": "2026-11-11T18:26:52.188+00:00",
+  "artifacts": {
+    "base": {
+      "dir": "../../root/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "config": {
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "torch_dtype": "bfloat16",
+        "dtype": null,
+        "tie_word_embeddings": true,
+        "vocab_size": 151936,
+        "max_position_embeddings": 32768,
+        "rope_theta": 1000000.0,
+        "use_cache": true,
+        "eos_token_id": 151645,
+        "bos_token_id": 151643,
+        "pad_token_id": null
+      },
+      "quantization_config": null,
+      "generation_config": {
+        "bos_token_id": 151643,
+        "pad_token_id": 151643,
+        "do_sample": true,
+        "eos_token_id": [
+          151645,
+          151643
+        ],
+        "repetition_penalty": 1.1,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "transformers_version": "4.37.0"
+      },
+      "adapter_config": null,
+      "tokenizer_json_sha": "c0382117ea329cdf",
+      "chat_template_sha": "cd8e9439f0570856",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "files": [
+        "config.json",
+        "generation_config.json",
+        "merges.txt",
+        "model.safetensors",
+        "tokenizer.json",
+        "tokenizer_config.json",
+        "vocab.json"
+      ],
+      "weights_gib": 2.8754278495907784
+    },
+    "adapter": {
+      "dir": "outputs/soup_run",
+      "config": {
+        "architectures": null,
+        "torch_dtype": null,
+        "dtype": null,
+        "tie_word_embeddings": null,
+        "vocab_size": null,
+        "max_position_embeddings": null,
+        "rope_theta": null,
+        "use_cache": null,
+        "eos_token_id": null,
+        "bos_token_id": null,
+        "pad_token_id": null
+      },
+      "quantization_config": null,
+      "generation_config": null,
+      "adapter_config": {
+        "alora_invocation_tokens": null,
+        "alpha_pattern": {},
+        "arrow_config": null,
+        "auto_mapping": null,
+        "base_model_name_or_path": "Qwen/Qwen2.5-1.5B-Instruct",
+        "bias": "none",
+        "corda_config": null,
+        "ensure_weight_tying": false,
+        "eva_config": null,
+        "exclude_modules": null,
+        "fan_in_fan_out": false,
+        "inference_mode": true,
+        "init_lora_weights": true,
+        "kasa_config": null,
+        "layer_replication": null,
+        "layers_pattern": null,
+        "layers_to_transform": null,
+        "loftq_config": {},
+        "lora_alpha": 32,
+        "lora_bias": false,
+        "lora_dropout": 0.05,
+        "lora_ga_config": null,
+        "megatron_config": null,
+        "megatron_core": "megatron.core",
+        "modules_to_save": null,
+        "monteclora_config": null,
+        "peft_type": "LORA",
+        "peft_version": "0.21.2",
+        "qalora_group_size": 16,
+        "r": 16,
+        "rank_pattern": {},
+        "revision": null,
+        "target_modules": [
+          "o_proj",
+          "up_proj",
+          "gate_proj",
+          "q_proj",
+          "down_proj",
+          "v_proj",
+          "k_proj"
+        ],
+        "target_parameters": null,
+        "task_type": "CAUSAL_LM",
+        "trainable_token_indices": null,
+        "use_bdlora": null,
+        "use_dora": false,
+        "use_qalora": false,
+        "use_rslora": false,
+        "velora_config": null
+      },
+      "tokenizer_json_sha": "3fd169731d2cbde9",
+      "chat_template_sha": "cd8e9439f0570856",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "files": [
+        "README.md",
+        "adapter_config.json",
+        "adapter_model.safetensors",
+        "chat_template.jinja",
+        "checkpoint-100",
+        "checkpoint-150",
+        "checkpoint-188",
+        "rewind.jsonl",
+        "soup_run.json",
+        "tokenizer.json",
+        "tokenizer_config.json",
+        "training_args.bin"
+      ],
+      "weights_gib": 0.06883508712053299
+    },
+    "merged": {
+      "dir": "outputs/merged",
+      "config": {
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "torch_dtype": null,
+        "dtype": "float16",
+        "tie_word_embeddings": true,
+        "vocab_size": 151936,
+        "max_position_embeddings": 32768,
+        "rope_theta": null,
+        "use_cache": true,
+        "eos_token_id": 151645,
+        "bos_token_id": 151643,
+        "pad_token_id": null
+      },
+      "quantization_config": null,
+      "generation_config": {
+        "bos_token_id": 151643,
+        "do_sample": true,
+        "eos_token_id": [
+          151645,
+          151643
+        ],
+        "pad_token_id": 151643,
+        "repetition_penalty": 1.1,
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "transformers_version": "5.22.1"
+      },
+      "adapter_config": null,
+      "tokenizer_json_sha": "3fd169731d2cbde9",
+      "chat_template_sha": "cd8e9439f0570856",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "files": [
+        "chat_template.jinja",
+        "config.json",
+        "generation_config.json",
+        "model.safetensors",
+        "tokenizer.json",
+        "tokenizer_config.json"
+      ],
+      "weights_gib": 2.8754275366663933
+    },
+    "merged_4bit": {
+      "dir": "outputs/merged_4bit",
+      "config": {
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "torch_dtype": null,
+        "dtype": "float16",
+        "tie_word_embeddings": true,
+        "vocab_size": 151936,
+        "max_position_embeddings": 32768,
+        "rope_theta": null,
+        "use_cache": true,
+        "eos_token_id": 151645,
+        "bos_token_id": 151643,
+        "pad_token_id": null
+      },
+      "quantization_config": {
+        "_load_in_4bit": true,
+        "_load_in_8bit": false,
+        "bnb_4bit_compute_dtype": "float16",
+        "bnb_4bit_quant_storage": "uint8",
+        "bnb_4bit_quant_type": "nf4",
+        "bnb_4bit_use_double_quant": true,
+        "llm_int8_enable_fp32_cpu_offload": false,
+        "llm_int8_has_fp16_weight": false,
+        "llm_int8_skip_modules": null,
+        "llm_int8_threshold": 6.0,
+        "load_in_4bit": true,
+        "load_in_8bit": false,
+        "quant_method": "bitsandbytes"
+      },
+      "generation_config": {
+        "bos_token_id": 151643,
+        "do_sample": true,
+        "eos_token_id": [
+          151645,
+          151643
+        ],
+        "pad_token_id": 151643,
+        "repetition_penalty": 1.1,
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "transformers_version": "5.22.1"
+      },
+      "adapter_config": null,
+      "tokenizer_json_sha": "3fd169731d2cbde9",
+      "chat_template_sha": "cd8e9439f0570856",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "files": [
+        "chat_template.jinja",
+        "config.json",
+        "generation_config.json",
+        "model.safetensors",
+        "tokenizer.json",
+        "tokenizer_config.json"
+      ],
+      "weights_gib": 1.0648065656423569
+    },
+    "nc_adapter": {
+      "dir": "outputs/nc_run",
+      "config": {
+        "architectures": null,
+        "torch_dtype": null,
+        "dtype": null,
+        "tie_word_embeddings": null,
+        "vocab_size": null,
+        "max_position_embeddings": null,
+        "rope_theta": null,
+        "use_cache": null,
+        "eos_token_id": null,
+        "bos_token_id": null,
+        "pad_token_id": null
+      },
+      "quantization_config": null,
+      "generation_config": null,
+      "adapter_config": {
+        "alora_invocation_tokens": null,
+        "alpha_pattern": {},
+        "arrow_config": null,
+        "auto_mapping": null,
+        "base_model_name_or_path": "Qwen/Qwen2.5-1.5B-Instruct",
+        "bias": "none",
+        "corda_config": null,
+        "ensure_weight_tying": false,
+        "eva_config": null,
+        "exclude_modules": null,
+        "fan_in_fan_out": false,
+        "inference_mode": true,
+        "init_lora_weights": true,
+        "kasa_config": null,
+        "layer_replication": null,
+        "layers_pattern": null,
+        "layers_to_transform": null,
+        "loftq_config": {},
+        "lora_alpha": 32,
+        "lora_bias": false,
+        "lora_dropout": 0.05,
+        "lora_ga_config": null,
+        "megatron_config": null,
+        "megatron_core": "megatron.core",
+        "modules_to_save": null,
+        "monteclora_config": null,
+        "peft_type": "LORA",
+        "peft_version": "0.21.2",
+        "qalora_group_size": 16,
+        "r": 16,
+        "rank_pattern": {},
+        "revision": null,
+        "target_modules": [
+          "down_proj",
+          "k_proj",
+          "gate_proj",
+          "o_proj",
+          "q_proj",
+          "v_proj",
+          "up_proj"
+        ],
+        "target_parameters": null,
+        "task_type": "CAUSAL_LM",
+        "trainable_token_indices": null,
+        "use_bdlora": null,
+        "use_dora": false,
+        "use_qalora": false,
+        "use_rslora": false,
+        "velora_config": null
+      },
+      "tokenizer_json_sha": "3fd169731d2cbde9",
+      "chat_template_sha": "cd8e9439f0570856",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "files": [
+        "README.md",
+        "adapter_config.json",
+        "adapter_model.safetensors",
+        "chat_template.jinja",
+        "checkpoint-4",
+        "rewind.jsonl",
+        "soup_run.json",
+        "tokenizer.json",
+        "tokenizer_config.json",
+        "training_args.bin"
+      ],
+      "weights_gib": 0.06883508712053299
+    },
+    "nc_merged": {
+      "dir": "outputs/nc_merged",
+      "config": {
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "torch_dtype": null,
+        "dtype": "float16",
+        "tie_word_embeddings": true,
+        "vocab_size": 151936,
+        "max_position_embeddings": 32768,
+        "rope_theta": null,
+        "use_cache": true,
+        "eos_token_id": 151645,
+        "bos_token_id": 151643,
+        "pad_token_id": null
+      },
+      "quantization_config": null,
+      "generation_config": {
+        "bos_token_id": 151643,
+        "do_sample": true,
+        "eos_token_id": [
+          151645,
+          151643
+        ],
+        "pad_token_id": 151643,
+        "repetition_penalty": 1.1,
+        "temperature": 0.7,
+        "top_k": 20,
+        "top_p": 0.8,
+        "transformers_version": "5.22.1"
+      },
+      "adapter_config": null,
+      "tokenizer_json_sha": "3fd169731d2cbde9",
+      "chat_template_sha": "cd8e9439f0570856",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "files": [
+        "chat_template.jinja",
+        "config.json",
+        "generation_config.json",
+        "model.safetensors",
+        "tokenizer.json",
+        "tokenizer_config.json"
+      ],
+      "weights_gib": 2.8754275366663933
+    }
+  },
+  "checks": [
+    {
+      "id": "S-adapter-template",
+      "status": "OK",
+      "what": "adapter chat template == base",
+      "value": {
+        "artifact": "cd8e9439f0570856",
+        "base": "cd8e9439f0570856"
+      }
+    },
+    {
+      "id": "S-adapter-tokenizer",
+      "status": "DIFF",
+      "what": "adapter tokenizer.json == base",
+      "value": {
+        "artifact": "3fd169731d2cbde9",
+        "base": "c0382117ea329cdf"
+      }
+    },
+    {
+      "id": "S-adapter-eos-pad",
+      "status": "OK",
+      "what": "adapter eos/pad tokens == base",
+      "value": {
+        "artifact": [
+          "<|im_end|>",
+          "<|endoftext|>"
+        ],
+        "base": [
+          "<|im_end|>",
+          "<|endoftext|>"
+        ]
+      }
+    },
+    {
+      "id": "S-merged-template",
+      "status": "OK",
+      "what": "merged chat template == base",
+      "value": {
+        "artifact": "cd8e9439f0570856",
+        "base": "cd8e9439f0570856"
+      }
+    },
+    {
+      "id": "S-merged-tokenizer",
+      "status": "DIFF",
+      "what": "merged tokenizer.json == base",
+      "value": {
+        "artifact": "3fd169731d2cbde9",
+        "base": "c0382117ea329cdf"
+      }
+    },
+    {
+      "id": "S-merged-eos-pad",
+      "status": "OK",
+      "what": "merged eos/pad tokens == base",
+      "value": {
+        "artifact": [
+          "<|im_end|>",
+          "<|endoftext|>"
+        ],
+        "base": [
+          "<|im_end|>",
+          "<|endoftext|>"
+        ]
+      }
+    },
+    {
+      "id": "S-merged-genconfig",
+      "status": "OK",
+      "what": "merged generation_config.json == base (users get these defaults)",
+      "value": {
+        "artifact": {
+          "bos_token_id": 151643,
+          "do_sample": true,
+          "eos_token_id": [
+            151645,
+            151643
+          ],
+          "pad_token_id": 151643,
+          "repetition_penalty": 1.1,
+          "temperature": 0.7,
+          "top_k": 20,
+          "top_p": 0.8,
+          "transformers_version": "5.22.1"
+        },
+        "base": {
+          "bos_token_id": 151643,
+          "pad_token_id": 151643,
+          "do_sample": true,
+          "eos_token_id": [
+            151645,
+            151643
+          ],
+          "repetition_penalty": 1.1,
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "transformers_version": "4.37.0"
+        }
+      }
+    },
+    {
+      "id": "S-merged_4bit-template",
+      "status": "OK",
+      "what": "merged_4bit chat template == base",
+      "value": {
+        "artifact": "cd8e9439f0570856",
+        "base": "cd8e9439f0570856"
+      }
+    },
+    {
+      "id": "S-merged_4bit-tokenizer",
+      "status": "DIFF",
+      "what": "merged_4bit tokenizer.json == base",
+      "value": {
+        "artifact": "3fd169731d2cbde9",
+        "base": "c0382117ea329cdf"
+      }
+    },
+    {
+      "id": "S-merged_4bit-eos-pad",
+      "status": "OK",
+      "what": "merged_4bit eos/pad tokens == base",
+      "value": {
+        "artifact": [
+          "<|im_end|>",
+          "<|endoftext|>"
+        ],
+        "base": [
+          "<|im_end|>",
+          "<|endoftext|>"
+        ]
+      }
+    },
+    {
+      "id": "S-merged_4bit-genconfig",
+      "status": "OK",
+      "what": "merged_4bit generation_config.json == base (users get these defaults)",
+      "value": {
+        "artifact": {
+          "bos_token_id": 151643,
+          "do_sample": true,
+          "eos_token_id": [
+            151645,
+            151643
+          ],
+          "pad_token_id": 151643,
+          "repetition_penalty": 1.1,
+          "temperature": 0.7,
+          "top_k": 20,
+          "top_p": 0.8,
+          "transformers_version": "5.22.1"
+        },
+        "base": {
+          "bos_token_id": 151643,
+          "pad_token_id": 151643,
+          "do_sample": true,
+          "eos_token_id": [
+            151645,
+            151643
+          ],
+          "repetition_penalty": 1.1,
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "transformers_version": "4.37.0"
+        }
+      }
+    },
+    {
+      "id": "S-adapter-targets",
+      "status": "OK",
+      "what": "adapter target_modules == requested",
+      "value": {
+        "adapter": [
+          "down_proj",
+          "gate_proj",
+          "k_proj",
+          "o_proj",
+          "q_proj",
+          "up_proj",
+          "v_proj"
+        ],
+        "requested": [
+          "q_proj",
+          "k_proj",
+          "v_proj",
+          "o_proj",
+          "gate_proj",
+          "up_proj",
+          "down_proj"
+        ]
+      }
+    },
+    {
+      "id": "S-adapter-rank",
+      "status": "OK",
+      "what": "adapter r/alpha == requested",
+      "value": {
+        "r": 16,
+        "alpha": 32
+      }
+    },
+    {
+      "id": "S-adapter-base",
+      "status": "OK",
+      "what": "adapter base_model_name_or_path == base we evaluate",
+      "value": "Qwen/Qwen2.5-1.5B-Instruct"
+    },
+    {
+      "id": "S-adapter-extras",
+      "status": "OK",
+      "what": "no modules_to_save / DoRA surprises",
+      "value": {
+        "modules_to_save": null,
+        "use_dora": false
+      }
+    },
+    {
+      "id": "S-4bit-config",
+      "status": "OK",
+      "what": "4-bit quantization_config",
+      "value": {
+        "_load_in_4bit": true,
+        "_load_in_8bit": false,
+        "bnb_4bit_compute_dtype": "float16",
+        "bnb_4bit_quant_storage": "uint8",
+        "bnb_4bit_quant_type": "nf4",
+        "bnb_4bit_use_double_quant": true,
+        "llm_int8_enable_fp32_cpu_offload": false,
+        "llm_int8_has_fp16_weight": false,
+        "llm_int8_skip_modules": null,
+        "llm_int8_threshold": 6.0,
+        "load_in_4bit": true,
+        "load_in_8bit": false,
+        "quant_method": "bitsandbytes"
+      }
+    },
+    {
+      "id": "S-merged-dtype",
+      "status": "OK",
+      "what": "merged checkpoint dtype is float16",
+      "value": "float16"
+    },
+    {
+      "id": "S-train-steps",
+      "status": "OK",
+      "what": "optimizer steps ~= ceil(ceil(N/bs)/ga)*epochs, +-1 per epoch for floor/ceil (else rows were dropped)",
+      "value": {
+        "expected": 188,
+        "logged_global_step": 188,
+        "max_steps": 188
+      }
+    },
+    {
+      "id": "S-train-finite",
+      "status": "OK",
+      "what": "all logged loss/grad_norm finite",
+      "value": {
+        "nonfinite_entries": 0,
+        "n_logged": 37
+      }
+    }
+  ],
+  "training_summary": {
+    "source": "outputs/soup_run/checkpoint-188/trainer_state.json",
+    "global_step": 188,
+    "max_steps": 188,
+    "n_logged": 37,
+    "first_loss": 1.3668246269226074,
+    "last_loss": 0.9926782608032226,
+    "min_loss": 0.9926782608032226,
+    "max_grad_norm": 0.7732017040252686,
+    "nonfinite_entries": 0,
+    "train_runtime": null,
+    "skipped_steps_fp16": null
+  },
+  "soup_train_log_flags": [
+    "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+    "│ LoRA:    r=16, alpha=32                                                                                                                                                                              │",
+    "LoRA applied: 18,464,768 trainable / 1,562,179,072 total (1.18%)",
+    "Map:   0%|          | 0/1500 [00:00<?, ? examples/s][transformers] return_assistant_tokens_mask==True but chat template does not contain `{% generation %}` keyword.",
+    "Gradient checkpointing: full (every block)",
+    "Truncating train dataset:   0%|          | 0/1500 [00:00<?, ? examples/s]",
+    "Truncating train dataset: 100%|██████████| 1500/1500 [00:00<00:00, 73192.21 examples/s]",
+    "[transformers] The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'pad_token_id': 151643}.",
+    "│ Merge LoRA:  soup merge --adapter outputs/soup_run                                                                                                                                                   │"
+  ]
+}

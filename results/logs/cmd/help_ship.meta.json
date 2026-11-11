@@ -1,0 +1,16 @@
+{
+  "name": "help_ship",
+  "cmd": [
+    "soup",
+    "ship",
+    "--help"
+  ],
+  "started": "2026-11-11T17:41:01.524+00:00",
+  "start_epoch": 1794418861.524292,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:41:02.338+00:00",
+  "end_epoch": 1794418862.338434,
+  "rc": 0
+}

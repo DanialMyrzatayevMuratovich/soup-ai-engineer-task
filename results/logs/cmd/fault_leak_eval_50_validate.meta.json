@@ -1,0 +1,17 @@
+{
+  "name": "fault_leak_eval_50_validate",
+  "cmd": [
+    "soup",
+    "data",
+    "validate",
+    "data/faults/leak_eval_50.jsonl"
+  ],
+  "started": "2026-11-11T17:43:27.777+00:00",
+  "start_epoch": 1794419007.7772038,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:43:28.950+00:00",
+  "end_epoch": 1794419008.9506857,
+  "rc": 0
+}

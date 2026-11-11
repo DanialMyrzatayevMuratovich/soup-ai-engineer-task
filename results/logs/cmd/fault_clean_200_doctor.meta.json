@@ -1,0 +1,21 @@
+{
+  "name": "fault_clean_200_doctor",
+  "cmd": [
+    "soup",
+    "data",
+    "doctor",
+    "data/faults/clean_200.jsonl",
+    "--model",
+    "Qwen/Qwen2.5-1.5B-Instruct",
+    "--max-length",
+    "1024"
+  ],
+  "started": "2026-11-11T17:43:39.486+00:00",
+  "start_epoch": 1794419019.4868996,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": 300,
+  "finished": "2026-11-11T17:43:48.727+00:00",
+  "end_epoch": 1794419028.727251,
+  "rc": 0
+}

@@ -1,0 +1,17 @@
+{
+  "name": "help_data_validate",
+  "cmd": [
+    "soup",
+    "data",
+    "validate",
+    "--help"
+  ],
+  "started": "2026-11-11T17:41:11.907+00:00",
+  "start_epoch": 1794418871.9079647,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:41:12.719+00:00",
+  "end_epoch": 1794418872.7192233,
+  "rc": 0
+}

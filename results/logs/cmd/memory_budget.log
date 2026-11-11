@@ -1,0 +1,33 @@
+2026-11-11T17:42:11.428+00:00 | $ /usr/bin/python3 memory_budget.py --model Qwen/Qwen2.5-1.5B-Instruct --batch-size 2 --grad-accum 8 --seq-len 1024 --data-report data/data_report.json --lora-r 16 --lora-alpha 32 --lora-dropout 0.05 --target-modules q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj --out outputs/memory_budget.json --cuda-context-gib 0.113
+2026-11-11T17:42:12.142+00:00 | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-11-11T17:42:12.150+00:00 | Model config from: /root/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306/config.json
+2026-11-11T17:42:12.150+00:00 | Params total 1,543,714,304 (embed 233,373,696, layers 1,310,339,072, tied=True, qkv_bias=True)
+2026-11-11T17:42:12.150+00:00 | LoRA r=16 alpha=32 scale=2: 18,464,768 params in 196 modules (1.20% of base)
+2026-11-11T17:42:12.150+00:00 |    q_proj     in=1536  out=1536  r*(in+out)=  49,152  x layers =   1,376,256
+2026-11-11T17:42:12.150+00:00 |    k_proj     in=1536  out=256   r*(in+out)=  28,672  x layers =     802,816
+2026-11-11T17:42:12.150+00:00 |    v_proj     in=1536  out=256   r*(in+out)=  28,672  x layers =     802,816
+2026-11-11T17:42:12.150+00:00 |    o_proj     in=1536  out=1536  r*(in+out)=  49,152  x layers =   1,376,256
+2026-11-11T17:42:12.150+00:00 |    gate_proj  in=1536  out=8960  r*(in+out)= 167,936  x layers =   4,702,208
+2026-11-11T17:42:12.150+00:00 |    up_proj    in=1536  out=8960  r*(in+out)= 167,936  x layers =   4,702,208
+2026-11-11T17:42:12.150+00:00 |    down_proj  in=8960  out=1536  r*(in+out)= 167,936  x layers =   4,702,208
+2026-11-11T17:42:12.150+00:00 | TRAINING  (config_max_length: T=1024, data_max_row: T=994, data_median_row: T=230, B=2)
+2026-11-11T17:42:12.150+00:00 | component (GiB)                      config_max_length        data_max_row     data_median_row
+2026-11-11T17:42:12.150+00:00 | base weights fp16                                 2.88                2.88                2.88
+2026-11-11T17:42:12.150+00:00 | LoRA w+grad+Adam (fp32)                           0.28                0.28                0.28
+2026-11-11T17:42:12.150+00:00 | checkpointed layer inputs                         0.16                0.16                0.04
+2026-11-11T17:42:12.150+00:00 | one layer recompute                               0.33                0.32                0.07
+2026-11-11T17:42:12.150+00:00 | logits fwd (10 B/elem)                            2.90                2.81                0.65
+2026-11-11T17:42:12.150+00:00 | logits bwd (14 B/elem)                            4.06                3.94                0.91
+2026-11-11T17:42:12.150+00:00 | (stack if NO grad ckpt)                           7.07                6.86                1.59
+2026-11-11T17:42:12.150+00:00 | = est. torch max_allocated                        7.38                7.25                4.10
+2026-11-11T17:42:12.150+00:00 |   + allocator cache                               8.12                7.98                4.51
+2026-11-11T17:42:12.150+00:00 |   + CUDA context = nvidia-smi                     8.23                8.09                4.62
+2026-11-11T17:42:12.150+00:00 | peak set by                                logits/loss         logits/loss         logits/loss
+2026-11-11T17:42:12.150+00:00 | fits 15.0 GiB card                                True                True                True
+2026-11-11T17:42:12.150+00:00 | MERGE     cpu (device_map='cpu' in Soup v0.75 and v0.77.2 source; confirm in run log)
+2026-11-11T17:42:12.150+00:00 |    VRAM (cpu merge) 0.00   RAM 3.00-5.87   VRAM if merged on GPU 3.11   disk 2.88
+2026-11-11T17:42:12.150+00:00 | 4-BIT     final model 1.06 (nf4 0.61 + absmax 0.019 + fp16 rest 0.43);  peak alloc 1.50;  nvidia-smi 1.76
+2026-11-11T17:42:12.150+00:00 | INFERENCE fp16 generate 3.02, 4-bit generate 1.21, KV/1k tokens 0.027
+2026-11-11T17:42:12.150+00:00 | VERIFY    models 8.02 + KL store 0.87 + transient 1.45 = 10.34 GiB alloc
+2026-11-11T17:42:12.150+00:00 | written: outputs/memory_budget.json and outputs/memory_budget.txt
+2026-11-11T17:42:12.209+00:00 | exit code 0 after 0.8s

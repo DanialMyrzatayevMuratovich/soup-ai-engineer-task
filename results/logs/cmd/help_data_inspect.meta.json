@@ -1,0 +1,17 @@
+{
+  "name": "help_data_inspect",
+  "cmd": [
+    "soup",
+    "data",
+    "inspect",
+    "--help"
+  ],
+  "started": "2026-11-11T17:41:14.499+00:00",
+  "start_epoch": 1794418874.4994166,
+  "cwd": "/content/soup-task",
+  "peak_json": null,
+  "timeout_s": null,
+  "finished": "2026-11-11T17:41:15.323+00:00",
+  "end_epoch": 1794418875.3236969,
+  "rc": 0
+}

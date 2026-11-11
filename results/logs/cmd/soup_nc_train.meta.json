@@ -1,0 +1,24 @@
+{
+  "name": "soup_nc_train",
+  "cmd": [
+    "/usr/bin/python3",
+    "/content/soup-task/kit_common.py",
+    "peak",
+    "--json",
+    "logs/peak_soup_nc_train.json",
+    "--soup",
+    "--",
+    "train",
+    "--config",
+    "soup_nc.yaml",
+    "--yes"
+  ],
+  "started": "2026-11-11T18:10:58.602+00:00",
+  "start_epoch": 1794420658.6022782,
+  "cwd": "/content/soup-task",
+  "peak_json": "logs/peak_soup_nc_train.json",
+  "timeout_s": 3600,
+  "finished": "2026-11-11T18:11:56.498+00:00",
+  "end_epoch": 1794420716.4984627,
+  "rc": 0
+}

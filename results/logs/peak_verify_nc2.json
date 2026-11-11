@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "--base",
+    "Qwen/Qwen2.5-1.5B-Instruct",
+    "--adapter",
+    "/content/soup-task/outputs/soup_run",
+    "--merged",
+    "Qwen/Qwen2.5-1.5B-Instruct",
+    "--eval-data",
+    "data/eval.jsonl",
+    "--out-dir",
+    "outputs/verify_nc2",
+    "--max-eval",
+    "100",
+    "--skip-generations",
+    "--max-length",
+    "1024"
+  ],
+  "soup": false,
+  "script": "/content/soup-task/verify_trained.py",
+  "started": "2026-11-11T18:19:53.666+00:00",
+  "finished": "2026-11-11T18:21:18.222+00:00",
+  "wall_s": 84.6,
+  "pid": 11057,
+  "ru_maxrss_gib": 4.125907897949219,
+  "ru_maxrss_children_gib": 0.4299125671386719,
+  "cuda_initialized": true,
+  "device": "Tesla T4",
+  "torch_max_allocated_gib": 5.827507019042969,
+  "torch_max_reserved_gib": 9.0078125
+}

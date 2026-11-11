@@ -1,0 +1,27 @@
+{
+  "name": "soup_merge",
+  "cmd": [
+    "/usr/bin/python3",
+    "/content/soup-task/kit_common.py",
+    "peak",
+    "--json",
+    "logs/peak_soup_merge.json",
+    "--soup",
+    "--",
+    "merge",
+    "--adapter",
+    "outputs/soup_run",
+    "--output",
+    "outputs/merged",
+    "--dtype",
+    "float16"
+  ],
+  "started": "2026-11-11T18:08:02.011+00:00",
+  "start_epoch": 1794420482.0114763,
+  "cwd": "/content/soup-task",
+  "peak_json": "logs/peak_soup_merge.json",
+  "timeout_s": 3600,
+  "finished": "2026-11-11T18:09:12.192+00:00",
+  "end_epoch": 1794420552.1928577,
+  "rc": 0
+}

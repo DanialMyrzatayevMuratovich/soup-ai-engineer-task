@@ -5,3 +5,5 @@ outputs/models/
 *.safetensors
 *.bin
 *.gguf
+
+# в results оставлена одна копия tokenizer.json (outputs/merged/); остальные идентичны (sha256 3fd16973…)
